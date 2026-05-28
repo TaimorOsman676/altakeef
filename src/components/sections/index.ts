@@ -1,0 +1,10 @@
+export { default as Hero } from './Hero';
+export { default as StatsCounter } from './StatsCounter';
+export { default as ServicesGrid } from './ServicesGrid';
+export { default as WhyChooseUs } from './WhyChooseUs';
+export { default as Testimonials } from './Testimonials';
+export { default as CTABanner } from './CTABanner';
+export { default as FAQAccordion } from './FAQAccordion';
+export { default as BrandsSlider } from './BrandsSlider';
+export { default as BlogGrid } from './BlogGrid';
+export { default as FeaturedProducts } from './FeaturedProducts';

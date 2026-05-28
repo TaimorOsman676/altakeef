@@ -1,26 +1,138 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-brand-blue: #00E5FF;
+    --color-brand-navy: #0B1120;
+    --color-brand-red: #D42B2B;
+    --color-brand-ice: #111827;
+    --color-brand-silver: #94A3B8;
+  }
+
+  body {
+    background-color: #060F1E;
+    color: #F1F5F9;
+    background-image: radial-gradient(circle at 50% -20%, #0F172A 0%, #060F1E 70%);
+    background-attachment: fixed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* =============================================================================
+   Premium Dark Blue Global Theme Overrides
+   ============================================================================= */
+
+/* Base Headings & Texts */
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+}
+
+/* Store Cards Overrides */
+.store-page-card, 
+.grid-cols-1 .bg-\[\#111827\],
+.grid-cols-2 .bg-\[\#111827\],
+.grid-cols-3 .bg-\[\#111827\],
+.grid-cols-4 .bg-\[\#111827\] {
+  background-color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.store-page-card:hover, 
+.grid-cols-1 .bg-\[\#111827\]:hover,
+.grid-cols-2 .bg-\[\#111827\]:hover,
+.grid-cols-3 .bg-\[\#111827\]:hover,
+.grid-cols-4 .bg-\[\#111827\]:hover {
+  transform: translateY(-4px);
+  border-color: rgba(43, 158, 212, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(43, 158, 212, 0.15);
+}
+
+/* Custom Input / Search Select styling */
+input, select, textarea {
+  background-color: #0B1120 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #00E5FF !important;
+  box-shadow: 0 0 0 2px rgba(43, 158, 212, 0.2) !important;
+}
+
+/* FAQ/Accordin Overrides */
+.faq-accordion-item, .accordion-header {
+  background-color: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Buttons Glow Effects */
+.btn-primary, .bg-emerald-600 {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after, .bg-emerald-600::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: 0.5s;
+}
+
+.btn-primary:hover::after, .bg-emerald-600:hover::after {
+  left: 100%;
+}
+
+/* Custom Scrollbar for Luxury Experience */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060F1E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0F172A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00E5FF;
+}
+
+/* Section specific styling for luxury */
+section {
+  position: relative;
+}
+
+/* Glassmorphism utility */
+.glassmorphism {
+  background: rgba(13, 30, 54, 0.7) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
