@@ -79,7 +79,7 @@ export default function Header() {
       {/* TOP UTILITY BAR                                                   */}
       {/* ================================================================= */}
       <div
-        className={`hidden lg:block transition-all duration-500 ${
+        className={`hidden xl:block transition-all duration-500 ${
           isScrolled
             ? 'h-0 opacity-0 overflow-hidden'
             : 'h-auto opacity-100'
@@ -132,7 +132,7 @@ export default function Header() {
           </Link>
 
           {/* ---- Desktop Nav Links ---- */}
-          <ul className="hidden lg:flex items-center gap-0.5 xl:gap-1">
+          <ul className="hidden xl:flex items-center gap-0.5 2xl:gap-1">
             {NAV_ITEMS.map((item) => (
               <li
                 key={item.key}
@@ -142,7 +142,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className={`relative flex items-center gap-1 rounded-lg px-2 xl:px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap
+                  className={`relative flex items-center gap-1 rounded-lg px-2 2xl:px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap
                     ${
                       isActive(item.href)
                         ? 'text-[#00E5FF]'
@@ -162,7 +162,7 @@ export default function Header() {
                   {isActive(item.href) && (
                     <motion.span
                       layoutId="nav-indicator"
-                      className="absolute inset-x-2 xl:inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#00E5FF]"
+                      className="absolute inset-x-2 2xl:inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#00E5FF]"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -217,19 +217,19 @@ export default function Header() {
           </ul>
 
           {/* ---- Desktop CTA Buttons & Lang Switcher ---- */}
-          <div className="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0">
+          <div className="hidden xl:flex items-center gap-2 2xl:gap-3 flex-shrink-0">
             <LanguageSwitcher />
-            <div className="w-px h-6 bg-white/10 mx-1 hidden xl:block"></div> {/* Separator */}
+            <div className="w-px h-6 bg-white/10 mx-1 hidden 2xl:block"></div> {/* Separator */}
             <a
               href="tel:+966552239595"
-              className="hidden xl:inline-flex items-center gap-2 rounded-xl bg-[#00E5FF] px-4 xl:px-5 py-2 xl:py-2.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#2489ba] hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95"
+              className="hidden 2xl:inline-flex items-center gap-2 rounded-xl bg-[#00E5FF] px-4 2xl:px-5 py-2 2xl:py-2.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#2489ba] hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95"
             >
               <Phone className="h-4 w-4" />
               {tCommon('callNow')}
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#D42B2B] px-4 xl:px-5 py-2 xl:py-2.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#b82424] hover:shadow-lg hover:shadow-[#D42B2B]/25 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#D42B2B] px-4 2xl:px-5 py-2 2xl:py-2.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#b82424] hover:shadow-lg hover:shadow-[#D42B2B]/25 active:scale-95"
             >
               {tCommon('getQuote')}
             </Link>
@@ -238,7 +238,7 @@ export default function Header() {
           {/* ---- Mobile hamburger ---- */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="relative z-50 rounded-xl p-2 text-white transition-colors hover:bg-[#0F172A] lg:hidden"
+            className="relative z-50 rounded-xl p-2 text-white transition-colors hover:bg-[#0F172A] xl:hidden"
             aria-label="Toggle Menu"
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -280,7 +280,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm xl:hidden"
               onClick={closeMobile}
             />
 
@@ -292,7 +292,7 @@ export default function Header() {
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
               className={`fixed inset-y-0 ${
                 isRTL ? 'left-0' : 'right-0'
-              } z-40 w-[85vw] max-w-sm bg-[#111827] shadow-2xl lg:hidden overflow-y-auto`}
+              } z-40 w-[85vw] max-w-sm bg-[#111827] shadow-2xl xl:hidden overflow-y-auto`}
             >
               <div className="flex flex-col p-6 pt-20">
                 {/* Nav links */}
