@@ -102,23 +102,6 @@ export default function Footer() {
                 ))}
               </div>
             </div>
-
-            {/* Vision 2030 Badge */}
-            <div className="mt-8 flex flex-col gap-2">
-              <span className="text-xs font-semibold uppercase tracking-widest text-white/50">
-                {isRTL ? 'توافق تام مع رؤية المملكة' : 'Aligned with Saudi Vision'}
-              </span>
-              <div className="mt-2 transition-transform hover:scale-105">
-                <Image 
-                  src="/images/vision2030.png"
-                  alt="Vision 2030"
-                  width={200}
-                  height={100}
-                  className="w-auto h-24 object-contain"
-                  style={{ filter: 'invert(1) brightness(2)', mixBlendMode: 'screen' }}
-                />
-              </div>
-            </div>
           </div>
 
           {/* ================================================================= */}
@@ -213,6 +196,23 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
+
+            {/* Vision 2030 Badge */}
+            <div className="mt-10 flex flex-col gap-3">
+              <span className="text-xs font-semibold uppercase tracking-widest text-white/50">
+                {isRTL ? 'توافق تام مع رؤية المملكة' : 'Aligned with Saudi Vision'}
+              </span>
+              <div className="mt-2 transition-transform hover:scale-105">
+                <Image 
+                  src="/images/vision2030.png"
+                  alt="Vision 2030"
+                  width={340}
+                  height={170}
+                  className="w-auto h-36 sm:h-40 object-contain"
+                  style={{ filter: 'invert(1) brightness(2)', mixBlendMode: 'screen' }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
