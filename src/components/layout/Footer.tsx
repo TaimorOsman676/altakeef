@@ -112,9 +112,9 @@ export default function Footer() {
                 <Image 
                   src="/images/vision2030.png"
                   alt="Vision 2030"
-                  width={140}
-                  height={70}
-                  className="w-auto h-14 object-contain"
+                  width={200}
+                  height={100}
+                  className="w-auto h-24 object-contain"
                   style={{ filter: 'invert(1) brightness(2)', mixBlendMode: 'screen' }}
                 />
               </div>
