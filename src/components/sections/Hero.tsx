@@ -52,36 +52,89 @@ function LeadForm() {
   const t = useTranslations('form');
   const locale = useLocale();
 
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const nameRef = React.useRef<HTMLInputElement>(null);
+  const phoneRef = React.useRef<HTMLInputElement>(null);
+  const serviceRef = React.useRef<HTMLSelectElement>(null);
+
   const serviceOptions = services.map((s) => ({
     value: s.slug,
     label: locale === 'ar' ? s.nameAr : s.nameEn,
   }));
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const name = nameRef.current?.value;
+    const phone = phoneRef.current?.value;
+    const service = serviceRef.current?.value;
+    
+    if (!name || !phone || !service) return; // Basic validation
+
+    setStatus('loading');
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/info@altakeef.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Name: name,
+          Phone: phone,
+          Service: serviceOptions.find(s => s.value === service)?.label || service,
+          _subject: "New Website Request - Aamal Al-Takeef",
+        })
+      });
+      if (res.ok) {
+        setStatus('success');
+        // Reset form
+        if (nameRef.current) nameRef.current.value = '';
+        if (phoneRef.current) phoneRef.current.value = '';
+        if (serviceRef.current) serviceRef.current.value = '';
+        // Revert to idle after 4 seconds
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        setStatus('error');
+      }
+    } catch(err) {
+      setStatus('error');
+    }
+  };
+
   return (
     <motion.form
       variants={slideUp}
       className="w-full max-w-3xl mx-auto mt-8"
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={handleSubmit}
     >
-      <div className="flex flex-col md:flex-row items-stretch gap-2 rounded-2xl bg-white/10 backdrop-blur-md p-2 border border-white/20 shadow-2xl">
+      <div className="flex flex-col md:flex-row items-stretch gap-2 rounded-2xl bg-white/10 backdrop-blur-md p-2 border border-white/20 shadow-2xl relative">
         {/* Name */}
         <input
+          ref={nameRef}
           type="text"
+          required
+          disabled={status === 'loading'}
           placeholder={t('namePlaceholder')}
-          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition"
+          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
           aria-label={t('name')}
         />
         {/* Phone */}
         <input
+          ref={phoneRef}
           type="tel"
+          required
+          disabled={status === 'loading'}
           placeholder={t('phonePlaceholder')}
           dir="ltr"
-          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition"
+          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
           aria-label={t('phone')}
         />
         {/* Service Select */}
         <select
-          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition appearance-none cursor-pointer"
+          ref={serviceRef}
+          required
+          disabled={status === 'loading'}
+          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition appearance-none cursor-pointer disabled:opacity-50"
           aria-label={t('service')}
           defaultValue=""
         >
@@ -97,14 +150,35 @@ function LeadForm() {
         {/* Submit */}
         <motion.button
           type="submit"
+          disabled={status === 'loading' || status === 'success'}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D42B2B] to-[#b51f1f] px-6 py-3 text-white font-semibold text-sm shadow-lg shadow-[#D42B2B]/25 hover:shadow-xl hover:shadow-[#D42B2B]/35 transition-shadow cursor-pointer whitespace-nowrap"
+          className={`flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-white font-semibold text-sm shadow-lg transition-all cursor-pointer whitespace-nowrap
+            ${status === 'success' 
+              ? 'bg-green-500 shadow-green-500/25' 
+              : status === 'error'
+              ? 'bg-red-500 shadow-red-500/25'
+              : 'bg-gradient-to-r from-[#D42B2B] to-[#b51f1f] hover:shadow-xl hover:shadow-[#D42B2B]/35 shadow-[#D42B2B]/25'}
+            disabled:opacity-70
+          `}
         >
-          <Send className="h-4 w-4" />
-          {t('submit')}
+          {status === 'loading' ? (
+            <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+          ) : status === 'success' ? (
+            <span>{locale === 'ar' ? 'تم الإرسال!' : 'Sent!'}</span>
+          ) : (
+            <>
+              <Send className="h-4 w-4" />
+              {status === 'error' ? (locale === 'ar' ? 'خطأ' : 'Error') : t('submit')}
+            </>
+          )}
         </motion.button>
       </div>
+      {status === 'success' && (
+        <p className="text-green-400 text-xs mt-2 text-center">
+          {locale === 'ar' ? 'سيتم التواصل معك قريباً. يرجى التحقق من بريدك الإلكتروني.' : 'We will contact you soon. (Please check info@altakeef.com to activate first).'}
+        </p>
+      )}
     </motion.form>
   );
 }
