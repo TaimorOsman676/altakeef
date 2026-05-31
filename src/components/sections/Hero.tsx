@@ -3,7 +3,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
-import { Phone, Send } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
+import { Phone, Send, ArrowRight, ShieldCheck, Users, BadgeDollarSign } from 'lucide-react';
 import { services } from '@/data/services';
 
 /* ------------------------------------------------------------------ */
@@ -26,31 +27,23 @@ const slideUp = {
   },
 };
 
-/* ------------------------------------------------------------------ */
-/*  Star Rating Badge                                                  */
-/* ------------------------------------------------------------------ */
-
-function RatingBadge({ rating, reviews }: { rating: string; reviews: string }) {
-  return (
-    <motion.div
-      variants={slideUp}
-      className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm border border-white/20"
-    >
-      <span className="text-yellow-400 text-sm tracking-wider">★★★★★</span>
-      <span className="text-white font-semibold text-sm">5.0</span>
-      <span className="text-white/60 text-sm">•</span>
-      <span className="text-white/70 text-sm">{rating} — {reviews}</span>
-    </motion.div>
-  );
-}
+const slideInRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
 /* ------------------------------------------------------------------ */
-/*  Lead Capture Form                                                  */
+/*  Lead Capture Form (Vertical layout)                                */
 /* ------------------------------------------------------------------ */
 
 function LeadForm() {
   const t = useTranslations('form');
   const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const nameRef = React.useRef<HTMLInputElement>(null);
@@ -60,7 +53,7 @@ function LeadForm() {
 
   const serviceOptions = services.map((s) => ({
     value: s.slug,
-    label: locale === 'ar' ? s.nameAr : s.nameEn,
+    label: isRTL ? s.nameAr : s.nameEn,
   }));
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -70,16 +63,13 @@ function LeadForm() {
     const service = serviceRef.current?.value;
     const message = messageRef.current?.value || "No additional message";
     
-    if (!name || !phone || !service) return; // Basic validation
+    if (!name || !phone || !service) return;
 
     setStatus('loading');
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: "6e386de1-3e23-455f-8e04-4450f87e3236",
           Name: name,
@@ -92,12 +82,10 @@ function LeadForm() {
       });
       if (res.ok) {
         setStatus('success');
-        // Reset form
         if (nameRef.current) nameRef.current.value = '';
         if (phoneRef.current) phoneRef.current.value = '';
         if (serviceRef.current) serviceRef.current.value = '';
         if (messageRef.current) messageRef.current.value = '';
-        // Revert to idle after 5 seconds
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
@@ -108,102 +96,151 @@ function LeadForm() {
   };
 
   return (
-    <motion.form
-      variants={slideUp}
-      className="w-full max-w-3xl mx-auto mt-8"
-      onSubmit={handleSubmit}
+    <motion.div
+      variants={slideInRight}
+      className="w-full max-w-md mx-auto lg:ms-auto rounded-3xl bg-white/10 backdrop-blur-md p-6 sm:p-8 border border-white/20 shadow-2xl relative overflow-hidden"
     >
-      <div className="flex flex-col gap-2 rounded-2xl bg-white/10 backdrop-blur-md p-2 border border-white/20 shadow-2xl relative">
-        {/* ROW 1: Name, Phone, Service */}
-        <div className="flex flex-col md:flex-row gap-2">
-          {/* Name */}
-          <input
-            ref={nameRef}
-            type="text"
-            required
-            disabled={status === 'loading'}
-            placeholder={t('namePlaceholder')}
-            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
-            aria-label={t('name')}
-          />
-          {/* Phone */}
-          <input
-            ref={phoneRef}
-            type="tel"
-            required
-            disabled={status === 'loading'}
-            placeholder={t('phonePlaceholder')}
-            dir="ltr"
-            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
-            aria-label={t('phone')}
-          />
-          {/* Service Select */}
-          <select
-            ref={serviceRef}
-            required
-            disabled={status === 'loading'}
-            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition cursor-pointer disabled:opacity-50"
-            aria-label={t('service')}
-            defaultValue=""
-          >
-            <option value="" disabled>
-              {t('selectService')}
-            </option>
-            {serviceOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0B1120]/60 to-[#00E5FF]/5 -z-10" />
+      
+      <div className="mb-6 text-center">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+          {isRTL ? 'احجز خدمتك الآن' : 'Book Our Service'}
+        </h3>
+        <p className="text-sm text-[#94A3B8]">
+          {isRTL ? 'نحن هنا لخدمتك بأفضل المعايير. تواصل معنا اليوم.' : 'We are here to serve you with the best standards. Contact us today.'}
+        </p>
+      </div>
 
-        {/* ROW 2: Message, Submit */}
-        <div className="flex flex-col md:flex-row gap-2">
-          {/* Message */}
-          <input
-            ref={messageRef}
-            type="text"
-            disabled={status === 'loading'}
-            placeholder={locale === 'ar' ? 'تفاصيل إضافية عن طلبك...' : 'Additional details about your request...'}
-            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
-            aria-label={locale === 'ar' ? 'رسالة' : 'Message'}
-          />
-          {/* Submit */}
-          <motion.button
-            type="submit"
-            disabled={status === 'loading' || status === 'success'}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className={`flex items-center justify-center gap-2 rounded-xl px-8 py-3 text-white font-semibold text-sm shadow-lg transition-all cursor-pointer whitespace-nowrap md:w-auto w-full
-              ${status === 'success' 
-                ? 'bg-green-500 shadow-green-500/25' 
-                : status === 'error'
-                ? 'bg-red-500 shadow-red-500/25'
-                : 'bg-gradient-to-r from-[#D42B2B] to-[#b51f1f] hover:shadow-xl hover:shadow-[#D42B2B]/35 shadow-[#D42B2B]/25'}
-              disabled:opacity-70
-            `}
-          >
-            {status === 'loading' ? (
-              <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-            ) : status === 'success' ? (
-              <span>{locale === 'ar' ? 'تم الإرسال!' : 'Sent!'}</span>
-            ) : (
-              <span className="flex items-center gap-2">
-                <Send className="h-4 w-4" />
-                <span>{status === 'error' ? (locale === 'ar' ? 'خطأ' : 'Error') : t('submit')}</span>
-              </span>
-            )}
-          </motion.button>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <input
+          ref={nameRef}
+          type="text"
+          required
+          disabled={status === 'loading'}
+          placeholder={t('namePlaceholder')}
+          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
+          aria-label={t('name')}
+        />
+        <input
+          ref={phoneRef}
+          type="tel"
+          required
+          disabled={status === 'loading'}
+          placeholder={t('phonePlaceholder')}
+          dir="ltr"
+          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
+          aria-label={t('phone')}
+        />
+        <select
+          ref={serviceRef}
+          required
+          disabled={status === 'loading'}
+          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition cursor-pointer disabled:opacity-50 shadow-inner"
+          aria-label={t('service')}
+          defaultValue=""
+        >
+          <option value="" disabled>{t('selectService')}</option>
+          {serviceOptions.map((opt) => (
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
+          ))}
+        </select>
+        <input
+          ref={messageRef}
+          type="text"
+          disabled={status === 'loading'}
+          placeholder={isRTL ? 'تفاصيل إضافية عن طلبك...' : 'Additional details...'}
+          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
+        />
+
+        <motion.button
+          type="submit"
+          disabled={status === 'loading' || status === 'success'}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className={`mt-2 flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-white font-bold text-sm shadow-lg transition-all cursor-pointer
+            ${status === 'success' ? 'bg-green-500' : status === 'error' ? 'bg-red-500' : 'bg-[#00E5FF] hover:bg-[#2489ba] hover:shadow-xl hover:shadow-[#00E5FF]/25 text-[#0B1120]'}
+            disabled:opacity-70
+          `}
+        >
+          {status === 'loading' ? (
+            <span className="w-5 h-5 border-2 border-[#0B1120]/40 border-t-[#0B1120] rounded-full animate-spin" />
+          ) : status === 'success' ? (
+            <span className="text-white">{isRTL ? 'تم الإرسال بنجاح!' : 'Sent Successfully!'}</span>
+          ) : (
+            <span className="flex items-center gap-2 text-[#0B1120]">
+              <Send className="h-4 w-4" />
+              <span>{status === 'error' ? (isRTL ? 'خطأ' : 'Error') : t('submit')}</span>
+            </span>
+          )}
+        </motion.button>
+
+        <div className="h-4 mt-1">
+          {status === 'success' && (
+            <p className="text-green-400 text-xs text-center font-medium">
+              {isRTL ? 'سيتم التواصل معك قريباً' : 'We will contact you shortly'}
+            </p>
+          )}
         </div>
+      </form>
+    </motion.div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Feature Cards                                                      */
+/* ------------------------------------------------------------------ */
+
+function FeatureCards() {
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
+  const features = [
+    {
+      id: 1,
+      icon: Users,
+      title: isRTL ? 'دعم المحترفين المحليين' : 'Supporting Local Pros',
+      desc: isRTL ? 'نحن ندعم الكفاءات المحلية بأفضل المعايير.' : 'We support local talent with the best standards.',
+    },
+    {
+      id: 2,
+      icon: ShieldCheck,
+      title: isRTL ? 'جودة عمل مضمونة' : 'Quality Work Guaranteed',
+      desc: isRTL ? 'نضمن لك جودة العمل بنسبة 100٪.' : 'We guarantee 100% quality work for every project.',
+    },
+    {
+      id: 3,
+      icon: BadgeDollarSign,
+      title: isRTL ? 'أسعار تنافسية' : 'Affordable Financing',
+      desc: isRTL ? 'نقدم أفضل الأسعار التنافسية لجميع الخدمات.' : 'We offer the most competitive pricing for all services.',
+    }
+  ];
+
+  return (
+    <div className="relative -mt-16 sm:-mt-24 z-20 w-full max-w-[90rem] mx-auto px-4 lg:px-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+        {features.map((f, idx) => {
+          const Icon = f.icon;
+          return (
+            <motion.div
+              key={f.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15 + 0.4 }}
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl shadow-black/5 flex flex-col gap-4 group hover:-translate-y-1 transition-transform"
+            >
+              <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-white transition-colors">
+                <Icon className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-[#0B1120] mb-2">{f.title}</h4>
+                <p className="text-sm text-[#64748B] leading-relaxed">{f.desc}</p>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
-      <div className="h-6 mt-2">
-        {status === 'success' && (
-          <p className="text-green-400 text-xs text-center">
-            {locale === 'ar' ? 'تم استلام طلبك بنجاح! سيتم التواصل معك قريباً.' : 'Your request was sent successfully! We will contact you soon.'}
-          </p>
-        )}
-      </div>
-    </motion.form>
+    </div>
   );
 }
 
@@ -213,96 +250,86 @@ function LeadForm() {
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
   const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section
-      ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Stunning Image Background */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#0B1120]">
-        <img
-          src="/images/page-header-bg.png"
-          alt="Hero Background"
-          className="absolute min-w-full min-h-full object-cover opacity-50 mix-blend-overlay"
-        />
-        {/* Gradient Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1120]/80 via-[#0B1120]/40 to-[#0B1120]"></div>
-      </div>
-
-      {/* Decorative Glowing Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none mix-blend-screen">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#00E5FF]/20 blur-[100px] animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-[#5B6BF9]/20 blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
-      </div>
-
-      {/* Content */}
-      <motion.div
-        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
+    <>
+      <section
+        ref={ref}
+        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-28 pb-32 sm:pb-40"
       >
-        {/* Rating Badge */}
+        {/* Background Image & Overlays */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#0B1120]">
+          <img
+            src="/images/page-header-bg.png"
+            alt="Hero Background"
+            className="absolute min-w-full min-h-full object-cover opacity-40 mix-blend-overlay"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/80 to-transparent"></div>
+        </div>
+
+        {/* Decorative Glowing Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none mix-blend-screen">
+          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#00E5FF]/10 blur-[100px] animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#5B6BF9]/10 blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+
+        {/* 2-Column Content */}
         <motion.div
-          variants={slideUp}
-          className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm border border-white/20 mb-2"
+          className="relative z-10 w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className="text-yellow-400 text-sm tracking-wider">★★★★★</span>
-          <span className="text-white font-semibold text-sm">5.0</span>
-          <span className="text-white/60 text-sm">•</span>
-          <span className="text-white/70 text-sm">{t('rating')} — {t('reviewCount')}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Text & Buttons */}
+            <div className={`flex flex-col gap-5 lg:gap-8 ${isRTL ? 'lg:pl-12' : 'lg:pr-12'} text-center lg:text-start`}>
+              <motion.div variants={slideUp} className="flex flex-col gap-3 lg:gap-4">
+                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
+                  {isRTL ? 'شريكك الموثوق' : 'Your Trusted Partner'} <br className="hidden sm:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00B4D8]">
+                    {isRTL ? 'للتميز في التكييف' : 'for HVAC Excellence'}
+                  </span>
+                </h1>
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white/90">
+                  {isRTL ? 'خبراء التكييف الموثوق بهم' : 'Your Trusted HVAC Experts'}
+                </h2>
+                <p className="text-sm sm:text-base lg:text-lg text-[#94A3B8] max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                  {t('subtitle')}
+                </p>
+              </motion.div>
+
+              <motion.div variants={slideUp} className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 lg:gap-4 mt-2 w-full sm:w-auto">
+                <Link
+                  href="/services"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#00E5FF] px-6 py-3.5 sm:px-8 text-sm font-bold text-[#0B1120] transition-all hover:bg-[#2489ba] hover:text-white hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95"
+                >
+                  {isRTL ? 'خدماتنا' : 'OUR SERVICES'}
+                </Link>
+                <Link
+                  href="/contact"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/5 backdrop-blur-sm px-6 py-3.5 sm:px-8 text-sm font-bold text-white transition-all hover:bg-white/10 hover:border-white/40 active:scale-95"
+                >
+                  {isRTL ? 'احصل على عرض سعر مجاني' : 'GET A FREE ESTIMATE'}
+                  <ArrowRight className={`h-4 w-4 ${isRTL ? 'rotate-180' : ''}`} />
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Floating Form */}
+            <LeadForm />
+            
+          </div>
         </motion.div>
+      </section>
 
-        {/* Title */}
-        <motion.h1
-          variants={slideUp}
-          className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight"
-        >
-          {t('title')}
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          variants={slideUp}
-          className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed"
-        >
-          {t('subtitle')}
-        </motion.p>
-
-        {/* Lead Capture Form */}
-        <LeadForm />
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={slideUp}
-          className="mt-8 flex flex-wrap items-center justify-center gap-4"
-        >
-          <motion.a
-            href="tel:+966552239595"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="inline-flex items-center gap-2 rounded-xl border-2 border-white px-6 py-3 text-white font-semibold text-sm hover:bg-white/10 transition-colors"
-          >
-            <Phone className="h-5 w-5" />
-            {t('cta1')}
-          </motion.a>
-
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#D42B2B] px-6 py-3 text-white font-semibold text-sm shadow-lg shadow-[#D42B2B]/30 hover:shadow-xl hover:shadow-[#D42B2B]/40 transition-shadow"
-          >
-            {t('cta2')}
-          </motion.a>
-        </motion.div>
-      </motion.div>
-
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent" />
-    </section>
+      {/* Feature Cards Overlapping */}
+      <FeatureCards />
+    </>
   );
 }
