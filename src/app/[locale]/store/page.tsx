@@ -298,7 +298,7 @@ export default function StorePage() {
                           </span>
                         ) : (
                           <span className="text-sm md:text-lg font-black text-white">
-                            ${product.price.toLocaleString()}
+                            {product.price.toLocaleString()} {isRTL ? 'ر.س' : 'SAR'}
                           </span>
                         )}
                       </div>
