@@ -6,7 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import Image from 'next/image';
 import Logo from '@/components/ui/Logo';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Menu, X, ChevronDown, Mail, Clock } from 'lucide-react';
+import { Phone, Menu, X, ChevronDown, Mail, Clock, Instagram, Twitter, Facebook } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { services } from '@/data/services';
 
@@ -76,41 +76,45 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* ================================================================= */}
-      {/* TOP UTILITY BAR                                                   */}
+      {/* TOP UTILITY BAR (SUB HEADER)                                      */}
       {/* ================================================================= */}
       <div
-        className={`hidden lg:block transition-all duration-500 ${
+        className={`transition-all duration-500 bg-[#1E293B] ${
           isScrolled
             ? 'h-0 opacity-0 overflow-hidden'
             : 'h-auto opacity-100'
         }`}
-        style={{ backgroundColor: '#1E293B' }}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs text-white/90">
-          {/* Left side – contact details */}
-          <div className="flex items-center gap-6">
-            <a
-              href="tel:+966552239595"
-              className="flex items-center gap-1.5 transition-colors hover:text-white"
-            >
-              <Phone className="h-3.5 w-3.5" />
-              <span dir="ltr">0552239595</span>
-            </a>
-            <a
-              href="mailto:info@altakeefsa.com"
-              className="flex items-center gap-1.5 transition-colors hover:text-white"
-            >
+        <div className="mx-auto flex flex-col sm:flex-row items-center justify-between max-w-[90rem] px-4 py-2 gap-2 sm:gap-4 text-xs text-white/90">
+          
+          {/* Left / Top Mobile: Greeting Message & Social */}
+          <div className="flex items-center gap-4 text-[11px] sm:text-xs">
+            <span className="font-semibold text-[#00E5FF] tracking-wide">
+              {isRTL ? 'مرحباً بكم في مؤسسة أعمال التكييف للمقاولات' : 'Welcome to Al-Takeef Contracting Est.'}
+            </span>
+            <div className="hidden md:flex items-center gap-3 border-s border-white/20 ps-4">
+              <a href="#" className="hover:text-[#00E5FF] transition-colors"><Instagram className="h-3.5 w-3.5" /></a>
+              <a href="#" className="hover:text-[#00E5FF] transition-colors"><Twitter className="h-3.5 w-3.5" /></a>
+              <a href="#" className="hover:text-[#00E5FF] transition-colors"><Facebook className="h-3.5 w-3.5" /></a>
+            </div>
+          </div>
+
+          {/* Right / Bottom Mobile: Email, Phone & Button */}
+          <div className="flex items-center gap-4 sm:gap-5">
+            <a href="mailto:info@altakeefsa.com" className="hidden lg:flex items-center gap-1.5 hover:text-white transition-colors">
               <Mail className="h-3.5 w-3.5" />
               <span>info@altakeefsa.com</span>
             </a>
-          </div>
-
-          {/* Right side – working hours */}
-          <div className="flex items-center gap-5">
-            <span className="flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5" />
-              {tCommon('workingHoursValue')}
-            </span>
+            <a href="tel:+966552239595" className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
+              <Phone className="h-3.5 w-3.5" />
+              <span dir="ltr">0552239595</span>
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#D42B2B] px-4 py-1.5 text-[11px] sm:text-xs font-bold text-white transition-all hover:bg-[#b82424] shadow-lg shadow-[#D42B2B]/20 active:scale-95 whitespace-nowrap"
+            >
+              {tCommon('getQuote')}
+            </Link>
           </div>
         </div>
       </div>
@@ -227,12 +231,6 @@ export default function Header() {
               <Phone className="h-3 w-3 xl:h-4 xl:w-4" />
               {tCommon('callNow')}
             </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-1.5 xl:gap-2 rounded-xl bg-[#D42B2B] px-2.5 xl:px-4 2xl:px-5 py-1.5 xl:py-2 2xl:py-2.5 text-[11px] xl:text-[13px] 2xl:text-sm font-bold text-white transition-all duration-300 hover:bg-[#b82424] hover:shadow-lg hover:shadow-[#D42B2B]/25 active:scale-95"
-            >
-              {tCommon('getQuote')}
-            </Link>
           </div>
 
           {/* ---- Mobile hamburger ---- */}
