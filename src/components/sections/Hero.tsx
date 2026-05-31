@@ -52,78 +52,49 @@ function LeadForm() {
   const t = useTranslations('form');
   const locale = useLocale();
 
-  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const nameRef = React.useRef<HTMLInputElement>(null);
-  const phoneRef = React.useRef<HTMLInputElement>(null);
-  const serviceRef = React.useRef<HTMLSelectElement>(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const serviceOptions = services.map((s) => ({
     value: s.slug,
     label: locale === 'ar' ? s.nameAr : s.nameEn,
   }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const name = nameRef.current?.value;
-    const phone = phoneRef.current?.value;
-    const service = serviceRef.current?.value;
-    
-    if (!name || !phone || !service) return; // Basic validation
-
-    setStatus('loading');
-    try {
-      const res = await fetch("https://formsubmit.co/ajax/info@altakeefsa.com", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          Name: name,
-          Phone: phone,
-          Service: serviceOptions.find(s => s.value === service)?.label || service,
-          _subject: "New Website Request - Aamal Al-Takeef",
-        })
-      });
-      if (res.ok) {
-        setStatus('success');
-        // Reset form
-        if (nameRef.current) nameRef.current.value = '';
-        if (phoneRef.current) phoneRef.current.value = '';
-        if (serviceRef.current) serviceRef.current.value = '';
-        // Revert to idle after 4 seconds
-        setTimeout(() => setStatus('idle'), 4000);
-      } else {
-        setStatus('error');
-      }
-    } catch(err) {
-      setStatus('error');
-    }
+  // Standard form submission allows FormSubmit to show the activation page
+  const handleSubmit = () => {
+    setIsSubmitting(true);
+    // Let the form natively submit
   };
 
   return (
     <motion.form
       variants={slideUp}
       className="w-full max-w-3xl mx-auto mt-8"
+      action="https://formsubmit.co/info@altakeefsa.com"
+      method="POST"
       onSubmit={handleSubmit}
     >
+      {/* FormSubmit Configuration */}
+      <input type="hidden" name="_subject" value="New Website Request - Aamal Al-Takeef" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+
       <div className="flex flex-col md:flex-row items-stretch gap-2 rounded-2xl bg-white/10 backdrop-blur-md p-2 border border-white/20 shadow-2xl relative">
         {/* Name */}
         <input
-          ref={nameRef}
+          name="Name"
           type="text"
           required
-          disabled={status === 'loading'}
+          disabled={isSubmitting}
           placeholder={t('namePlaceholder')}
           className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
           aria-label={t('name')}
         />
         {/* Phone */}
         <input
-          ref={phoneRef}
+          name="Phone"
           type="tel"
           required
-          disabled={status === 'loading'}
+          disabled={isSubmitting}
           placeholder={t('phonePlaceholder')}
           dir="ltr"
           className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
@@ -131,9 +102,9 @@ function LeadForm() {
         />
         {/* Service Select */}
         <select
-          ref={serviceRef}
+          name="Service"
           required
-          disabled={status === 'loading'}
+          disabled={isSubmitting}
           className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition appearance-none cursor-pointer disabled:opacity-50"
           aria-label={t('service')}
           defaultValue=""
@@ -142,7 +113,7 @@ function LeadForm() {
             {t('selectService')}
           </option>
           {serviceOptions.map((opt) => (
-            <option key={opt.value} value={opt.value}>
+            <option key={opt.value} value={opt.label}>
               {opt.label}
             </option>
           ))}
@@ -150,36 +121,25 @@ function LeadForm() {
         {/* Submit */}
         <motion.button
           type="submit"
-          disabled={status === 'loading' || status === 'success'}
+          disabled={isSubmitting}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className={`flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-white font-semibold text-sm shadow-lg transition-all cursor-pointer whitespace-nowrap
-            ${status === 'success' 
-              ? 'bg-green-500 shadow-green-500/25' 
-              : status === 'error'
-              ? 'bg-red-500 shadow-red-500/25'
-              : 'bg-gradient-to-r from-[#D42B2B] to-[#b51f1f] hover:shadow-xl hover:shadow-[#D42B2B]/35 shadow-[#D42B2B]/25'}
-            disabled:opacity-70
-          `}
+          className={`flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-white font-semibold text-sm shadow-lg transition-all cursor-pointer whitespace-nowrap bg-gradient-to-r from-[#D42B2B] to-[#b51f1f] hover:shadow-xl hover:shadow-[#D42B2B]/35 shadow-[#D42B2B]/25 disabled:opacity-70`}
         >
-          {status === 'loading' ? (
+          {isSubmitting ? (
             <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-          ) : status === 'success' ? (
-            <span>{locale === 'ar' ? 'تم الإرسال!' : 'Sent!'}</span>
           ) : (
             <span className="flex items-center gap-2">
               <Send className="h-4 w-4" />
-              <span>{status === 'error' ? (locale === 'ar' ? 'خطأ' : 'Error') : t('submit')}</span>
+              <span>{t('submit')}</span>
             </span>
           )}
         </motion.button>
       </div>
       <div className="h-6 mt-2">
-        {status === 'success' && (
-          <p className="text-green-400 text-xs text-center">
-            {locale === 'ar' ? 'سيتم التواصل معك قريباً. يرجى التحقق من بريدك الإلكتروني.' : 'We will contact you soon. (Please check info@altakeefsa.com to activate first).'}
-          </p>
-        )}
+        <p className="text-[#94A3B8] text-xs text-center">
+          {locale === 'ar' ? 'أول إرسال سيطلب منك تفعيل البريد الإلكتروني.' : 'The first submission will ask you to activate the email.'}
+        </p>
       </div>
     </motion.form>
   );
