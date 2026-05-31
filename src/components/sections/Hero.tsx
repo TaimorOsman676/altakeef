@@ -262,20 +262,25 @@ export default function Hero() {
         ref={ref}
         className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-28 pb-32 sm:pb-40"
       >
-        {/* Background Image & Overlays */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#0B1120]">
-          <img
-            src="/images/page-header-bg.png"
-            alt="Hero Background"
-            className="absolute min-w-full min-h-full object-cover opacity-40 mix-blend-overlay"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/80 to-transparent"></div>
-        </div>
-
-        {/* Decorative Glowing Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none mix-blend-screen">
-          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#00E5FF]/10 blur-[100px] animate-pulse" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#5B6BF9]/10 blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+        {/* Split Background Image & Overlays */}
+        <div className="absolute inset-0 flex flex-col lg:flex-row w-full h-full overflow-hidden">
+          {/* Left 50% - Solid Theme Color */}
+          <div className="w-full lg:w-1/2 h-full bg-[#0B1120] relative z-0">
+             {/* Decorative Glowing Element on the left */}
+             <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#00E5FF]/10 blur-[100px] animate-pulse pointer-events-none" />
+          </div>
+          
+          {/* Right 50% - Stunning Image/Video */}
+          <div className="w-full lg:w-1/2 h-full relative z-0">
+            <img
+              src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop"
+              alt="HVAC Cooling"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Gradient Overlay to blend with the dark theme and make form readable */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/80 lg:via-[#0B1120]/40 to-[#0B1120]/80"></div>
+            <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay"></div>
+          </div>
         </div>
 
         {/* 2-Column Content */}
