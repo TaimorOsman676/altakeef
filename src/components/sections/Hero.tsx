@@ -142,7 +142,7 @@ function LeadForm() {
             ref={serviceRef}
             required
             disabled={status === 'loading'}
-            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition appearance-none cursor-pointer disabled:opacity-50"
+            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition cursor-pointer disabled:opacity-50"
             aria-label={t('service')}
             defaultValue=""
           >
