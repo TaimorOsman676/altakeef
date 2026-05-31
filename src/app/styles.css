@@ -3520,6 +3520,10 @@ section {
     height: 24rem;
   }
 
+  .md\:w-auto {
+    width: auto;
+  }
+
   .md\:min-w-\[400px\] {
     min-width: 400px;
   }
