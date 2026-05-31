@@ -227,14 +227,14 @@ function FeatureCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15 + 0.4 }}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl shadow-black/5 flex flex-col gap-4 group hover:-translate-y-1 transition-transform"
+              className="bg-[#111827]/90 backdrop-blur-sm border border-white/10 rounded-2xl p-6 lg:p-8 shadow-2xl flex flex-col gap-4 group hover:-translate-y-1 hover:border-[#00E5FF]/40 transition-all"
             >
-              <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-white transition-colors">
+              <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-[#0B1120] transition-colors">
                 <Icon className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-[#0B1120] mb-2">{f.title}</h4>
-                <p className="text-sm text-[#64748B] leading-relaxed">{f.desc}</p>
+                <h4 className="text-lg font-bold text-white mb-2">{f.title}</h4>
+                <p className="text-sm text-[#94A3B8] leading-relaxed">{f.desc}</p>
               </div>
             </motion.div>
           );
