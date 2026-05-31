@@ -114,13 +114,17 @@ export default function Hero() {
              <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#00E5FF]/10 blur-[100px] animate-pulse pointer-events-none" />
           </div>
           
-          {/* Right 50% - Stunning Image */}
+          {/* Right 50% - User Generated Video Background */}
           <div className="w-full lg:w-1/2 h-full relative z-0">
-            <img
-              src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop"
-              alt="HVAC Cooling"
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
               className="absolute inset-0 w-full h-full object-cover"
-            />
+            >
+              <source src="/hero-bg.mp4" type="video/mp4" />
+            </video>
             {/* Gradient Overlay to blend with the dark theme and make form readable */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/80 lg:via-[#0B1120]/40 to-[#0B1120]/80"></div>
             <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay"></div>
