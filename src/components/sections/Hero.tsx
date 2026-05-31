@@ -113,12 +113,12 @@ export default function Hero() {
             loop
             muted
             playsInline
-            className="absolute min-w-full min-h-full object-cover opacity-60"
+            className="absolute w-full h-full object-cover"
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-air-conditioner-blowing-air-4081-large.mp4" type="video/mp4" />
           </video>
-          {/* Gradient Overlays for Readability and Styling */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0B1120]/90 via-[#0B1120]/70 to-[#0B1120]/40"></div>
+          {/* Flat 60% Overlay for Readability and Styling */}
+          <div className="absolute inset-0 bg-[#0B1120]/60"></div>
           <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay pointer-events-none"></div>
 
           {/* Decorative Glowing Elements */}
