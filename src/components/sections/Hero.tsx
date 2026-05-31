@@ -72,7 +72,7 @@ function LeadForm() {
 
     setStatus('loading');
     try {
-      const res = await fetch("https://formsubmit.co/ajax/info@altakeef.com", {
+      const res = await fetch("https://formsubmit.co/ajax/info@altakeefsa.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -176,7 +176,7 @@ function LeadForm() {
       </div>
       {status === 'success' && (
         <p className="text-green-400 text-xs mt-2 text-center">
-          {locale === 'ar' ? 'سيتم التواصل معك قريباً. يرجى التحقق من بريدك الإلكتروني.' : 'We will contact you soon. (Please check info@altakeef.com to activate first).'}
+          {locale === 'ar' ? 'سيتم التواصل معك قريباً. يرجى التحقق من بريدك الإلكتروني.' : 'We will contact you soon. (Please check info@altakeefsa.com to activate first).'}
         </p>
       )}
     </motion.form>

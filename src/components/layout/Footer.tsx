@@ -179,11 +179,11 @@ export default function Footer() {
               {/* Email */}
               <li>
                 <a
-                  href="mailto:info@altakeef.com"
+                  href="mailto:info@altakeefsa.com"
                   className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-[#00E5FF]"
                 >
                   <Mail className="h-4 w-4 flex-shrink-0 text-[#00E5FF]" />
-                  <span>info@altakeef.com</span>
+                  <span>info@altakeefsa.com</span>
                 </a>
               </li>
 

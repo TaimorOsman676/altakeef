@@ -923,6 +923,10 @@ body {
   margin-top: auto;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -1090,6 +1094,10 @@ body {
 
 .h-3 {
   height: 0.75rem;
+}
+
+.h-36 {
+  height: 9rem;
 }
 
 .min-h-\[120px\] {
@@ -3393,6 +3401,10 @@ section {
 
   .sm\:h-96 {
     height: 24rem;
+  }
+
+  .sm\:h-40 {
+    height: 10rem;
   }
 
   .sm\:w-\[140px\] {

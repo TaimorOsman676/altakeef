@@ -58,7 +58,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white mb-1">{tCommon('email')}</h3>
-                    <p className="text-[#94A3B8]">info@altakeef.com</p>
+                    <p className="text-[#94A3B8]">info@altakeefsa.com</p>
                   </div>
                 </div>
 

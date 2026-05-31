@@ -86,7 +86,7 @@ export const companyInfo: CompanyInfo = {
   phone: '+966552239595',
   phoneDisplay: '0552239595',
   whatsapp: 'https://wa.me/966552239595',
-  email: 'info@altakeef.com',
+  email: 'info@altakeefsa.com',
 
   address: {
     ar: 'البركة، 7234، الخرج 16245',

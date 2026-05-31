@@ -97,11 +97,11 @@ export default function Header() {
               <span dir="ltr">0552239595</span>
             </a>
             <a
-              href="mailto:info@altakeef.com"
+              href="mailto:info@altakeefsa.com"
               className="flex items-center gap-1.5 transition-colors hover:text-white"
             >
               <Mail className="h-3.5 w-3.5" />
-              <span>info@altakeef.com</span>
+              <span>info@altakeefsa.com</span>
             </a>
           </div>
 
@@ -396,9 +396,9 @@ export default function Header() {
                     <Phone className="h-4 w-4" />
                     <span dir="ltr">0552239595</span>
                   </a>
-                  <a href="mailto:info@altakeef.com" className="flex items-center gap-2">
+                  <a href="mailto:info@altakeefsa.com" className="flex items-center gap-2">
                     <Mail className="h-4 w-4" />
-                    <span>info@altakeef.com</span>
+                    <span>info@altakeefsa.com</span>
                   </a>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
