@@ -117,8 +117,8 @@ export default function Hero() {
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-air-conditioner-blowing-air-4081-large.mp4" type="video/mp4" />
           </video>
-          {/* Flat 60% Overlay for Readability and Styling */}
-          <div className="absolute inset-0 bg-[#0B1120]/60"></div>
+          {/* Flat 30% Overlay for Readability and Styling */}
+          <div className="absolute inset-0 bg-[#0B1120]/30"></div>
           <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay pointer-events-none"></div>
 
           {/* Decorative Glowing Elements */}
