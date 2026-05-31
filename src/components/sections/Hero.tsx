@@ -114,17 +114,13 @@ export default function Hero() {
              <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#00E5FF]/10 blur-[100px] animate-pulse pointer-events-none" />
           </div>
           
-          {/* Right 50% - Stunning Image/Video */}
+          {/* Right 50% - Stunning Image */}
           <div className="w-full lg:w-1/2 h-full relative z-0">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+            <img
+              src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop"
+              alt="HVAC Cooling"
               className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-air-conditioner-blowing-air-4081-large.mp4" type="video/mp4" />
-            </video>
+            />
             {/* Gradient Overlay to blend with the dark theme and make form readable */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/80 lg:via-[#0B1120]/40 to-[#0B1120]/80"></div>
             <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay"></div>
@@ -171,6 +167,28 @@ export default function Hero() {
                   {isRTL ? 'احصل على عرض سعر مجاني' : 'GET A FREE ESTIMATE'}
                   <ArrowRight className={`h-4 w-4 ${isRTL ? 'rotate-180' : ''}`} />
                 </Link>
+              </motion.div>
+
+              {/* Small Floating Video Player */}
+              <motion.div 
+                variants={slideUp} 
+                className="mt-6 lg:mt-8 w-56 sm:w-64 h-32 sm:h-40 rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative"
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-air-conditioner-blowing-air-4081-large.mp4" type="video/mp4" />
+                </video>
+                {/* Decorative Play Overlay */}
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center group hover:bg-black/10 transition-colors cursor-default">
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+                    <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-1" />
+                  </div>
+                </div>
               </motion.div>
             </div>
 
