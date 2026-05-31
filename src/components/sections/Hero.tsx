@@ -98,12 +98,12 @@ function LeadForm() {
   return (
     <motion.div
       variants={slideInRight}
-      className="w-full max-w-md mx-auto lg:ms-auto rounded-3xl bg-white/10 backdrop-blur-md p-6 sm:p-8 border border-white/20 shadow-2xl relative overflow-hidden"
+      className="w-full max-w-[24rem] mx-auto lg:ms-auto rounded-3xl bg-white/10 backdrop-blur-md p-6 border border-white/20 shadow-2xl relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#0B1120]/60 to-[#00E5FF]/5 -z-10" />
       
-      <div className="mb-6 text-center">
-        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+      <div className="mb-5 text-center">
+        <h3 className="text-xl font-bold text-white mb-1">
           {isRTL ? 'احجز خدمتك الآن' : 'Book Our Service'}
         </h3>
         <p className="text-sm text-[#94A3B8]">
@@ -118,7 +118,7 @@ function LeadForm() {
           required
           disabled={status === 'loading'}
           placeholder={t('namePlaceholder')}
-          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
+          className="w-full rounded-xl bg-white/90 px-4 py-3 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
           aria-label={t('name')}
         />
         <input
@@ -128,14 +128,14 @@ function LeadForm() {
           disabled={status === 'loading'}
           placeholder={t('phonePlaceholder')}
           dir="ltr"
-          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
+          className="w-full rounded-xl bg-white/90 px-4 py-3 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
           aria-label={t('phone')}
         />
         <select
           ref={serviceRef}
           required
           disabled={status === 'loading'}
-          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition cursor-pointer disabled:opacity-50 shadow-inner"
+          className="w-full rounded-xl bg-white/90 px-4 py-3 text-[#0B1120] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition cursor-pointer disabled:opacity-50 shadow-inner"
           aria-label={t('service')}
           defaultValue=""
         >
@@ -149,7 +149,7 @@ function LeadForm() {
           type="text"
           disabled={status === 'loading'}
           placeholder={isRTL ? 'تفاصيل إضافية عن طلبك...' : 'Additional details...'}
-          className="w-full rounded-xl bg-white/90 px-4 py-3.5 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
+          className="w-full rounded-xl bg-white/90 px-4 py-3 text-[#0B1120] placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF] transition disabled:opacity-50 shadow-inner"
         />
 
         <motion.button
@@ -157,7 +157,7 @@ function LeadForm() {
           disabled={status === 'loading' || status === 'success'}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className={`mt-2 flex w-full items-center justify-center gap-2 rounded-xl px-8 py-4 text-white font-bold text-sm shadow-lg transition-all cursor-pointer
+          className={`mt-2 flex w-full items-center justify-center gap-2 rounded-xl px-8 py-3 text-white font-bold text-sm shadow-lg transition-all cursor-pointer
             ${status === 'success' ? 'bg-green-500' : status === 'error' ? 'bg-red-500' : 'bg-[#00E5FF] hover:bg-[#2489ba] hover:shadow-xl hover:shadow-[#00E5FF]/25 text-[#0B1120]'}
             disabled:opacity-70
           `}
@@ -272,11 +272,15 @@ export default function Hero() {
           
           {/* Right 50% - Stunning Image/Video */}
           <div className="w-full lg:w-1/2 h-full relative z-0">
-            <img
-              src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop"
-              alt="HVAC Cooling"
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
               className="absolute inset-0 w-full h-full object-cover"
-            />
+            >
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-air-conditioner-blowing-air-4081-large.mp4" type="video/mp4" />
+            </video>
             {/* Gradient Overlay to blend with the dark theme and make form readable */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#0B1120] via-[#0B1120]/80 lg:via-[#0B1120]/40 to-[#0B1120]/80"></div>
             <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay"></div>
@@ -295,16 +299,16 @@ export default function Hero() {
             {/* Left Column: Text & Buttons */}
             <div className={`flex flex-col gap-5 lg:gap-8 ${isRTL ? 'lg:pl-12' : 'lg:pr-12'} text-center lg:text-start`}>
               <motion.div variants={slideUp} className="flex flex-col gap-3 lg:gap-4">
-                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
                   {isRTL ? 'شريكك الموثوق' : 'Your Trusted Partner'} <br className="hidden sm:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00B4D8]">
                     {isRTL ? 'للتميز في التكييف' : 'for HVAC Excellence'}
                   </span>
                 </h1>
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white/90">
+                <h2 className="text-lg sm:text-xl font-bold text-white/90">
                   {isRTL ? 'خبراء التكييف الموثوق بهم' : 'Your Trusted HVAC Experts'}
                 </h2>
-                <p className="text-sm sm:text-base lg:text-lg text-[#94A3B8] max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-sm sm:text-base text-[#94A3B8] max-w-xl mx-auto lg:mx-0 leading-relaxed">
                   {t('subtitle')}
                 </p>
               </motion.div>
