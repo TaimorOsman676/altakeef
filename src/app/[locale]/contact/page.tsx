@@ -2,8 +2,8 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { PageHeader } from '@/components/ui';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
-import { useState } from 'react';
+import LeadForm from '@/components/ui/LeadForm';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export default function ContactPage() {
   const t = useTranslations('contact');
@@ -11,21 +11,6 @@ export default function ContactPage() {
   const tForm = useTranslations('form');
   const locale = useLocale();
   const isRTL = locale === 'ar';
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      (e.target as HTMLFormElement).reset();
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
-  };
 
   return (
     <>
@@ -90,77 +75,8 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column: Form */}
-            <div className="bg-[#111827] rounded-3xl p-8 lg:p-12 shadow-2xl shadow-black/5 border border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-8">{t('formTitle')}</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-[#94A3B8] mb-2">{tForm('name')}</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder={tForm('namePlaceholder')}
-                    className="w-full rounded-xl border-white/10 bg-[#0B1120] px-4 py-3 text-white focus:border-[#00E5FF] focus:bg-white focus:ring-[#00E5FF] transition-colors outline-none border"
-                  />
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-[#94A3B8] mb-2">{tForm('phone')}</label>
-                    <input
-                      type="tel"
-                      required
-                      dir="ltr"
-                      placeholder={tForm('phonePlaceholder')}
-                      className="w-full rounded-xl border-white/10 bg-[#0B1120] px-4 py-3 text-white focus:border-[#00E5FF] focus:bg-white focus:ring-[#00E5FF] transition-colors outline-none border text-left"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#94A3B8] mb-2">{tForm('service')}</label>
-                    <select
-                      required
-                      className="w-full rounded-xl border-white/10 bg-[#0B1120] px-4 py-3 text-white focus:border-[#00E5FF] focus:bg-white focus:ring-[#00E5FF] transition-colors outline-none border appearance-none"
-                    >
-                      <option value="" disabled selected>{tForm('selectService')}</option>
-                      <option value="commercial">Commercial HVAC</option>
-                      <option value="residential">Residential HVAC</option>
-                      <option value="maintenance">Maintenance</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-[#94A3B8] mb-2">{tForm('message')}</label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder={tForm('messagePlaceholder')}
-                    className="w-full rounded-xl border-white/10 bg-[#0B1120] px-4 py-3 text-white focus:border-[#00E5FF] focus:bg-white focus:ring-[#00E5FF] transition-colors outline-none border resize-none"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#00E5FF] px-8 py-4 text-base font-bold text-white transition-all duration-300 hover:bg-[#2489ba] hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    tCommon('loading')
-                  ) : (
-                    <>
-                      <Send className={`w-5 h-5 ${isRTL ? '-scale-x-100' : ''}`} />
-                      {tForm('submit')}
-                    </>
-                  )}
-                </button>
-
-                {isSuccess && (
-                  <div className="p-4 bg-green-50 text-green-700 rounded-xl text-center font-medium">
-                    {tForm('success')}
-                  </div>
-                )}
-              </form>
+            <div className="flex items-center justify-center">
+              <LeadForm className="!max-w-lg lg:!ms-0" />
             </div>
             
           </div>
