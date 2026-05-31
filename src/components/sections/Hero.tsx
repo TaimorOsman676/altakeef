@@ -167,18 +167,20 @@ function LeadForm() {
           ) : status === 'success' ? (
             <span>{locale === 'ar' ? 'تم الإرسال!' : 'Sent!'}</span>
           ) : (
-            <>
+            <span className="flex items-center gap-2">
               <Send className="h-4 w-4" />
-              {status === 'error' ? (locale === 'ar' ? 'خطأ' : 'Error') : t('submit')}
-            </>
+              <span>{status === 'error' ? (locale === 'ar' ? 'خطأ' : 'Error') : t('submit')}</span>
+            </span>
           )}
         </motion.button>
       </div>
-      {status === 'success' && (
-        <p className="text-green-400 text-xs mt-2 text-center">
-          {locale === 'ar' ? 'سيتم التواصل معك قريباً. يرجى التحقق من بريدك الإلكتروني.' : 'We will contact you soon. (Please check info@altakeefsa.com to activate first).'}
-        </p>
-      )}
+      <div className="h-6 mt-2">
+        {status === 'success' && (
+          <p className="text-green-400 text-xs text-center">
+            {locale === 'ar' ? 'سيتم التواصل معك قريباً. يرجى التحقق من بريدك الإلكتروني.' : 'We will contact you soon. (Please check info@altakeefsa.com to activate first).'}
+          </p>
+        )}
+      </div>
     </motion.form>
   );
 }
