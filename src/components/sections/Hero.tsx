@@ -56,6 +56,7 @@ function LeadForm() {
   const nameRef = React.useRef<HTMLInputElement>(null);
   const phoneRef = React.useRef<HTMLInputElement>(null);
   const serviceRef = React.useRef<HTMLSelectElement>(null);
+  const messageRef = React.useRef<HTMLInputElement>(null);
 
   const serviceOptions = services.map((s) => ({
     value: s.slug,
@@ -67,6 +68,7 @@ function LeadForm() {
     const name = nameRef.current?.value;
     const phone = phoneRef.current?.value;
     const service = serviceRef.current?.value;
+    const message = messageRef.current?.value || "No additional message";
     
     if (!name || !phone || !service) return; // Basic validation
 
@@ -83,6 +85,7 @@ function LeadForm() {
           Name: name,
           Phone: phone,
           Service: serviceOptions.find(s => s.value === service)?.label || service,
+          Message: message,
           from_name: "Al-Takeef Website",
           subject: "New Website Request - Aamal Al-Takeef",
         })
@@ -93,6 +96,7 @@ function LeadForm() {
         if (nameRef.current) nameRef.current.value = '';
         if (phoneRef.current) phoneRef.current.value = '';
         if (serviceRef.current) serviceRef.current.value = '';
+        if (messageRef.current) messageRef.current.value = '';
         // Revert to idle after 5 seconds
         setTimeout(() => setStatus('idle'), 5000);
       } else {
@@ -109,72 +113,88 @@ function LeadForm() {
       className="w-full max-w-3xl mx-auto mt-8"
       onSubmit={handleSubmit}
     >
-      <div className="flex flex-col md:flex-row items-stretch gap-2 rounded-2xl bg-white/10 backdrop-blur-md p-2 border border-white/20 shadow-2xl relative">
-        {/* Name */}
-        <input
-          ref={nameRef}
-          type="text"
-          required
-          disabled={status === 'loading'}
-          placeholder={t('namePlaceholder')}
-          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
-          aria-label={t('name')}
-        />
-        {/* Phone */}
-        <input
-          ref={phoneRef}
-          type="tel"
-          required
-          disabled={status === 'loading'}
-          placeholder={t('phonePlaceholder')}
-          dir="ltr"
-          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
-          aria-label={t('phone')}
-        />
-        {/* Service Select */}
-        <select
-          ref={serviceRef}
-          required
-          disabled={status === 'loading'}
-          className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition appearance-none cursor-pointer disabled:opacity-50"
-          aria-label={t('service')}
-          defaultValue=""
-        >
-          <option value="" disabled>
-            {t('selectService')}
-          </option>
-          {serviceOptions.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
+      <div className="flex flex-col gap-2 rounded-2xl bg-white/10 backdrop-blur-md p-2 border border-white/20 shadow-2xl relative">
+        {/* ROW 1: Name, Phone, Service */}
+        <div className="flex flex-col md:flex-row gap-2">
+          {/* Name */}
+          <input
+            ref={nameRef}
+            type="text"
+            required
+            disabled={status === 'loading'}
+            placeholder={t('namePlaceholder')}
+            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
+            aria-label={t('name')}
+          />
+          {/* Phone */}
+          <input
+            ref={phoneRef}
+            type="tel"
+            required
+            disabled={status === 'loading'}
+            placeholder={t('phonePlaceholder')}
+            dir="ltr"
+            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
+            aria-label={t('phone')}
+          />
+          {/* Service Select */}
+          <select
+            ref={serviceRef}
+            required
+            disabled={status === 'loading'}
+            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition appearance-none cursor-pointer disabled:opacity-50"
+            aria-label={t('service')}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              {t('selectService')}
             </option>
-          ))}
-        </select>
-        {/* Submit */}
-        <motion.button
-          type="submit"
-          disabled={status === 'loading' || status === 'success'}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          className={`flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-white font-semibold text-sm shadow-lg transition-all cursor-pointer whitespace-nowrap
-            ${status === 'success' 
-              ? 'bg-green-500 shadow-green-500/25' 
-              : status === 'error'
-              ? 'bg-red-500 shadow-red-500/25'
-              : 'bg-gradient-to-r from-[#D42B2B] to-[#b51f1f] hover:shadow-xl hover:shadow-[#D42B2B]/35 shadow-[#D42B2B]/25'}
-            disabled:opacity-70
-          `}
-        >
-          {status === 'loading' ? (
-            <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-          ) : status === 'success' ? (
-            <span>{locale === 'ar' ? 'تم الإرسال!' : 'Sent!'}</span>
-          ) : (
-            <span className="flex items-center gap-2">
-              <Send className="h-4 w-4" />
-              <span>{status === 'error' ? (locale === 'ar' ? 'خطأ' : 'Error') : t('submit')}</span>
-            </span>
-          )}
-        </motion.button>
+            {serviceOptions.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* ROW 2: Message, Submit */}
+        <div className="flex flex-col md:flex-row gap-2">
+          {/* Message */}
+          <input
+            ref={messageRef}
+            type="text"
+            disabled={status === 'loading'}
+            placeholder={locale === 'ar' ? 'تفاصيل إضافية عن طلبك...' : 'Additional details about your request...'}
+            className="flex-1 min-w-0 rounded-xl bg-[#111827]/90 px-4 py-3 text-white placeholder:text-[#64748B] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 transition disabled:opacity-50"
+            aria-label={locale === 'ar' ? 'رسالة' : 'Message'}
+          />
+          {/* Submit */}
+          <motion.button
+            type="submit"
+            disabled={status === 'loading' || status === 'success'}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className={`flex items-center justify-center gap-2 rounded-xl px-8 py-3 text-white font-semibold text-sm shadow-lg transition-all cursor-pointer whitespace-nowrap md:w-auto w-full
+              ${status === 'success' 
+                ? 'bg-green-500 shadow-green-500/25' 
+                : status === 'error'
+                ? 'bg-red-500 shadow-red-500/25'
+                : 'bg-gradient-to-r from-[#D42B2B] to-[#b51f1f] hover:shadow-xl hover:shadow-[#D42B2B]/35 shadow-[#D42B2B]/25'}
+              disabled:opacity-70
+            `}
+          >
+            {status === 'loading' ? (
+              <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+            ) : status === 'success' ? (
+              <span>{locale === 'ar' ? 'تم الإرسال!' : 'Sent!'}</span>
+            ) : (
+              <span className="flex items-center gap-2">
+                <Send className="h-4 w-4" />
+                <span>{status === 'error' ? (locale === 'ar' ? 'خطأ' : 'Error') : t('submit')}</span>
+              </span>
+            )}
+          </motion.button>
+        </div>
       </div>
       <div className="h-6 mt-2">
         {status === 'success' && (
