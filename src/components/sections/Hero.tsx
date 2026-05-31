@@ -63,7 +63,7 @@ function LeadForm() {
     label: locale === 'ar' ? s.nameAr : s.nameEn,
   }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const name = nameRef.current?.value;
     const phone = phoneRef.current?.value;
@@ -73,38 +73,27 @@ function LeadForm() {
     if (!name || !phone || !service) return; // Basic validation
 
     setStatus('loading');
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: "6e386de1-3e23-455f-8e04-4450f87e3236",
-          Name: name,
-          Phone: phone,
-          Service: serviceOptions.find(s => s.value === service)?.label || service,
-          Message: message,
-          from_name: "Al-Takeef Website",
-          subject: "New Website Request - Aamal Al-Takeef",
-        })
-      });
-      if (res.ok) {
-        setStatus('success');
-        // Reset form
-        if (nameRef.current) nameRef.current.value = '';
-        if (phoneRef.current) phoneRef.current.value = '';
-        if (serviceRef.current) serviceRef.current.value = '';
-        if (messageRef.current) messageRef.current.value = '';
-        // Revert to idle after 5 seconds
-        setTimeout(() => setStatus('idle'), 5000);
-      } else {
-        setStatus('error');
-      }
-    } catch(err) {
-      setStatus('error');
-    }
+    
+    // Construct the WhatsApp message
+    const waNumber = "966579048408"; // Saudi format without the +
+    const waMessage = `*New Website Request:*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${serviceOptions.find(s => s.value === service)?.label || service}\n*Message:* ${message}`;
+    
+    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+    // Simulate a brief loading state before opening WhatsApp
+    setTimeout(() => {
+      setStatus('success');
+      window.open(waUrl, '_blank');
+      
+      // Reset form
+      if (nameRef.current) nameRef.current.value = '';
+      if (phoneRef.current) phoneRef.current.value = '';
+      if (serviceRef.current) serviceRef.current.value = '';
+      if (messageRef.current) messageRef.current.value = '';
+      
+      // Revert to idle after 3 seconds
+      setTimeout(() => setStatus('idle'), 3000);
+    }, 600);
   };
 
   return (
