@@ -239,7 +239,7 @@ export default function StorePage() {
               const pName = isRTL ? product.nameAr : product.nameEn;
               
               // Determine category color
-              const headerColor = "bg-[#2F4F4F]";
+              const headerColor = "bg-[#483248]";
 
               const needsQuote = 
                 product.category === 'concealed' || 
