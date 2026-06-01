@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import '../styles.css';
 
 export function generateStaticParams() {
@@ -51,6 +52,7 @@ export default async function LocaleLayout({
             {children}
           </main>
           <Footer />
+          <WhatsAppButton />
         </NextIntlClientProvider>
       </body>
     </html>
