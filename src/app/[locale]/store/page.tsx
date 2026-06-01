@@ -239,12 +239,7 @@ export default function StorePage() {
               const pName = isRTL ? product.nameAr : product.nameEn;
               
               // Determine category color
-              let headerColor = "from-blue-500 to-cyan-500";
-              if (product.category === 'concealed' || product.category === 'central' || product.category === 'packages') {
-                headerColor = "from-purple-500 to-indigo-500";
-              } else if (product.category === 'chiller' || product.category === 'vrf') {
-                headerColor = "from-red-500 to-orange-500";
-              }
+              const headerColor = "bg-[#2F4F4F]";
 
               const needsQuote = 
                 product.category === 'concealed' || 
@@ -262,7 +257,7 @@ export default function StorePage() {
                   className="bg-[#0F172A] rounded-[24px] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-full overflow-hidden relative"
                 >
                   {/* Colored Header Curve */}
-                  <div className={`pt-6 pb-8 px-4 bg-gradient-to-br ${headerColor} flex flex-col items-center justify-center text-center relative`}>
+                  <div className={`pt-6 pb-8 px-4 ${headerColor} flex flex-col items-center justify-center text-center relative`}>
                     <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/80 mb-1">
                       {isRTL ? categories.find(c => c.key === product.category)?.labelAr : categories.find(c => c.key === product.category)?.labelEn}
                     </span>
