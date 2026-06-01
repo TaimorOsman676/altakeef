@@ -292,15 +292,9 @@ export default function StorePage() {
                     {/* Price and Stars */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex flex-col">
-                        {needsQuote ? (
-                          <span className="text-[11px] md:text-sm font-bold text-white">
-                            {isRTL ? 'تسعيرة مخصصة' : 'Custom Quote'}
-                          </span>
-                        ) : (
-                          <span className="text-sm md:text-lg font-black text-white">
-                            {product.price.toLocaleString()} {isRTL ? 'ر.س' : 'SAR'}
-                          </span>
-                        )}
+                        <span className="text-sm md:text-base font-black text-[#00E5FF]">
+                          {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
+                        </span>
                       </div>
                       <div className="flex items-center gap-0.5 text-yellow-400 text-[10px] sm:text-xs">
                         ★ ★ ★ ★ <span className="text-white/20">★</span>
@@ -324,7 +318,7 @@ export default function StorePage() {
                         rel="noopener noreferrer"
                         className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#F59E0B] text-black py-3 sm:py-3.5 rounded-xl font-black text-[10px] md:text-xs uppercase tracking-wider transition-colors shadow-lg"
                       >
-                        {isRTL ? 'أضف للسلة / طلب' : 'Add to Cart / Quote'}
+                        {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
                       </a>
                     </div>
                   </div>
