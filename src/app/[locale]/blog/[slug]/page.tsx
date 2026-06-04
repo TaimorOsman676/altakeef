@@ -1,8 +1,10 @@
 import { notFound } from 'next/navigation';
 import { blogPosts, getPostBySlug } from '@/data/blog';
-import { SectionHeading } from '@/components/ui';
+import { SectionHeading, PortableTextRenderer } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
+import { client, isSanityConfigured } from '@/lib/sanity';
+import { postBySlugQuery } from '@/lib/sanity.queries';
 import { 
   Calendar, 
   Clock, 
@@ -17,33 +19,86 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
+// Revalidate the blog details page cache every hour automatically (ISR)
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
+  
+  // 1. Add static fallback slugs
   routing.locales.forEach((locale) => {
     blogPosts.forEach((post) => {
       params.push({ locale, slug: post.slug });
     });
   });
+
+  // 2. Fetch live Sanity slugs if configured
+  if (isSanityConfigured && client) {
+    try {
+      const sanitySlugs = await client.fetch<string[]>(`*[_type == "post"].slug.current`);
+      if (Array.isArray(sanitySlugs)) {
+        routing.locales.forEach((locale) => {
+          sanitySlugs.forEach((slug) => {
+            // Avoid adding duplicates
+            if (!blogPosts.some(p => p.slug === slug)) {
+              params.push({ locale, slug });
+            }
+          });
+        });
+      }
+    } catch (e) {
+      console.error("Error pre-rendering static Sanity pages:", e);
+    }
+  }
+
   return params;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const resolvedParams = await params;
-  const post = getPostBySlug(resolvedParams.slug);
+  const { locale, slug } = resolvedParams;
+  
+  let post = null;
+  if (isSanityConfigured && client) {
+    try {
+      post = await client.fetch(postBySlugQuery, { slug });
+    } catch (e) {
+      console.error('Error fetching blog post metadata from Sanity:', e);
+    }
+  }
+
+  if (!post) {
+    post = getPostBySlug(slug);
+  }
+  
   if (!post) return { title: 'Post Not Found' };
   
   const isRTL = resolvedParams.locale === 'ar';
   return {
     title: `${isRTL ? post.titleAr : post.titleEn} | Al-Takeef Blog`,
     description: isRTL ? post.summaryAr : post.summaryEn,
-    keywords: isRTL ? post.keywordsAr.join(', ') : post.keywordsEn.join(', '),
+    keywords: isRTL 
+      ? (post.keywordsAr ? post.keywordsAr.join(', ') : '') 
+      : (post.keywordsEn ? post.keywordsEn.join(', ') : ''),
   };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const resolvedParams = await params;
   const { locale, slug } = resolvedParams;
-  const post = getPostBySlug(slug);
+  
+  let post = null;
+  if (isSanityConfigured && client) {
+    try {
+      post = await client.fetch(postBySlugQuery, { slug });
+    } catch (e) {
+      console.error('Error fetching blog post details from Sanity:', e);
+    }
+  }
+
+  if (!post) {
+    post = getPostBySlug(slug);
+  }
   
   if (!post) {
     notFound();
@@ -133,7 +188,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             {/* Featured Image */}
             <div className="relative h-64 sm:h-96 w-full rounded-2xl overflow-hidden bg-[#0F172A]">
               <Image
-                src={post.image}
+                src={post.image || '/images/blog-placeholder.png'}
                 alt={title}
                 fill
                 className="object-cover"
@@ -147,17 +202,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               {summary}
             </div>
 
-            {/* Rich Text HTML Content */}
-            <article 
-              className="prose prose-blue max-w-none text-[#94A3B8] leading-relaxed space-y-6 
-                prose-headings:text-white prose-headings:font-bold 
-                prose-h3:text-lg prose-h3:md:text-xl prose-h3:mt-8 prose-h3:mb-4
-                prose-p:text-sm prose-p:md:text-base prose-p:leading-relaxed
-                prose-ul:list-disc prose-ul:ps-5 prose-ul:space-y-2 prose-ul:text-sm prose-ul:md:text-base
-                prose-li:text-[#94A3B8]
-                prose-strong:text-white prose-strong:font-bold"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
+            {/* Rich Text HTML Content or PortableText Content */}
+            {typeof content === 'string' ? (
+              <article 
+                className="prose prose-blue max-w-none text-[#94A3B8] leading-relaxed space-y-6 
+                  prose-headings:text-white prose-headings:font-bold 
+                  prose-h3:text-lg prose-h3:md:text-xl prose-h3:mt-8 prose-h3:mb-4
+                  prose-p:text-sm prose-p:md:text-base prose-p:leading-relaxed
+                  prose-ul:list-disc prose-ul:ps-5 prose-ul:space-y-2 prose-ul:text-sm prose-ul:md:text-base
+                  prose-li:text-[#94A3B8]
+                  prose-strong:text-white prose-strong:font-bold"
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
+            ) : (
+              <div className="prose prose-blue max-w-none text-[#94A3B8] leading-relaxed">
+                <PortableTextRenderer value={content} />
+              </div>
+            )}
 
             {/* Keyword tags */}
             <div className="pt-8 border-t border-gray-150">
@@ -165,7 +226,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                 {isRTL ? 'الكلمات المفتاحية للموضوع:' : 'SEO Keywords:'}
               </h4>
               <div className="flex flex-wrap gap-2">
-                {(isRTL ? post.keywordsAr : post.keywordsEn).map((tag, idx) => (
+                {((isRTL ? post.keywordsAr : post.keywordsEn) || []).map((tag: string, idx: number) => (
                   <span 
                     key={idx}
                     className="px-3 py-1 rounded-lg bg-[#0B1120] border border-gray-200/60 text-xs font-semibold text-[#94A3B8]"
@@ -239,7 +300,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                         {/* Tiny image */}
                         <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-[#0B1120] flex-shrink-0">
                           <Image 
-                            src={rPost.image} 
+                            src={rPost.image || '/images/blog-placeholder.png'} 
                             alt={rTitle}
                             fill
                             className="object-cover"
@@ -269,3 +330,4 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     </div>
   );
 }
+

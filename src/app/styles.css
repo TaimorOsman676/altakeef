@@ -623,6 +623,10 @@ body {
   visibility: visible;
 }
 
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }
@@ -828,6 +832,16 @@ body {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .-me-1 {
@@ -1420,6 +1434,14 @@ body {
   scroll-snap-align: center;
 }
 
+.list-decimal {
+  list-style-type: decimal;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -1541,6 +1563,12 @@ body {
   margin-bottom: calc(3rem * var(--tw-space-y-reverse));
 }
 
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1595,6 +1623,10 @@ body {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.rounded {
+  border-radius: 0.25rem;
 }
 
 .rounded-2xl {
@@ -1862,6 +1894,10 @@ body {
   background-color: rgb(224 242 254 / 0.3);
 }
 
+.bg-\[\#E0F2FE\]\/5 {
+  background-color: rgb(224 242 254 / 0.05);
+}
+
 .bg-\[\#E0F2FE\]\/50 {
   background-color: rgb(224 242 254 / 0.5);
 }
@@ -1897,6 +1933,11 @@ body {
 .bg-emerald-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(5 150 105 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
 }
 
 .bg-green-500 {
@@ -2224,6 +2265,11 @@ body {
   padding-right: 2rem;
 }
 
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -2361,6 +2407,10 @@ body {
   padding-inline-start: 1rem;
 }
 
+.ps-5 {
+  padding-inline-start: 1.25rem;
+}
+
 .pt-0 {
   padding-top: 0px;
 }
@@ -2431,6 +2481,10 @@ body {
 
 .font-english {
   font-family: Inter, sans-serif;
+}
+
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .font-sans {
@@ -2632,6 +2686,11 @@ body {
   color: rgb(74 222 128 / var(--tw-text-opacity, 1));
 }
 
+.text-pink-400 {
+  --tw-text-opacity: 1;
+  color: rgb(244 114 182 / var(--tw-text-opacity, 1));
+}
+
 .text-transparent {
   color: transparent;
 }
@@ -2680,6 +2739,14 @@ body {
 
 .underline {
   text-decoration-line: underline;
+}
+
+.decoration-2 {
+  text-decoration-thickness: 2px;
+}
+
+.underline-offset-4 {
+  text-underline-offset: 4px;
 }
 
 .antialiased {
@@ -3067,6 +3134,14 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.marker\:text-\[\#00E5FF\] *::marker {
+  color: rgb(0 229 255 );
+}
+
+.marker\:text-\[\#00E5FF\]::marker {
+  color: rgb(0 229 255 );
+}
+
 .placeholder\:text-\[\#64748B\]::-moz-placeholder {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity, 1));
@@ -3202,6 +3277,10 @@ section {
 .hover\:text-\[\#00E5FF\]:hover {
   --tw-text-opacity: 1;
   color: rgb(0 229 255 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-\[\#00E5FF\]\/85:hover {
+  color: rgb(0 229 255 / 0.85);
 }
 
 .hover\:text-\[\#0B1120\]:hover {
