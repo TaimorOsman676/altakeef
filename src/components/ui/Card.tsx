@@ -31,7 +31,7 @@ export default function Card({
   ...rest
 }: CardProps) {
   const baseClasses = [
-    'rounded-[40%_5%_40%_5%] overflow-hidden',
+    'rounded-[5%_0%_5%_0%] overflow-hidden',
     glass
       ? 'bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl'
       : 'bg-[#111827] shadow-lg border border-[#B8C4CE]/20',
@@ -52,10 +52,10 @@ export default function Card({
   if (gradientBorder) {
     return (
       <motion.div
-        className="rounded-[40%_5%_40%_5%] p-[2px] bg-gradient-to-br from-[#00E5FF] to-[#1E293B] overflow-hidden"
+        className="rounded-[5%_0%_5%_0%] p-[2px] bg-gradient-to-br from-[#00E5FF] to-[#1E293B] overflow-hidden"
         {...hoverAnimation}
       >
-        <div className={`rounded-[40%_5%_40%_5%] overflow-hidden ${glass ? 'bg-white/10 backdrop-blur-xl' : 'bg-[#111827]'} ${className}`} {...rest as React.HTMLAttributes<HTMLDivElement>}>
+        <div className={`rounded-[5%_0%_5%_0%] overflow-hidden ${glass ? 'bg-white/10 backdrop-blur-xl' : 'bg-[#111827]'} ${className}`} {...rest as React.HTMLAttributes<HTMLDivElement>}>
           {children}
         </div>
       </motion.div>

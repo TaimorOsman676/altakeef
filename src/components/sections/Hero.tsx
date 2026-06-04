@@ -75,7 +75,7 @@ function FeatureCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15 + 0.4 }}
-              className="bg-[#111827]/90 backdrop-blur-sm border border-white/10 rounded-[40%_5%_40%_5%] overflow-hidden shadow-2xl flex flex-col group hover:-translate-y-1 hover:border-[#00E5FF]/40 transition-all h-[360px]"
+              className="bg-[#111827]/90 backdrop-blur-sm border border-white/10 rounded-[5%_0%_5%_0%] overflow-hidden shadow-2xl flex flex-col group hover:-translate-y-1 hover:border-[#00E5FF]/40 transition-all h-[360px]"
             >
               {/* Image Section (70% Height) */}
               <div className="relative w-full h-[70%] bg-[#0B1120] overflow-hidden shrink-0">

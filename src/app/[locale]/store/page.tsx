@@ -254,7 +254,7 @@ export default function StorePage() {
               return (
                 <div 
                   key={product.id} 
-                  className="bg-[#0F172A] rounded-[40%_5%_40%_5%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-[380px] overflow-hidden relative"
+                  className="bg-[#0F172A] rounded-[5%_0%_5%_0%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-[380px] overflow-hidden relative"
                 >
                   {/* Top Section (70% Height) */}
                   <div className="relative w-full h-[70%] flex flex-col overflow-hidden shrink-0">

@@ -1641,8 +1641,8 @@ body {
   border-radius: 100%;
 }
 
-.rounded-\[40\%_5\%_40\%_5\%\] {
-  border-radius: 40% 5% 40% 5%;
+.rounded-\[5\%_0\%_5\%_0\%\] {
+  border-radius: 5% 0% 5% 0%;
 }
 
 .rounded-full {

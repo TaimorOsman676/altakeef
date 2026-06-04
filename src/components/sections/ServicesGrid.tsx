@@ -139,7 +139,7 @@ export default function ServicesGrid() {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group block h-[400px] rounded-[40%_5%_40%_5%] bg-[#111827]/80 backdrop-blur-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-[#00E5FF]/40 relative flex flex-col"
+                  className="group block h-[400px] rounded-[5%_0%_5%_0%] bg-[#111827]/80 backdrop-blur-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-[#00E5FF]/40 relative flex flex-col"
                 >
                   {/* Dynamic Image Section (70% Height) */}
                   <div className="relative w-full h-[70%] bg-[#0B1120] overflow-hidden shrink-0">

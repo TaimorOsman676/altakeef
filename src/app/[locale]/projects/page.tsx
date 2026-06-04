@@ -170,7 +170,7 @@ export default function ProjectsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step) => (
-              <div key={step.id} className="relative rounded-[40%_5%_40%_5%] p-6 border border-white/10 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group min-h-[300px] flex flex-col justify-end">
+              <div key={step.id} className="relative rounded-[5%_0%_5%_0%] p-6 border border-white/10 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group min-h-[300px] flex flex-col justify-end">
                 {/* Animated Background Image */}
                 <div className="absolute inset-0 z-0">
                   <Image 
@@ -305,7 +305,7 @@ export default function ProjectsPage() {
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
-              className="group bg-[#111827] rounded-[40%_5%_40%_5%] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 flex flex-col h-[380px]"
+              className="group bg-[#111827] rounded-[5%_0%_5%_0%] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 flex flex-col h-[380px]"
             >
               {/* Image box (70% Height) */}
               <div className="relative w-full h-[70%] overflow-hidden bg-[#0B1120] shrink-0">
