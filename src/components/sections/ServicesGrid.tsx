@@ -139,10 +139,10 @@ export default function ServicesGrid() {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group block h-[400px] rounded-2xl bg-[#111827]/80 backdrop-blur-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-[#00E5FF]/40 relative flex flex-col"
+                  className="group block h-[400px] rounded-[40%_5%_40%_5%] bg-[#111827]/80 backdrop-blur-sm overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white/10 hover:border-[#00E5FF]/40 relative flex flex-col"
                 >
-                  {/* Dynamic Expanding Image Section */}
-                  <div className="relative w-full h-[30%] group-hover:h-[70%] transition-all duration-500 ease-in-out bg-[#0B1120] overflow-hidden shrink-0">
+                  {/* Dynamic Image Section (70% Height) */}
+                  <div className="relative w-full h-[70%] bg-[#0B1120] overflow-hidden shrink-0">
                     <Image 
                       src={service.image} 
                       alt={locale === 'ar' ? service.nameAr : service.nameEn} 
@@ -150,7 +150,7 @@ export default function ServicesGrid() {
                       className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" 
                       sizes="(max-w-7xl) 100vw, 400px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/90 via-[#111827]/20 to-transparent z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent z-10"></div>
                     
                     {/* Floating Icon inside image area */}
                     <div className="absolute bottom-4 left-4 z-20">
@@ -160,23 +160,23 @@ export default function ServicesGrid() {
                     </div>
                   </div>
 
-                  {/* Text Content Area */}
-                  <div className="p-6 flex flex-col flex-grow bg-[#111827] relative z-20">
+                  {/* Text Content Area (30% Height) */}
+                  <div className="p-5 flex flex-col flex-grow bg-[#111827] relative z-20 justify-center">
                     {/* Name */}
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#00E5FF] transition-colors">
+                    <h3 className="text-base font-bold text-white mb-1 group-hover:text-[#00E5FF] transition-colors line-clamp-1">
                       {locale === 'ar' ? service.nameAr : service.nameEn}
                     </h3>
 
                     {/* Smooth fading Description */}
-                    <div className="relative overflow-hidden h-full w-full">
-                      <p className="absolute inset-0 text-sm text-[#94A3B8] leading-relaxed line-clamp-3 group-hover:opacity-0 group-hover:translate-y-4 transition-all duration-500">
+                    <div className="relative overflow-hidden h-10 w-full">
+                      <p className="absolute inset-0 text-xs text-[#94A3B8] leading-relaxed line-clamp-2 group-hover:opacity-0 group-hover:translate-y-4 transition-all duration-500">
                         {locale === 'ar' ? service.descriptionAr : service.descriptionEn}
                       </p>
                       
                       {/* Learn More (Slides up on hover) */}
-                      <span className="absolute bottom-0 left-0 inline-flex items-center gap-1.5 text-sm font-semibold text-[#00E5FF] opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                      <span className="absolute bottom-0 left-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#00E5FF] opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                         {t('viewAllServices').split(' ')[0]}
-                        <Arrow className="h-4 w-4" />
+                        <Arrow className="h-3.5 w-3.5" />
                       </span>
                     </div>
                   </div>

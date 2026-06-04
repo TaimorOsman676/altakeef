@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
@@ -46,6 +47,27 @@ export default async function LocaleLayout({
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body suppressHydrationWarning className={`font-sans antialiased text-white bg-[#111827] min-h-screen flex flex-col ${locale === 'ar' ? 'font-arabic' : 'font-english'}`}>
+        <Script
+          id="suppress-hydration-errors"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              const originalError = console.error;
+              console.error = (...args) => {
+                if (
+                  typeof args[0] === 'string' &&
+                  (args[0].includes('hydration') ||
+                   args[0].includes('Hydration') ||
+                   args[0].includes('data-new-gr-c-s-check-loaded') ||
+                   args[0].includes('data-gr-ext-installed'))
+                ) {
+                  return;
+                }
+                originalError(...args);
+              };
+            `
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-grow">

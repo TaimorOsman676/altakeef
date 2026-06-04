@@ -92,7 +92,7 @@ export const services: Service[] = [
       ar: ['تكييف VRF', 'نظام VRF الرياض', 'تكييف مباني تجارية', 'تركيب VRF', 'صيانة VRF'],
       en: ['VRF air conditioning', 'VRF system Riyadh', 'commercial HVAC', 'VRF installation', 'VRF maintenance'],
     },
-    image: '/images/services/vrf-v3.png',
+    image: '/images/services/vrf_real_v2.png',
   },
 
   // ─────────────────────────────────────────────────────────────────────────────
@@ -145,7 +145,7 @@ export const services: Service[] = [
       ar: ['تكييف مركزي', 'تكييف مركزي الرياض', 'تركيب تكييف مركزي', 'صيانة تكييف مركزي', 'تكييف فلل'],
       en: ['central AC', 'central air conditioning Riyadh', 'ducted AC installation', 'central HVAC', 'villa AC'],
     },
-    image: '/images/services/central-v3.png',
+    image: '/images/services/central_real_v2.png',
   },
 
   // ─────────────────────────────────────────────────────────────────────────────
@@ -251,7 +251,7 @@ export const services: Service[] = [
       ar: ['تكييف شيلر', 'شيلر الرياض', 'نظام تبريد مركزي', 'مبردات مياه', 'تكييف مجمعات تجارية'],
       en: ['chiller AC', 'chiller system Riyadh', 'central cooling', 'water chiller', 'commercial complex HVAC'],
     },
-    image: '/images/services/chiller-v4.png',
+    image: '/images/services/chiller_real_v2.png',
   },
 
   // ─────────────────────────────────────────────────────────────────────────────

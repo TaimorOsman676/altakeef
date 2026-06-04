@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 import { Phone, ArrowRight, ShieldCheck, Users, BadgeDollarSign } from 'lucide-react';
 import LeadForm from '@/components/ui/LeadForm';
 import { services } from '@/data/services';
@@ -42,20 +43,23 @@ function FeatureCards() {
     {
       id: 1,
       icon: Users,
-      title: isRTL ? 'دعم المحترفين المحليين' : 'Supporting Local Pros',
-      desc: isRTL ? 'نحن ندعم الكفاءات المحلية بأفضل المعايير.' : 'We support local talent with the best standards.',
+      title: isRTL ? 'تركيب تكييف احترافي' : 'Expert HVAC Installation',
+      desc: isRTL ? 'تصميم وتركيب دقيق لأنظمة التكييف المركزي، VRF، والمخفي للفيلات والمجمعات.' : 'Precision design and installation of Central AC, VRF, and Concealed systems for villas and complexes.',
+      image: '/images/projects/real_residential_ac_1779986080889.png',
     },
     {
       id: 2,
       icon: ShieldCheck,
-      title: isRTL ? 'جودة عمل مضمونة' : 'Quality Work Guaranteed',
-      desc: isRTL ? 'نضمن لك جودة العمل بنسبة 100٪.' : 'We guarantee 100% quality work for every project.',
+      title: isRTL ? 'جودة معتمدة ومطابقة لساسو' : 'Certified Quality & SASO Units',
+      desc: isRTL ? 'موزع معتمد لأكبر العلامات التجارية العالمية (توشيبا، ميديا، جري) مع ضمان كامل.' : 'Authorized distributor of top global brands (Toshiba, Midea, Gree) with full factory warranty.',
+      image: '/images/projects/real_commercial_ac_1779986043958.png',
     },
     {
       id: 3,
       icon: BadgeDollarSign,
-      title: isRTL ? 'أسعار تنافسية' : 'Affordable Financing',
-      desc: isRTL ? 'نقدم أفضل الأسعار التنافسية لجميع الخدمات.' : 'We offer the most competitive pricing for all services.',
+      title: isRTL ? 'صيانة وعقود سنوية 24/7' : '24/7 HVAC Maintenance & AMC',
+      desc: isRTL ? 'عقود صيانة سنوية موثوقة وخدمات إصلاح طارئة للحفاظ على كفاءة التبريد في الصيف.' : 'Reliable annual maintenance contracts and emergency repair services to keep your cooling running.',
+      image: '/images/projects/professional_ac_maintenance_1779926297502.png',
     }
   ];
 
@@ -71,14 +75,31 @@ function FeatureCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15 + 0.4 }}
-              className="bg-[#111827]/90 backdrop-blur-sm border border-white/10 rounded-2xl p-6 lg:p-8 shadow-2xl flex flex-col gap-4 group hover:-translate-y-1 hover:border-[#00E5FF]/40 transition-all"
+              className="bg-[#111827]/90 backdrop-blur-sm border border-white/10 rounded-[40%_5%_40%_5%] overflow-hidden shadow-2xl flex flex-col group hover:-translate-y-1 hover:border-[#00E5FF]/40 transition-all h-[360px]"
             >
-              <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-[#0B1120] transition-colors">
-                <Icon className="w-6 h-6" />
+              {/* Image Section (70% Height) */}
+              <div className="relative w-full h-[70%] bg-[#0B1120] overflow-hidden shrink-0">
+                <Image 
+                  src={f.image} 
+                  alt={f.title} 
+                  fill 
+                  className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
+                  sizes="400px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent z-10"></div>
+                
+                {/* Floating Icon inside image area */}
+                <div className="absolute bottom-4 left-4 z-20">
+                  <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-[#0B1120] transition-colors">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                </div>
               </div>
-              <div>
-                <h4 className="text-lg font-bold text-white mb-2">{f.title}</h4>
-                <p className="text-sm text-[#94A3B8] leading-relaxed">{f.desc}</p>
+
+              {/* Text Section (30% Height) */}
+              <div className="p-5 flex flex-col flex-grow bg-[#111827] justify-center relative z-20">
+                <h4 className="text-base font-bold text-white mb-1 group-hover:text-[#00E5FF] transition-colors line-clamp-1">{f.title}</h4>
+                <p className="text-xs text-[#94A3B8] leading-relaxed line-clamp-2">{f.desc}</p>
               </div>
             </motion.div>
           );

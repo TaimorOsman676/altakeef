@@ -67,7 +67,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-bold text-white mb-1">{tCommon('address')}</h3>
                     <p className="text-[#94A3B8]">
-                      {isRTL ? 'المملكة العربية السعودية، الرياض' : 'Saudi Arabia, Riyadh'}
+                      {isRTL ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia'}
                     </p>
                   </div>
                 </div>

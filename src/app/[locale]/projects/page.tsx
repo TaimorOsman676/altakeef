@@ -82,7 +82,7 @@ export default function ProjectsPage() {
       titleAr: 'أنظمة مبردات (شيلر) لمصنع الخرج الغذائي', 
       titleEn: 'Al-Kharj Food Factory Chiller Piping System', 
       category: 'commercial', 
-      image: '/images/projects/real_chiller_pipe_v2_1779987078938.png',
+      image: '/images/projects/chiller_piping_system.png',
       detailsAr: 'تمديد وتركيب أنابيب مياه مبردة معزولة بسعات تبريد ضخمة للإنتاج الغذائي.',
       detailsEn: 'Piping installation of chilled water chiller loop for food production machinery.'
     },
@@ -170,7 +170,7 @@ export default function ProjectsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step) => (
-              <div key={step.id} className="relative rounded-3xl p-6 border border-white/10 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group min-h-[300px] flex flex-col justify-end">
+              <div key={step.id} className="relative rounded-[40%_5%_40%_5%] p-6 border border-white/10 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group min-h-[300px] flex flex-col justify-end">
                 {/* Animated Background Image */}
                 <div className="absolute inset-0 z-0">
                   <Image 
@@ -305,10 +305,10 @@ export default function ProjectsPage() {
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
-              className="group bg-[#111827] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 flex flex-col h-full"
+              className="group bg-[#111827] rounded-[40%_5%_40%_5%] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 flex flex-col h-[380px]"
             >
-              {/* Image box */}
-              <div className="relative h-60 overflow-hidden bg-[#0B1120]">
+              {/* Image box (70% Height) */}
+              <div className="relative w-full h-[70%] overflow-hidden bg-[#0B1120] shrink-0">
                 <Image 
                   src={project.image} 
                   alt={isRTL ? project.titleAr : project.titleEn}
@@ -316,19 +316,20 @@ export default function ProjectsPage() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-w-7xl) 100vw, 400px"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent z-10" />
               </div>
               
-              {/* Content box */}
-              <div className="p-6 flex flex-col flex-grow">
-                <span className="text-[#00E5FF] text-[10px] font-bold uppercase tracking-wider mb-2 block">
+              {/* Content box (30% Height) */}
+              <div className="p-5 flex flex-col flex-grow bg-[#111827] justify-center relative z-20">
+                <span className="text-[#00E5FF] text-[9px] font-bold uppercase tracking-wider mb-1 block">
                   {t(`categories.${project.category}`)}
                 </span>
                 
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug group-hover:text-[#00E5FF] transition-colors">
+                <h3 className="text-sm font-bold text-white mb-1 leading-snug group-hover:text-[#00E5FF] transition-colors line-clamp-1">
                   {isRTL ? project.titleAr : project.titleEn}
                 </h3>
                 
-                <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-4">
+                <p className="text-[11px] text-[#94A3B8] leading-relaxed line-clamp-2">
                   {isRTL ? project.detailsAr : project.detailsEn}
                 </p>
               </div>

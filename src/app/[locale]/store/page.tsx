@@ -254,50 +254,47 @@ export default function StorePage() {
               return (
                 <div 
                   key={product.id} 
-                  className="bg-[#0F172A] rounded-[24px] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-full overflow-hidden relative"
+                  className="bg-[#0F172A] rounded-[40%_5%_40%_5%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-[380px] overflow-hidden relative"
                 >
-                  {/* Colored Header Curve */}
-                  <div className={`pt-6 pb-8 px-4 ${headerColor} flex flex-col items-center justify-center text-center relative`}>
-                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/80 mb-1">
-                      {isRTL ? categories.find(c => c.key === product.category)?.labelAr : categories.find(c => c.key === product.category)?.labelEn}
-                    </span>
-                    <h3 className="text-sm md:text-base font-bold text-white line-clamp-2 leading-tight">
-                      {pName}
-                    </h3>
-                    {/* Curve clip */}
-                    <div className="absolute -bottom-6 left-0 right-0 h-12 bg-[#0F172A] rounded-t-[50%] scale-110" />
-                  </div>
+                  {/* Top Section (70% Height) */}
+                  <div className="relative w-full h-[70%] flex flex-col overflow-hidden shrink-0">
+                    {/* Colored Header Curve */}
+                    <div className={`pt-4 pb-5 px-4 ${headerColor} flex flex-col items-center justify-center text-center relative z-20`}>
+                      <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/80 mb-0.5">
+                        {isRTL ? categories.find(c => c.key === product.category)?.labelAr : categories.find(c => c.key === product.category)?.labelEn}
+                      </span>
+                      <h3 className="text-xs md:text-sm font-bold text-white line-clamp-1 leading-tight">
+                        {pName}
+                      </h3>
+                    </div>
 
-                  {/* Image Section */}
-                  <div className="relative h-40 sm:h-48 w-full flex items-center justify-center mt-2 px-4">
-                    <div className="relative w-full h-full bg-[#1E293B] rounded-2xl overflow-hidden flex items-center justify-center">
+                    {/* Image Section */}
+                    <div className="relative flex-grow w-full bg-[#1E293B]/60 flex items-center justify-center p-4">
                       <Image 
                         src={product.image} 
                         alt={pName}
                         fill
-                        className="object-contain p-4 group-hover:scale-110 transition-transform duration-500 z-10 mix-blend-screen"
-                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-contain p-6 group-hover:scale-110 transition-transform duration-500 z-10 mix-blend-screen"
+                        sizes="(max-w: 768px) 50vw, 25vw"
                       />
                     </div>
                   </div>
 
-                  {/* Details Section */}
-                  <div className="px-4 py-4 flex flex-col flex-grow">
+                  {/* Details Section (30% Height) */}
+                  <div className="px-4 py-3 flex flex-col flex-grow bg-[#0F172A] justify-center relative z-20">
                     
                     {/* Price and Stars */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex flex-col">
-                        <span className="text-sm md:text-base font-black text-[#00E5FF]">
-                          {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-0.5 text-yellow-400 text-[10px] sm:text-xs">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-[#00E5FF]">
+                        {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
+                      </span>
+                      <div className="flex items-center gap-0.5 text-yellow-400 text-[10px]">
                         ★ ★ ★ ★ <span className="text-white/20">★</span>
                       </div>
                     </div>
                     
                     {/* Key-Value Specs */}
-                    <div className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1.5 text-[9px] md:text-[10px] mb-4">
+                    <div className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-[9px] mb-2">
                       <span className="text-[#64748B] font-medium uppercase">{isRTL ? 'الماركة' : 'Brand'}</span>
                       <span className="text-white font-semibold text-right">{product.brand}</span>
                       
@@ -306,12 +303,12 @@ export default function StorePage() {
                     </div>
 
                     {/* Bottom Full Width Action Button */}
-                    <div className="mt-auto pt-2">
+                    <div className="mt-auto">
                       <a 
                         href={`https://wa.me/966552239595?text=${encodeURIComponent(isRTL ? `مرحباً، أود الحصول على تسعيرة للمكيف: ${pName}` : `Hello, I would like to get a quote for the AC: ${pName}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#F59E0B] text-black py-3 sm:py-3.5 rounded-xl font-black text-[10px] md:text-xs uppercase tracking-wider transition-colors shadow-lg"
+                        className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#F59E0B] text-black py-2 rounded-xl font-black text-[10px] uppercase tracking-wider transition-colors shadow-lg"
                       >
                         {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
                       </a>

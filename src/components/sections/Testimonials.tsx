@@ -28,7 +28,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="min-w-[300px] md:min-w-[400px] snap-center bg-[#111827] p-8 rounded-2xl shadow-sm border border-white/10"
+              className="min-w-[300px] md:min-w-[400px] snap-center bg-[#111827] p-8 rounded-[40%_5%_40%_5%] shadow-sm border border-white/10"
             >
               <div className="flex justify-between items-start mb-4">
                 <div>

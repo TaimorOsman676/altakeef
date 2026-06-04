@@ -775,7 +775,7 @@ export const products: Product[] = [
       { "ar": "توفير طاقة فائق", "en": "Super Energy Efficient" },
       { "ar": "قدرات تبريد هائلة", "en": "Massive Cooling Capacities" }
     ],
-    "image": "/images/projects/real_chiller_pipe_v2_1779987078938.png",
+    "image": "/images/projects/chiller_ac_unit.png",
     "inverter": true,
     "inStock": true
   },
