@@ -1,11 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function WhatsAppButton() {
+  const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
   const phoneNumber = '966552239595';
   const message = encodeURIComponent('مرحباً، أود الاستفسار عن خدمات التكييف');
+
+  if (pathname && (pathname.includes('/studio') || pathname.includes('/studio/'))) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-6 left-6 z-50 flex items-end gap-3">

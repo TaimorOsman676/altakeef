@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import Image from 'next/image';
 import Logo from '@/components/ui/Logo';
 import { Phone, Mail, Clock, MapPin, Award } from 'lucide-react';
@@ -66,6 +66,11 @@ export default function Footer() {
   const tNav = useTranslations('nav');
   const locale = useLocale();
   const isRTL = locale === 'ar';
+
+  const pathname = usePathname();
+  if (pathname && (pathname.includes('/studio') || pathname.includes('/studio/'))) {
+    return null;
+  }
 
   return (
     <footer dir={isRTL ? 'rtl' : 'ltr'} style={{ backgroundColor: '#1E293B' }}>

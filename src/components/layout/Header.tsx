@@ -46,6 +46,10 @@ export default function Header() {
   const pathname = usePathname();
   const isRTL = locale === 'ar';
 
+  if (pathname && (pathname.includes('/studio') || pathname.includes('/studio/'))) {
+    return null;
+  }
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
