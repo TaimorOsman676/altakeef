@@ -92,7 +92,7 @@ export const services: Service[] = [
       ar: ['تكييف VRF', 'نظام VRF الرياض', 'تكييف مباني تجارية', 'تركيب VRF', 'صيانة VRF'],
       en: ['VRF air conditioning', 'VRF system Riyadh', 'commercial HVAC', 'VRF installation', 'VRF maintenance'],
     },
-    image: '/images/services/vrf_real_v2.png',
+    image: '/images/services/vrf_real_v3.png',
   },
 
   // ─────────────────────────────────────────────────────────────────────────────
