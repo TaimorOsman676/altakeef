@@ -795,7 +795,7 @@ export const products: Product[] = [
       { "ar": "تدفق هواء ذكي", "en": "Smart Airflow" },
       { "ar": "توفير مساحات خارجية", "en": "Space-saving Outdoor Units" }
     ],
-    "image": "/images/projects/real_rooftop_ac_1779986166896.png",
+    "image": "/images/projects/vrf_product_real.png",
     "inverter": true,
     "inStock": true
   },
