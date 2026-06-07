@@ -174,7 +174,7 @@ export default function StorePage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-[#E0F2FE]/50 text-white pl-10 pr-10 py-3 rounded-2xl border border-white/10 focus:outline-none focus:border-[#00E5FF] focus:bg-white transition-all text-sm"
               />
-              <Search className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-[#64748B]" />
+              <Search className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-[#94A3B8]" />
             </div>
 
             {/* Sorters */}
@@ -297,10 +297,10 @@ export default function StorePage() {
                     
                     {/* Key-Value Specs */}
                     <div className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-[9px] mb-2">
-                      <span className="text-[#64748B] font-medium uppercase">{isRTL ? 'الماركة' : 'Brand'}</span>
+                      <span className="text-[#94A3B8] font-medium uppercase">{isRTL ? 'الماركة' : 'Brand'}</span>
                       <span className="text-white font-semibold text-right">{product.brand}</span>
                       
-                      <span className="text-[#64748B] font-medium uppercase">{isRTL ? 'السعة' : 'Capacity'}</span>
+                      <span className="text-[#94A3B8] font-medium uppercase">{isRTL ? 'السعة' : 'Capacity'}</span>
                       <span className="text-white font-semibold text-right">{product.capacity.toLocaleString()} BTU</span>
                     </div>
 
@@ -323,7 +323,7 @@ export default function StorePage() {
           </div>
         ) : (
           <div className="bg-[#111827] rounded-3xl p-12 text-center border border-white/10 max-w-xl mx-auto">
-            <SlidersHorizontal className="h-12 w-12 text-[#64748B] mx-auto mb-4" />
+            <SlidersHorizontal className="h-12 w-12 text-[#94A3B8] mx-auto mb-4" />
             <h3 className="text-lg font-bold text-white mb-2">
               {isRTL ? 'لا توجد منتجات مطابقة' : 'No Products Found'}
             </h3>

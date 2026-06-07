@@ -88,7 +88,7 @@ export default function FAQAccordion() {
                   {faq.q}
                 </span>
                 <span className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
-                  openIndex === index ? 'bg-amber-500 text-white' : 'bg-white/5 text-[#64748B]'
+                  openIndex === index ? 'bg-amber-500 text-white' : 'bg-white/5 text-[#94A3B8]'
                 }`}>
                   {openIndex === index ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </span>

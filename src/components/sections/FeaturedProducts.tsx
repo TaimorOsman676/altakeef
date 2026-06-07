@@ -108,10 +108,10 @@ export default function FeaturedProducts() {
                   
                   {/* Key-Value Specs */}
                   <div className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 text-[9px] mb-2">
-                    <span className="text-[#64748B] font-medium uppercase">{isRTL ? 'الماركة' : 'Brand'}</span>
+                    <span className="text-[#94A3B8] font-medium uppercase">{isRTL ? 'الماركة' : 'Brand'}</span>
                     <span className="text-white font-semibold text-right">{product.brand}</span>
                     
-                    <span className="text-[#64748B] font-medium uppercase">{isRTL ? 'السعة' : 'Capacity'}</span>
+                    <span className="text-[#94A3B8] font-medium uppercase">{isRTL ? 'السعة' : 'Capacity'}</span>
                     <span className="text-white font-semibold text-right">{product.capacity.toLocaleString()} BTU</span>
                   </div>
 

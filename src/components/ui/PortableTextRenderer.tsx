@@ -84,7 +84,7 @@ const customComponents: PortableTextComponents = {
             alt={altText}
             fill
             className="object-cover"
-            sizes="(max-w-7xl) 100vw, 800px"
+            sizes="(max-width: 1280px) 100vw, 800px"
           />
         </div>
       );

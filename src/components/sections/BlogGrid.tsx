@@ -78,7 +78,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#E0F2FE]/50 text-white pl-10 pr-10 py-3 rounded-2xl border border-white/10 focus:outline-none focus:border-[#00E5FF] focus:bg-white transition-all text-sm"
             />
-            <Search className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-[#64748B]" />
+            <Search className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-[#94A3B8]" />
           </div>
 
           {/* Category Tabs */}
@@ -115,7 +115,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
               alt={isRTL ? `${featuredPost.titleAr} - مدونة أعمال التكييف بالرياض` : `${featuredPost.titleEn} - Al-Takeef HVAC Blog Riyadh`}
               fill
               className="object-cover transition-transform duration-750 group-hover:scale-102"
-              sizes="(max-w-7xl) 100vw, 600px"
+              sizes="(max-width: 1280px) 100vw, 600px"
               priority
             />
           </div>
@@ -126,7 +126,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
               <span className="bg-[#0B1120] px-3 py-1 rounded-full uppercase tracking-wider text-[10px]">
                 {isRTL ? featuredPost.categoryAr : featuredPost.categoryEn}
               </span>
-              <span className="flex items-center gap-1 text-[#64748B]">
+              <span className="flex items-center gap-1 text-[#94A3B8]">
                 <Calendar className="h-3.5 w-3.5" />
                 {isRTL ? featuredPost.dateAr : featuredPost.date}
               </span>
@@ -185,7 +185,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
                       alt={isRTL ? `${pTitle} - مقال من مدونة أعمال التكييف` : `${pTitle} - Al-Takeef HVAC blog post`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-w-7xl) 100vw, 400px"
+                      sizes="(max-width: 1280px) 100vw, 400px"
                     />
                     <span className="absolute top-4 left-4 bg-[#111827]/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-bold shadow-sm z-10">
                       {pCategory}
@@ -195,7 +195,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
                   {/* Content */}
                   <div className="p-6 flex flex-col flex-grow space-y-4">
                     {/* Meta date / readtime */}
-                    <div className="flex items-center justify-between text-[11px] font-bold text-[#64748B]">
+                    <div className="flex items-center justify-between text-[11px] font-bold text-[#94A3B8]">
                       <span className="flex items-center gap-1">
                         <Calendar className="h-3.5 w-3.5" />
                         {pDate}
@@ -214,7 +214,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
                     </h3>
 
                     {/* Summary */}
-                    <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed line-clamp-2">
+                    <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed line-clamp-2">
                       {pSummary}
                     </p>
 
@@ -241,7 +241,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
         </div>
       ) : (
         <div className="bg-[#111827] rounded-3xl p-12 text-center border border-white/10 max-w-xl mx-auto">
-          <BookOpen className="h-12 w-12 text-[#64748B] mx-auto mb-4" />
+          <BookOpen className="h-12 w-12 text-[#94A3B8] mx-auto mb-4" />
           <h3 className="text-lg font-bold text-white mb-2">
             {isRTL ? 'لا توجد مقالات مطابقة' : 'No Articles Found'}
           </h3>

@@ -71,8 +71,8 @@ export default async function LocaleLayout({
                 "@context": "https://schema.org",
                 "@type": "HVACBusiness",
                 "name": "مؤسسة أعمال التكييف | Al-Takeef Contracting Establishment",
-                "image": "https://altakeefsa.com/images/company_logo.png",
-                "url": "https://altakeefsa.com",
+                "image": "https://www.altakeefsa.com/images/company_logo.png",
+                "url": "https://www.altakeefsa.com",
                 "telephone": "+966552239595",
                 "priceRange": "$$",
                 "address": {

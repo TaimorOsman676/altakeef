@@ -26,7 +26,7 @@ export interface BreadcrumbProps {
 function DefaultSeparator() {
   return (
     <span
-      className="mx-2 text-[#64748B] select-none rtl:rotate-180 inline-block"
+      className="mx-2 text-[#94A3B8] select-none rtl:rotate-180 inline-block"
       aria-hidden="true"
     >
       <svg
@@ -76,7 +76,7 @@ export default function Breadcrumb({
                   className={
                     isLast
                       ? 'text-white font-semibold'
-                      : 'text-[#64748B]'
+                      : 'text-[#94A3B8]'
                   }
                   aria-current={isLast ? 'page' : undefined}
                 >

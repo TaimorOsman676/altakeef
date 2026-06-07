@@ -6,7 +6,7 @@ export interface SEOData {
   keywords: string[];
 }
 
-export const siteUrl = 'https://altakeefsa.com';
+export const siteUrl = 'https://www.altakeefsa.com';
 
 export const seoData: Record<string, { ar: SEOData; en: SEOData }> = {
   home: {

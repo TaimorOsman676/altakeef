@@ -178,7 +178,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               </h1>
               
               {/* Meta information */}
-              <div className="flex flex-wrap items-center gap-6 pt-2 text-xs sm:text-sm text-[#64748B] font-bold border-b border-white/5 pb-6">
+              <div className="flex flex-wrap items-center gap-6 pt-2 text-xs sm:text-sm text-[#94A3B8] font-bold border-b border-white/5 pb-6">
                 <span className="flex items-center gap-1.5 text-[#94A3B8]">
                   <User className="h-4 w-4 text-[#00E5FF]" />
                   {author}
@@ -201,7 +201,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                 alt={isRTL ? `${title} - مقال ودليل فني من مؤسسة أعمال التكييف بالرياض والخرج` : `${title} - Technical guide from Al-Takeef HVAC in Riyadh & Al-Kharj`}
                 fill
                 className="object-cover"
-                sizes="(max-w-7xl) 100vw, 800px"
+                sizes="(max-width: 1280px) 100vw, 800px"
                 priority
               />
             </div>
@@ -322,7 +322,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                           <h3 className="text-xs font-bold text-[#94A3B8] group-hover:text-[#00E5FF] transition-colors line-clamp-2 leading-snug mb-1">
                             {rTitle}
                           </h3>
-                          <span className="text-[10px] text-[#64748B] font-semibold">
+                          <span className="text-[10px] text-[#94A3B8] font-semibold">
                             {rDate}
                           </span>
                         </div>

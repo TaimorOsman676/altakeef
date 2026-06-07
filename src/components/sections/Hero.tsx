@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -122,25 +122,45 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
+  // Only load background video on desktop viewports to optimize mobile LCP bandwidth
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth >= 1024) {
+      setShowVideo(true);
+    }
+  }, []);
+
   return (
     <>
       <section
         ref={ref}
         className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-28 pb-32 sm:pb-40"
       >
-        {/* Full Screen Video Background */}
+        {/* Full Screen Background: Video on Desktop, Premium Image on Mobile */}
         <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#0B1120]">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            aria-hidden="true"
-            tabIndex={-1}
-            className="absolute w-full h-full object-cover"
-          >
-            <source src="/hero-bg.mp4" type="video/mp4" />
-          </video>
+          {showVideo ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              aria-hidden="true"
+              tabIndex={-1}
+              className="absolute w-full h-full object-cover hidden lg:block"
+            >
+              <source src="/hero-bg.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              src="/images/hero-fallback.png"
+              alt="Al-Takeef HVAC systems villa background"
+              fill
+              priority
+              className="object-cover opacity-60"
+              sizes="100vw"
+            />
+          )}
           {/* Flat 30% Overlay for Readability and Styling */}
           <div className="absolute inset-0 bg-[#0B1120]/30"></div>
           <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay pointer-events-none"></div>

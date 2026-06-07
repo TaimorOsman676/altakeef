@@ -2790,6 +2790,10 @@ body {
   opacity: 0.5;
 }
 
+.opacity-60 {
+  opacity: 0.6;
+}
+
 .opacity-75 {
   opacity: 0.75;
 }
@@ -3743,6 +3747,10 @@ section {
 
   .lg\:ms-auto {
     margin-inline-start: auto;
+  }
+
+  .lg\:block {
+    display: block;
   }
 
   .lg\:flex {
