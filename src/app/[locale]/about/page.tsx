@@ -4,13 +4,11 @@ import { PageHeader } from '@/components/ui';
 import { StatsCounter, WhyChooseUs, CTABanner } from '@/components/sections';
 import { Target, Eye, ShieldCheck } from 'lucide-react';
 
+import { getMetadata } from '@/data/seo';
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
-  const t = await getTranslations({ locale: resolvedParams.locale, namespace: 'about' });
-  return {
-    title: `${t('title')} | Al-Takeef`,
-    description: t('subtitle'),
-  };
+  return getMetadata('about', resolvedParams.locale, '/about');
 }
 
 export default function AboutPage() {
@@ -29,7 +27,7 @@ export default function AboutPage() {
               <div className="bg-[#00E5FF] w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-[#00E5FF]/20">
                 <Target className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{t('mission')}</h3>
+              <h2 className="text-2xl font-bold text-white mb-4">{t('mission')}</h2>
               <p className="text-[#94A3B8] leading-relaxed">
                 {t('missionDesc')}
               </p>
@@ -40,7 +38,7 @@ export default function AboutPage() {
               <div className="bg-[#1E293B] w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-[#1E293B]/20">
                 <Eye className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{t('vision')}</h3>
+              <h2 className="text-2xl font-bold text-white mb-4">{t('vision')}</h2>
               <p className="text-[#94A3B8] leading-relaxed">
                 {t('visionDesc')}
               </p>
@@ -51,7 +49,7 @@ export default function AboutPage() {
               <div className="bg-[#D42B2B] w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-[#D42B2B]/20">
                 <ShieldCheck className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{t('values')}</h3>
+              <h2 className="text-2xl font-bold text-white mb-4">{t('values')}</h2>
               <p className="text-[#94A3B8] leading-relaxed">
                 {t('valuesDesc')}
               </p>

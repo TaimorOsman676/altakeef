@@ -128,7 +128,7 @@ export default function ServicesGrid() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {filtered.map((service, i) => (
-              <motion.div
+              <motion.article
                 key={service.id}
                 custom={i}
                 variants={cardVariants}
@@ -145,10 +145,10 @@ export default function ServicesGrid() {
                   <div className="relative w-full h-[70%] bg-[#0B1120] overflow-hidden shrink-0">
                     <Image 
                       src={service.image} 
-                      alt={locale === 'ar' ? service.nameAr : service.nameEn} 
+                      alt={locale === 'ar' ? `${service.nameAr} بالرياض والخرج - مؤسسة أعمال التكييف` : `${service.nameEn} in Riyadh & Al-Kharj - Al-Takeef`} 
                       fill 
                       className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" 
-                      sizes="(max-w-7xl) 100vw, 400px"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 300px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent z-10"></div>
                     
@@ -181,7 +181,7 @@ export default function ServicesGrid() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </motion.article>
             ))}
           </AnimatePresence>
         </div>

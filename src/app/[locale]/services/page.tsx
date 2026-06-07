@@ -3,13 +3,11 @@ import { getTranslations } from 'next-intl/server';
 import { PageHeader } from '@/components/ui';
 import { ServicesGrid, WhyChooseUs, CTABanner } from '@/components/sections';
 
+import { getMetadata } from '@/data/seo';
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
-  const t = await getTranslations({ locale: resolvedParams.locale, namespace: 'services' });
-  return {
-    title: `${t('title')} | Al-Takeef`,
-    description: t('subtitle'),
-  };
+  return getMetadata('services', resolvedParams.locale, '/services');
 }
 
 export default function ServicesPage() {

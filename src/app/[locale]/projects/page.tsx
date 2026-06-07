@@ -112,7 +112,9 @@ export default function ProjectsPage() {
       titleEn: 'Design & Planning',
       descAr: 'نقوم بحساب الأحمال الحرارية واختيار سعة التكييف ومواقع فتحات الهواء بدقة هندسية.',
       descEn: 'We calculate thermal loads and design custom air outlet distributions with engineering precision.',
-      image: '/images/projects/step_design_1779985607867.png'
+      image: '/images/projects/step_design_1779985607867.png',
+      altAr: 'دراسة وتصميم أنظمة التكييف المركزي والمخفي بالرياض',
+      altEn: 'Engineering design and planning of central and concealed AC systems in Riyadh'
     },
     {
       id: '02',
@@ -121,7 +123,9 @@ export default function ProjectsPage() {
       titleEn: 'Duct Manufacturing',
       descAr: 'تصنيع مجاري الهواء (الدكت) في ورشنا الخاصة باستخدام أحدث ماكينات القص والتشكيل.',
       descEn: 'We manufacture duct pieces in our specialized workshops utilizing advanced cutting CNC machinery.',
-      image: '/images/projects/step_manufacturing_1779985623333.png'
+      image: '/images/projects/step_manufacturing_1779985623333.png',
+      altAr: 'تصنيع مجاري هواء التكييف الدكت بالرياض والخرج',
+      altEn: 'HVAC duct manufacturing for central air systems in Riyadh and Al-Kharj'
     },
     {
       id: '03',
@@ -130,7 +134,9 @@ export default function ProjectsPage() {
       titleEn: 'Professional Installation',
       descAr: 'يقوم فنيونا بتركيب المكيفات، شبكة الدكت، أنابيب النحاس، والعوازل بأعلى مستويات الاحترافية.',
       descEn: 'Our technicians install AC equipment, copper pipes, insulation, and duct grids at highest standards.',
-      image: '/images/projects/step_installation_1779985636919.png'
+      image: '/images/projects/step_installation_1779985636919.png',
+      altAr: 'تركيب مكيفات دكت سبليت وتكييف مركزي بالرياض والخرج',
+      altEn: 'Concealed duct split and central air conditioning installation in Riyadh and Al-Kharj'
     },
     {
       id: '04',
@@ -139,7 +145,9 @@ export default function ProjectsPage() {
       titleEn: 'Testing & Commissioning',
       descAr: 'نقوم باختبار ضغط النحاس وموازنة تدفق الهواء (TAB) لضمان برودة مثالية خالية من الضجيج.',
       descEn: 'We conduct copper pressure testing, air balancing, and noise testing to ensure smooth cooling.',
-      image: '/images/projects/step_testing_1779985657104.png'
+      image: '/images/projects/step_testing_1779985657104.png',
+      altAr: 'اختبار تشغيل التكييف وموازنة تدفق الهواء بالرياض والخرج',
+      altEn: 'HVAC testing, commissioning, and air balancing services in Riyadh and Al-Kharj'
     }
   ], []);
 
@@ -175,9 +183,10 @@ export default function ProjectsPage() {
                 <div className="absolute inset-0 z-0">
                   <Image 
                     src={step.image} 
-                    alt={step.titleEn}
+                    alt={isRTL ? step.altAr : step.altEn}
                     fill
                     className="object-cover transition-all duration-700 opacity-30 group-hover:opacity-70 group-hover:scale-110"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 300px"
                   />
                   {/* Gradient overlay for readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent z-10" />
@@ -233,14 +242,14 @@ export default function ProjectsPage() {
                 <div className="flex gap-3">
                   <ShieldCheck className="h-6 w-6 text-[#00E5FF] flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-sm sm:text-base">{isRTL ? 'اختبار تسريب وضغط النيتروجين' : 'Nitrogen Leak Pressure Testing'}</h4>
+                    <h3 className="font-bold text-sm sm:text-base">{isRTL ? 'اختبار تسريب وضغط النيتروجين' : 'Nitrogen Leak Pressure Testing'}</h3>
                     <p className="text-xs sm:text-sm text-white/70">{isRTL ? 'نختبر أنابيب النحاس بضغط نيتروجين 450 PSI للتأكد من خلو المنظومة من التسريب تماماً.' : 'We pressure test copper pipes with 450 PSI Nitrogen to completely ensure leak-free operation.'}</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   <ShieldCheck className="h-6 w-6 text-[#00E5FF] flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-sm sm:text-base">{isRTL ? 'عزل مجاري الهواء بأفضل المواد' : 'Premium Duct Insulation'}</h4>
+                    <h3 className="font-bold text-sm sm:text-base">{isRTL ? 'عزل مجاري الهواء بأفضل المواد' : 'Premium Duct Insulation'}</h3>
                     <p className="text-xs sm:text-sm text-white/70">{isRTL ? 'نستخدم عوازل فايبرجلاس معتمدة بسماكة 1 بوصة وكثافة 24 كجم لمنع تكثف المياه أو فقد البرودة.' : 'We use certified 1-inch, 24kg density fiberglass insulation to prevent condensation and cooling loss.'}</p>
                   </div>
                 </div>
@@ -314,7 +323,7 @@ export default function ProjectsPage() {
                   alt={isRTL ? project.titleAr : project.titleEn}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-w-7xl) 100vw, 400px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 300px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent z-10" />
               </div>

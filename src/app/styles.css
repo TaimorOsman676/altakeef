@@ -2476,11 +2476,11 @@ body {
 }
 
 .font-arabic {
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ibm-plex-sans-arabic), sans-serif;
 }
 
 .font-english {
-  font-family: Inter, sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .font-mono {

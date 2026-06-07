@@ -47,17 +47,27 @@ export async function generateStaticParams() {
   return params;
 }
 
+import { getMetadata } from '@/data/seo';
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const resolvedParams = await params;
   const service = services.find(s => s.slug === resolvedParams.slug);
   if (!service) return { title: 'Service Not Found' };
   
   const isRTL = resolvedParams.locale === 'ar';
-  return {
-    title: `${isRTL ? service.nameAr : service.nameEn} | Al-Takeef`,
-    description: isRTL ? service.descriptionAr : service.descriptionEn,
-    keywords: isRTL ? service.keywords.ar.join(', ') : service.keywords.en.join(', '),
-  };
+  const fallbackTitle = `${isRTL ? service.nameAr : service.nameEn} | Al-Takeef`;
+  const fallbackDescription = isRTL ? service.descriptionAr : service.descriptionEn;
+  
+  return getMetadata(
+    service.slug,
+    resolvedParams.locale,
+    `/services/${service.slug}`,
+    {
+      title: fallbackTitle,
+      description: fallbackDescription.length > 155 ? fallbackDescription.substring(0, 151) + '...' : fallbackDescription,
+      image: service.image,
+    }
+  );
 }
 
 export default async function ServiceDetailsPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
@@ -99,10 +109,11 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
         <div className="absolute inset-0 z-0">
           <Image
             src={service.image}
-            alt={`${name} Background`}
+            alt={isRTL ? `خلفية هندسية لخدمة ${name} بالرياض والخرج` : `Engineering background of ${name} in Riyadh and Al-Kharj`}
             fill
             className="object-cover opacity-40 mix-blend-overlay"
             priority
+            sizes="100vw"
           />
           {/* Dark gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0B1120]/90 via-[#0B1120]/70 to-[#0B1120]"></div>
@@ -143,10 +154,10 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
               <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden bg-gradient-to-br from-[#1E293B]/10 to-[#00E5FF]/10 border border-white/10 flex items-center justify-center">
                 <Image
                   src={service.image}
-                  alt={name}
+                  alt={isRTL ? `تقديم خدمات ${name} الاحترافية بالرياض والخرج - مؤسسة أعمال التكييف` : `Professional ${name} services in Riyadh and Al-Kharj - Al-Takeef Contracting`}
                   fill
                   className="object-cover"
-                  sizes="(max-w-7xl) 100vw, 800px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 800px"
                   priority
                 />
               </div>
@@ -222,9 +233,9 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
             <div className="bg-[#1E293B] text-white rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
               
-              <h3 className="text-lg md:text-xl font-bold mb-3">
+              <h2 className="text-lg md:text-xl font-bold mb-3">
                 {isRTL ? 'طلب عرض سعر سريع' : 'Get a Quick Quote'}
-              </h3>
+              </h2>
               <p className="text-xs md:text-sm text-white/80 mb-6 leading-relaxed">
                 {isRTL 
                   ? 'هل ترغب في مناقشة تفاصيل مشروعك؟ تواصل معنا مباشرة عبر واتساب للحصول على استشارة وعرض سعر مجاني.'
@@ -267,9 +278,9 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
             {/* Other services sidebar list */}
             {relatedServices.length > 0 && (
               <div className="bg-[#111827] rounded-3xl p-6 shadow-sm border border-white/10">
-                <h3 className="text-base md:text-lg font-bold text-white mb-4">
+                <h2 className="text-base md:text-lg font-bold text-white mb-4">
                   {isRTL ? 'خدمات ذات صلة' : 'Related Services'}
-                </h3>
+                </h2>
                 <ul className="space-y-3">
                   {relatedServices.map((rService) => (
                     <li key={rService.id}>

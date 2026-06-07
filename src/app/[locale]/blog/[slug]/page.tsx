@@ -54,6 +54,8 @@ export async function generateStaticParams() {
   return params;
 }
 
+import { getMetadata } from '@/data/seo';
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const resolvedParams = await params;
   const { locale, slug } = resolvedParams;
@@ -74,13 +76,20 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!post) return { title: 'Post Not Found' };
   
   const isRTL = resolvedParams.locale === 'ar';
-  return {
-    title: `${isRTL ? post.titleAr : post.titleEn} | Al-Takeef Blog`,
-    description: isRTL ? post.summaryAr : post.summaryEn,
-    keywords: isRTL 
-      ? (post.keywordsAr ? post.keywordsAr.join(', ') : '') 
-      : (post.keywordsEn ? post.keywordsEn.join(', ') : ''),
-  };
+  const fallbackTitle = `${isRTL ? post.titleAr : post.titleEn} | Al-Takeef Blog`;
+  const fallbackDescription = isRTL ? post.summaryAr : post.summaryEn;
+  
+  return getMetadata(
+    slug,
+    resolvedParams.locale,
+    `/blog/${slug}`,
+    {
+      title: fallbackTitle,
+      description: fallbackDescription.length > 155 ? fallbackDescription.substring(0, 151) + '...' : fallbackDescription,
+      image: post.image,
+      type: 'article',
+    }
+  );
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
@@ -156,7 +165,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           
           {/* ---- LEFT COLUMN: Article Content (2 cols) ---- */}
-          <div className="lg:col-span-2 bg-[#111827] rounded-3xl overflow-hidden shadow-sm border border-white/10 p-6 md:p-10 space-y-8">
+          <article className="lg:col-span-2 bg-[#111827] rounded-3xl overflow-hidden shadow-sm border border-white/10 p-6 md:p-10 space-y-8">
             
             {/* Category badge & Title */}
             <div className="space-y-4">
@@ -189,7 +198,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             <div className="relative h-64 sm:h-96 w-full rounded-2xl overflow-hidden bg-[#0F172A]">
               <Image
                 src={post.image || '/images/blog-placeholder.png'}
-                alt={title}
+                alt={isRTL ? `${title} - مقال ودليل فني من مؤسسة أعمال التكييف بالرياض والخرج` : `${title} - Technical guide from Al-Takeef HVAC in Riyadh & Al-Kharj`}
                 fill
                 className="object-cover"
                 sizes="(max-w-7xl) 100vw, 800px"
@@ -204,7 +213,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
             {/* Rich Text HTML Content or PortableText Content */}
             {typeof content === 'string' ? (
-              <article 
+              <div 
                 className="prose prose-blue max-w-none text-[#94A3B8] leading-relaxed space-y-6 
                   prose-headings:text-white prose-headings:font-bold 
                   prose-h3:text-lg prose-h3:md:text-xl prose-h3:mt-8 prose-h3:mb-4
@@ -222,9 +231,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
             {/* Keyword tags */}
             <div className="pt-8 border-t border-gray-150">
-              <h4 className="text-xs font-bold text-white mb-3 uppercase tracking-wider">
+              <h2 className="text-xs font-bold text-white mb-3 uppercase tracking-wider">
                 {isRTL ? 'الكلمات المفتاحية للموضوع:' : 'SEO Keywords:'}
-              </h4>
+              </h2>
               <div className="flex flex-wrap gap-2">
                 {((isRTL ? post.keywordsAr : post.keywordsEn) || []).map((tag: string, idx: number) => (
                   <span 
@@ -237,7 +246,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               </div>
             </div>
 
-          </div>
+          </article>
 
           {/* ---- RIGHT COLUMN: Sidebar (1 col) ---- */}
           <div className="space-y-6 lg:sticky lg:top-24">
@@ -248,9 +257,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               
               <Bookmark className="h-8 w-8 text-[#00E5FF] mb-4" />
               
-              <h3 className="text-lg md:text-xl font-bold mb-3">
+              <h2 className="text-lg md:text-xl font-bold mb-3">
                 {isRTL ? 'هل لديك سؤال أو استفسار؟' : 'Have a Question?'}
-              </h3>
+              </h2>
               
               <p className="text-xs md:text-sm text-white/80 mb-6 leading-relaxed">
                 {isRTL
@@ -282,9 +291,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             {/* Related posts in sidebar */}
             {relatedPosts.length > 0 && (
               <div className="bg-[#111827] rounded-3xl p-6 shadow-sm border border-white/10">
-                <h3 className="text-base md:text-lg font-bold text-white mb-4">
+                <h2 className="text-base md:text-lg font-bold text-white mb-4">
                   {isRTL ? 'مقالات ذات صلة' : 'Related Articles'}
-                </h3>
+                </h2>
                 
                 <div className="space-y-4">
                   {relatedPosts.map((rPost) => {
@@ -301,7 +310,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                         <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-[#0B1120] flex-shrink-0">
                           <Image 
                             src={rPost.image || '/images/blog-placeholder.png'} 
-                            alt={rTitle}
+                            alt={isRTL ? `صورة المقال ذو الصلة: ${rTitle}` : `Related article thumbnail: ${rTitle}`}
                             fill
                             className="object-cover"
                             sizes="64px"
@@ -310,9 +319,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                         
                         {/* Title and date */}
                         <div className="flex flex-col justify-center min-w-0">
-                          <h4 className="text-xs font-bold text-[#94A3B8] group-hover:text-[#00E5FF] transition-colors line-clamp-2 leading-snug mb-1">
+                          <h3 className="text-xs font-bold text-[#94A3B8] group-hover:text-[#00E5FF] transition-colors line-clamp-2 leading-snug mb-1">
                             {rTitle}
-                          </h4>
+                          </h3>
                           <span className="text-[10px] text-[#64748B] font-semibold">
                             {rDate}
                           </span>

@@ -64,7 +64,8 @@ function FeatureCards() {
   ];
 
   return (
-    <div className="relative -mt-16 sm:-mt-24 z-20 w-full max-w-[90rem] mx-auto px-4 lg:px-8 mb-16">
+    <section className="relative -mt-16 sm:-mt-24 z-20 w-full max-w-[90rem] mx-auto px-4 lg:px-8 mb-16">
+      <h2 className="sr-only">{isRTL ? "مزايا وخدمات مؤسسة أعمال التكييف للمقاولات" : "Al-Takeef HVAC Contracting Key Advantages"}</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
         {features.map((f, idx) => {
           const Icon = f.icon;
@@ -81,10 +82,10 @@ function FeatureCards() {
               <div className="relative w-full h-[70%] bg-[#0B1120] overflow-hidden shrink-0">
                 <Image 
                   src={f.image} 
-                  alt={f.title} 
+                  alt={isRTL ? `${f.title} بالرياض والخرج - مؤسسة أعمال التكييف` : `${f.title} in Riyadh & Al-Kharj - Al-Takeef`} 
                   fill 
                   className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
-                  sizes="400px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 300px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent z-10"></div>
                 
@@ -98,14 +99,14 @@ function FeatureCards() {
 
               {/* Text Section (30% Height) */}
               <div className="p-5 flex flex-col flex-grow bg-[#111827] justify-center relative z-20">
-                <h4 className="text-base font-bold text-white mb-1 group-hover:text-[#00E5FF] transition-colors line-clamp-1">{f.title}</h4>
+                <h3 className="text-base font-bold text-white mb-1 group-hover:text-[#00E5FF] transition-colors line-clamp-1">{f.title}</h3>
                 <p className="text-xs text-[#94A3B8] leading-relaxed line-clamp-2">{f.desc}</p>
               </div>
             </motion.div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -134,9 +135,11 @@ export default function Hero() {
             loop
             muted
             playsInline
+            aria-hidden="true"
+            tabIndex={-1}
             className="absolute w-full h-full object-cover"
           >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-air-conditioner-blowing-air-4081-large.mp4" type="video/mp4" />
+            <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
           {/* Flat 30% Overlay for Readability and Styling */}
           <div className="absolute inset-0 bg-[#0B1120]/30"></div>

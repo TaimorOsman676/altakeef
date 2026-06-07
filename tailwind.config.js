@@ -19,8 +19,8 @@ module.exports = {
         'brand-card-hover': '#0F172A',
       },
       fontFamily: {
-        arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
-        english: ['Inter', 'sans-serif'],
+        arabic: ['var(--font-ibm-plex-sans-arabic)', 'sans-serif'],
+        english: ['var(--font-inter)', 'sans-serif'],
       }
     },
   },

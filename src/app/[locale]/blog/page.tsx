@@ -7,15 +7,11 @@ import { allPostsQuery } from '@/lib/sanity.queries';
 // Revalidate the blog index cache every hour automatically (ISR)
 export const revalidate = 3600;
 
+import { getMetadata } from '@/data/seo';
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
-  const isRTL = resolvedParams.locale === 'ar';
-  return {
-    title: isRTL ? 'المدونة وحلول التكييف | أعمال التكييف' : 'Blog & HVAC Solutions | Al-Takeef Est.',
-    description: isRTL 
-      ? 'مقالات متخصصة في صيانة وتصميم وتوريد أنظمة التكييف بالرياض والخرج. نصائح ترشيد فاتورة الكهرباء.' 
-      : 'Expert HVAC articles on central, VRF, split AC, and maintenance in Saudi Arabia. Energy saving tips.',
-  };
+  return getMetadata('blog', resolvedParams.locale, '/blog');
 }
 
 export default async function BlogPage() {

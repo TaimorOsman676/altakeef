@@ -191,5 +191,9 @@
   "blog": {
     "title": "HVAC Ideas & Solutions",
     "subtitle": "Your comprehensive guide and expert articles for AC tips, maintenance, and energy savings"
+  },
+  "whatsapp": {
+    "ariaLabel": "Chat on WhatsApp",
+    "tooltip": "Chat with us! 💬"
   }
 }

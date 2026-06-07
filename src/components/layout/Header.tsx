@@ -97,13 +97,13 @@ export default function Header() {
               {isRTL ? 'مرحباً بكم في مؤسسة أعمال التكييف للمقاولات' : 'Welcome to Al-Takeef Contracting Est.'}
             </span>
             <div className="hidden md:flex items-center gap-3 border-s border-white/20 ps-4">
-              <a href="#" className="hover:text-[#00E5FF] transition-colors">
+              <a href="#" className="hover:text-[#00E5FF] transition-colors" aria-label={isRTL ? "إنستغرام مؤسسة أعمال التكييف" : "Al-Takeef Instagram"}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
               </a>
-              <a href="#" className="hover:text-[#00E5FF] transition-colors">
+              <a href="#" className="hover:text-[#00E5FF] transition-colors" aria-label={isRTL ? "تويتر / إكس مؤسسة أعمال التكييف" : "Al-Takeef Twitter / X"}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
               </a>
-              <a href="#" className="hover:text-[#00E5FF] transition-colors">
+              <a href="#" className="hover:text-[#00E5FF] transition-colors" aria-label={isRTL ? "فيسبوك مؤسسة أعمال التكييف" : "Al-Takeef Facebook"}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
               </a>
             </div>
@@ -115,7 +115,7 @@ export default function Header() {
               <Mail className="h-3.5 w-3.5" />
               <span>info@altakeefsa.com</span>
             </a>
-            <a href="tel:+966552239595" className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
+            <a href="tel:+966552239595" className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors" aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}>
               <Phone className="h-3.5 w-3.5" />
               <span dir="ltr">0552239595</span>
             </a>
@@ -203,7 +203,7 @@ export default function Header() {
                               <span className="text-sm font-semibold text-white group-hover:text-[#00E5FF] transition-colors">
                                 {isRTL ? service.nameAr : service.nameEn}
                               </span>
-                              <span className="text-xs text-[#64748B] leading-relaxed line-clamp-2">
+                              <span className="text-xs text-[#94A3B8] leading-relaxed line-clamp-2">
                                 {isRTL ? service.descriptionAr : service.descriptionEn}
                               </span>
                             </Link>
@@ -237,6 +237,7 @@ export default function Header() {
             <a
               href="tel:+966552239595"
               className="hidden xl:inline-flex items-center gap-1.5 xl:gap-2 rounded-xl bg-[#00E5FF] px-2 xl:px-4 2xl:px-5 py-1.5 xl:py-2 2xl:py-2.5 text-[11px] xl:text-[13px] 2xl:text-sm font-bold text-white transition-all duration-300 hover:bg-[#2489ba] hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95"
+              aria-label={isRTL ? "اتصل بمؤسسة أعمال التكييف" : "Call Al-Takeef"}
             >
               <Phone className="h-3 w-3 xl:h-4 xl:w-4" />
               {tCommon('callNow')}
@@ -385,6 +386,7 @@ export default function Header() {
                   <a
                     href="tel:+966552239595"
                     className="flex items-center justify-center gap-2 rounded-xl bg-[#00E5FF] px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:bg-[#2489ba] active:scale-95"
+                    aria-label={isRTL ? "اتصل بمؤسسة أعمال التكييف" : "Call Al-Takeef"}
                   >
                     <Phone className="h-5 w-5" />
                     {tCommon('callNow')}
@@ -400,7 +402,7 @@ export default function Header() {
 
                 {/* Mobile utility info */}
                 <div className="mt-8 space-y-3 border-t border-white/10 pt-6 text-sm text-[#94A3B8]">
-                  <a href="tel:+966552239595" className="flex items-center gap-2">
+                  <a href="tel:+966552239595" className="flex items-center gap-2" aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}>
                     <Phone className="h-4 w-4" />
                     <span dir="ltr">0552239595</span>
                   </a>

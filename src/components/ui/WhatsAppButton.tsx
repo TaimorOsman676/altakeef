@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export default function WhatsAppButton() {
   const pathname = usePathname();
+  const t = useTranslations('whatsapp');
   const [isHovered, setIsHovered] = useState(false);
   const phoneNumber = '966552239595';
   const message = encodeURIComponent('مرحباً، أود الاستفسار عن خدمات التكييف');
@@ -24,7 +26,7 @@ export default function WhatsAppButton() {
         }`}
       >
         <div className="bg-white text-gray-800 text-sm font-semibold px-4 py-2.5 rounded-xl shadow-xl whitespace-nowrap">
-          Chat with us! 💬
+          {t('tooltip')}
         </div>
       </div>
 
@@ -36,7 +38,7 @@ export default function WhatsAppButton() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="relative group"
-        aria-label="Chat on WhatsApp"
+        aria-label={t('ariaLabel')}
       >
         {/* Ping animation ring */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />

@@ -65,7 +65,7 @@ export default function FeaturedProducts() {
             }
 
             return (
-              <div 
+              <article 
                 key={product.id} 
                 className="bg-[#0F172A] rounded-[5%_0%_5%_0%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-[380px] overflow-hidden relative"
               >
@@ -85,10 +85,10 @@ export default function FeaturedProducts() {
                   <div className="relative flex-grow w-full bg-[#1E293B]/60 flex items-center justify-center p-4">
                     <Image 
                       src={product.image} 
-                      alt={pName}
+                      alt={isRTL ? `${pName} بالرياض والخرج - مؤسسة أعمال التكييف` : `${pName} in Riyadh & Al-Kharj - Al-Takeef`}
                       fill
                       className="object-contain p-6 group-hover:scale-110 transition-transform duration-500 z-10 mix-blend-screen"
-                      sizes="(max-w: 768px) 50vw, 25vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 300px"
                     />
                   </div>
                 </div>
@@ -122,12 +122,13 @@ export default function FeaturedProducts() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#F59E0B] text-black py-2 rounded-xl font-black text-[10px] uppercase tracking-wider transition-colors shadow-lg"
+                      aria-label={isRTL ? `طلب تسعيرة لـ ${pName} عبر الواتساب` : `Request quote for ${pName} via WhatsApp`}
                     >
                       {isRTL ? 'طلب تسعيرة' : 'Request Quote'}
                     </a>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

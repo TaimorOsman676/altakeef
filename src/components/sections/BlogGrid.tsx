@@ -107,12 +107,12 @@ export default function BlogGrid({ posts }: BlogGridProps) {
       {/* FEATURED POST HERO                         */}
       {/* ========================================== */}
       {featuredPost && (
-        <div className="group bg-[#111827] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 grid grid-cols-1 lg:grid-cols-2 gap-0">
+        <article className="group bg-[#111827] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 grid grid-cols-1 lg:grid-cols-2 gap-0">
           {/* Cover image */}
           <div className="relative h-64 sm:h-80 lg:h-full min-h-[300px] bg-[#0B1120] overflow-hidden">
             <Image
               src={featuredPost.image}
-              alt={isRTL ? featuredPost.titleAr : featuredPost.titleEn}
+              alt={isRTL ? `${featuredPost.titleAr} - مدونة أعمال التكييف بالرياض` : `${featuredPost.titleEn} - Al-Takeef HVAC Blog Riyadh`}
               fill
               className="object-cover transition-transform duration-750 group-hover:scale-102"
               sizes="(max-w-7xl) 100vw, 600px"
@@ -157,84 +157,87 @@ export default function BlogGrid({ posts }: BlogGridProps) {
               </Link>
             </div>
           </div>
-        </div>
+        </article>
       )}
 
       {/* ========================================== */}
       {/* ARTICLE GRID                               */}
       {/* ========================================== */}
       {gridPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {gridPosts.map((post) => {
-            const pTitle = isRTL ? post.titleAr : post.titleEn;
-            const pSummary = isRTL ? post.summaryAr : post.summaryEn;
-            const pCategory = isRTL ? post.categoryAr : post.categoryEn;
-            const pDate = isRTL ? post.dateAr : post.date;
+        <div className="space-y-6">
+          <h2 className="sr-only">{isRTL ? "باقي مقالات التكييف وأدلة الصيانة" : "More AC Installation & Maintenance Articles"}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {gridPosts.map((post) => {
+              const pTitle = isRTL ? post.titleAr : post.titleEn;
+              const pSummary = isRTL ? post.summaryAr : post.summaryEn;
+              const pCategory = isRTL ? post.categoryAr : post.categoryEn;
+              const pDate = isRTL ? post.dateAr : post.date;
 
-            return (
-              <div 
-                key={post.id}
-                className="group bg-[#111827] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 flex flex-col h-full"
-              >
-                {/* Thumbnail */}
-                <div className="relative h-48 bg-[#0B1120] overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={pTitle}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-w-7xl) 100vw, 400px"
-                  />
-                  <span className="absolute top-4 left-4 bg-[#111827]/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-bold shadow-sm z-10">
-                    {pCategory}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-grow space-y-4">
-                  {/* Meta date / readtime */}
-                  <div className="flex items-center justify-between text-[11px] font-bold text-[#64748B]">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-3.5 w-3.5" />
-                      {pDate}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5" />
-                      {isRTL ? post.readTimeAr : post.readTimeEn}
+              return (
+                <article 
+                  key={post.id}
+                  className="group bg-[#111827] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-white/10 flex flex-col h-full"
+                >
+                  {/* Thumbnail */}
+                  <div className="relative h-48 bg-[#0B1120] overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={isRTL ? `${pTitle} - مقال من مدونة أعمال التكييف` : `${pTitle} - Al-Takeef HVAC blog post`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-w-7xl) 100vw, 400px"
+                    />
+                    <span className="absolute top-4 left-4 bg-[#111827]/90 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-[10px] font-bold shadow-sm z-10">
+                      {pCategory}
                     </span>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-white leading-snug line-clamp-2 group-hover:text-[#00E5FF] transition-colors">
-                    <Link href={`/blog/${post.slug}`}>
-                      {pTitle}
-                    </Link>
-                  </h3>
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow space-y-4">
+                    {/* Meta date / readtime */}
+                    <div className="flex items-center justify-between text-[11px] font-bold text-[#64748B]">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-3.5 w-3.5" />
+                        {pDate}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-3.5 w-3.5" />
+                        {isRTL ? post.readTimeAr : post.readTimeEn}
+                      </span>
+                    </div>
 
-                  {/* Summary */}
-                  <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed line-clamp-2">
-                    {pSummary}
-                  </p>
+                    {/* Title */}
+                    <h3 className="text-base sm:text-lg font-bold text-white leading-snug line-clamp-2 group-hover:text-[#00E5FF] transition-colors">
+                      <Link href={`/blog/${post.slug}`}>
+                        {pTitle}
+                      </Link>
+                    </h3>
 
-                  {/* Footer links */}
-                  <div className="pt-4 border-t border-white/5 flex items-center justify-between mt-auto">
-                    <span className="text-xs text-[#94A3B8] flex items-center gap-1.5 font-medium">
-                      <User className="h-3.5 w-3.5 text-[#00E5FF]" />
-                      {isRTL ? post.authorAr : post.authorEn}
-                    </span>
-                    
-                    <Link 
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#00E5FF] hover:gap-2 transition-all duration-300"
-                    >
-                      {isRTL ? 'تفاصيل' : 'Details'}
-                      <Arrow className="h-3.5 w-3.5" />
-                    </Link>
+                    {/* Summary */}
+                    <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed line-clamp-2">
+                      {pSummary}
+                    </p>
+
+                    {/* Footer links */}
+                    <div className="pt-4 border-t border-white/5 flex items-center justify-between mt-auto">
+                      <span className="text-xs text-[#94A3B8] flex items-center gap-1.5 font-medium">
+                        <User className="h-3.5 w-3.5 text-[#00E5FF]" />
+                        {isRTL ? post.authorAr : post.authorEn}
+                      </span>
+                      
+                      <Link 
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-1 text-xs font-bold text-[#00E5FF] hover:gap-2 transition-all duration-300"
+                      >
+                        {isRTL ? 'تفاصيل' : 'Details'}
+                        <Arrow className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                </article>
+              );
+            })}
+          </div>
         </div>
       ) : (
         <div className="bg-[#111827] rounded-3xl p-12 text-center border border-white/10 max-w-xl mx-auto">

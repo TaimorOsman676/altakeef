@@ -22,7 +22,7 @@ export default function Testimonials() {
         
         <div className="mt-16 flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar">
           {testimonials.map((review, index) => (
-            <motion.div
+            <motion.article
               key={review.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -32,8 +32,8 @@ export default function Testimonials() {
             >
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h4 className="font-bold text-lg text-white">{isRTL ? review.nameAr : review.nameEn}</h4>
-                  <div className="text-sm text-[#64748B] mt-1">{review.date}</div>
+                  <h3 className="font-bold text-lg text-white">{isRTL ? review.nameAr : review.nameEn}</h3>
+                  <div className="text-sm text-[#94A3B8] mt-1">{review.date}</div>
                 </div>
                 <div className="flex gap-1">
                   {[...Array(review.rating)].map((_, i) => (
@@ -53,7 +53,7 @@ export default function Testimonials() {
                 </svg>
                 <span className="text-sm font-medium text-[#94A3B8]">Google Review</span>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

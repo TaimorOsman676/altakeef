@@ -27,9 +27,9 @@ export default function BrandsSlider() {
   return (
     <section className="py-12 bg-[#111827] border-y border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <h3 className="text-center text-sm font-semibold text-gray-400 uppercase tracking-wider">
+        <h2 className="text-center text-sm font-semibold text-gray-400 uppercase tracking-wider">
           {locale === 'ar' ? 'شركاء النجاح والعلامات التجارية المعتمدة' : 'Our Partners & Authorized Brands'}
-        </h3>
+        </h2>
       </div>
       
       {/* Infinite slider container */}

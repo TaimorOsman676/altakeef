@@ -91,16 +91,18 @@ export default function Footer() {
 
             {/* Socials */}
             <div className="mt-6">
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-white/50">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-white/50">
                 {tCommon('followUs')}
-              </h4>
+              </h3>
               <div className="mt-3 flex items-center gap-3">
                 {SOCIALS.map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/70 transition-all hover:bg-[#00E5FF] hover:text-[#0B1120] hover:scale-110"
-                    aria-label={social.name}
+                    aria-label={isRTL ? `حساب مؤسسة أعمال التكييف على ${social.name}` : `Al-Takeef ${social.name} page`}
                   >
                     <social.Icon className="h-4 w-4" />
                   </a>
@@ -175,6 +177,7 @@ export default function Footer() {
                 <a
                   href="tel:+966552239595"
                   className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-[#00E5FF]"
+                  aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}
                 >
                   <Phone className="h-4 w-4 flex-shrink-0 text-[#00E5FF]" />
                   <span dir="ltr">+966 55 223 9595</span>
@@ -210,11 +213,12 @@ export default function Footer() {
               <div className="mt-2 transition-transform hover:scale-105">
                 <Image 
                   src="/images/vision2030.png"
-                  alt="Vision 2030"
+                  alt={isRTL ? "مؤسسة أعمال التكييف متوافقة مع رؤية المملكة العربية السعودية 2030" : "Al-Takeef HVAC aligned with Saudi Vision 2030"}
                   width={340}
                   height={170}
                   className="w-auto h-36 sm:h-40 object-contain"
                   style={{ filter: 'invert(1) brightness(2)', mixBlendMode: 'screen' }}
+                  sizes="(max-width: 768px) 150px, 340px"
                 />
               </div>
             </div>

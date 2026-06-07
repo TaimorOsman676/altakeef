@@ -6,21 +6,34 @@ import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import { IBM_Plex_Sans_Arabic, Inter } from 'next/font/google';
 import '../styles.css';
+
+const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-ibm-plex-sans-arabic',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-import { seoData } from '@/data/seo';
+import { getMetadata } from '@/data/seo';
+import { headers } from 'next/headers';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params;
-  const currentLocale = resolvedParams.locale === 'ar' ? 'ar' : 'en';
-  return {
-    title: seoData.home[currentLocale].title,
-    description: seoData.home[currentLocale].description,
-  };
+  const currentLocale = resolvedParams.locale === 'en' ? 'en' : 'ar';
+  return getMetadata('home', currentLocale, '/');
 }
 
 export default async function LocaleLayout({
@@ -39,14 +52,80 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  // Get current pathname from headers
+  const headersList = await headers();
+  const pathname = headersList.get('x-pathname') || '';
+  
+  // The homepage matches "", "/", "/ar", "/en", "/ar/", "/en/"
+  const isHomepage = !pathname || pathname === '/' || pathname === '/ar' || pathname === '/en' || pathname === '/ar/' || pathname === '/en/';
+
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
-      <body suppressHydrationWarning className={`font-sans antialiased text-white bg-[#111827] min-h-screen flex flex-col ${locale === 'ar' ? 'font-arabic' : 'font-english'}`}>
+        
+        {isHomepage && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "HVACBusiness",
+                "name": "مؤسسة أعمال التكييف | Al-Takeef Contracting Establishment",
+                "image": "https://altakeefsa.com/images/company_logo.png",
+                "url": "https://altakeefsa.com",
+                "telephone": "+966552239595",
+                "priceRange": "$$",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "حي البركة",
+                  "addressLocality": "الخرج",
+                  "addressRegion": "منطقة الرياض",
+                  "postalCode": "16245",
+                  "addressCountry": "SA"
+                },
+                "geo": [
+                  {
+                    "@type": "GeoCoordinates",
+                    "name": "Al-Kharj Head Office",
+                    "latitude": 24.1500,
+                    "longitude": 47.3000
+                  },
+                  {
+                    "@type": "GeoCoordinates",
+                    "name": "Riyadh Branch",
+                    "latitude": 24.7136,
+                    "longitude": 46.6753
+                  }
+                ],
+                "areaServed": [
+                  {
+                    "@type": "AdministrativeArea",
+                    "name": "Riyadh"
+                  },
+                  {
+                    "@type": "AdministrativeArea",
+                    "name": "Al-Kharj"
+                  }
+                ],
+                "openingHoursSpecification": [
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Saturday",
+                      "Sunday"
+                    ],
+                    "opens": "08:00",
+                    "closes": "18:00"
+                  }
+                ]
+              })
+            }}
+          />
+        )}
         <Script
           id="suppress-hydration-errors"
           strategy="beforeInteractive"
@@ -68,14 +147,16 @@ export default async function LocaleLayout({
             `
           }}
         />
+      </head>
+      <body suppressHydrationWarning className={`font-sans antialiased text-white bg-[#111827] min-h-screen flex flex-col ${ibmPlexSansArabic.variable} ${inter.variable} ${locale === 'ar' ? 'font-arabic' : 'font-english'}`}>
         {/* Google tag (gtag.js) */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=AW-18012327894"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

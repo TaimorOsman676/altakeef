@@ -33,7 +33,7 @@ export default function PageHeader({ titleKey, subtitleKey, namespace }: PageHea
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
           {t(titleKey)}
         </h1>
-        <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto leading-relaxed">
           {t(subtitleKey)}
         </p>
       </div>

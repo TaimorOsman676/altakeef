@@ -94,6 +94,7 @@ export default function ContactPage() {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           className="absolute inset-0"
+          title={isRTL ? "موقع مؤسسة أعمال التكييف للمقاولات على خريطة جوجل بالرياض" : "Al-Takeef Contracting Est. Location on Google Maps in Riyadh"}
         ></iframe>
       </section>
     </>

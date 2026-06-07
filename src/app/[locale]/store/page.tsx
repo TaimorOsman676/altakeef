@@ -91,6 +91,7 @@ export default function StorePage() {
       {/* TRUST / GUARANTEES SECTION                */}
       {/* ========================================== */}
       <section className="py-10 bg-[#111827] border-b border-white/10">
+        <h2 className="sr-only">{isRTL ? "خدمات وضمانات مؤسسة أعمال التكييف بالرياض والخرج" : "Al-Takeef HVAC services and warranties in Riyadh and Al-Kharj"}</h2>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
@@ -99,9 +100,9 @@ export default function StorePage() {
                 <Truck className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm md:text-base">
+                <h3 className="font-bold text-white text-sm md:text-base">
                   {isRTL ? 'توصيل سريع' : 'Fast Delivery'}
-                </h4>
+                </h3>
                 <p className="text-xs text-[#94A3B8]">
                   {isRTL ? 'توصيل للمنزل في الرياض والخرج' : 'Direct home delivery'}
                 </p>
@@ -113,9 +114,9 @@ export default function StorePage() {
                 <Wrench className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm md:text-base">
+                <h3 className="font-bold text-white text-sm md:text-base">
                   {isRTL ? 'تركيب احترافي' : 'Professional Install'}
-                </h4>
+                </h3>
                 <p className="text-xs text-[#94A3B8]">
                   {isRTL ? 'بأيدي مهندسين وفنيين مهرة' : 'By certified HVAC technicians'}
                 </p>
@@ -127,9 +128,9 @@ export default function StorePage() {
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm md:text-base">
+                <h3 className="font-bold text-white text-sm md:text-base">
                   {isRTL ? 'منتجات أصلية 100%' : '100% Genuine'}
-                </h4>
+                </h3>
                 <p className="text-xs text-[#94A3B8]">
                   {isRTL ? 'موزع معتمد لأفضل الماركات' : 'Authorized dealer for top brands'}
                 </p>
@@ -141,9 +142,9 @@ export default function StorePage() {
                 <BadgePercent className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm md:text-base">
+                <h3 className="font-bold text-white text-sm md:text-base">
                   {isRTL ? 'أسعار منافسة' : 'Competitive Prices'}
-                </h4>
+                </h3>
                 <p className="text-xs text-[#94A3B8]">
                   {isRTL ? 'أفضل قيمة وأعلى جودة تبريد' : 'Unbeatable value in Saudi Arabia'}
                 </p>
@@ -158,6 +159,7 @@ export default function StorePage() {
       {/* FILTER & PRODUCTS GRID                     */}
       {/* ========================================== */}
       <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="sr-only">{isRTL ? "مكيفات وأنظمة تكييف متوفرة بالرياض والخرج" : "AC Units and Cooling Systems Available in Riyadh and Al-Kharj"}</h2>
         
         {/* Controls Layout */}
         <div className="bg-[#111827] rounded-3xl p-6 shadow-sm border border-white/10 mb-10 space-y-6">
@@ -272,10 +274,10 @@ export default function StorePage() {
                     <div className="relative flex-grow w-full bg-[#1E293B]/60 flex items-center justify-center p-4">
                       <Image 
                         src={product.image} 
-                        alt={pName}
+                        alt={isRTL ? `${pName} بالرياض والخرج - مؤسسة أعمال التكييف` : `${pName} in Riyadh & Al-Kharj - Al-Takeef`}
                         fill
                         className="object-contain p-6 group-hover:scale-110 transition-transform duration-500 z-10 mix-blend-screen"
-                        sizes="(max-w: 768px) 50vw, 25vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 300px"
                       />
                     </div>
                   </div>
@@ -309,6 +311,7 @@ export default function StorePage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#F59E0B] text-black py-2 rounded-xl font-black text-[10px] uppercase tracking-wider transition-colors shadow-lg"
+                        aria-label={isRTL ? `احصل على تسعيرة لـ ${pName} عبر الواتساب` : `Get quotation for ${pName} via WhatsApp`}
                       >
                         {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
                       </a>

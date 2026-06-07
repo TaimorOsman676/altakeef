@@ -16,9 +16,24 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/ar/studio${subPath}`, request.url));
   }
 
-  return intlMiddleware(request);
+  // Mutate request headers to add current pathname
+  request.headers.set('x-pathname', pathname);
+
+  const response = intlMiddleware(request);
+
+  // Set x-pathname on the response headers as well
+  response.headers.set('x-pathname', pathname);
+
+  return response;
 }
 
 export const config = {
-  matcher: ["/", "/(ar|en)/:path*", "/studio", "/studio/:path*"],
+  // Match only internationalized pathnames, studio, and all un-localized pages
+  matcher: [
+    '/',
+    '/(ar|en)/:path*',
+    '/studio',
+    '/studio/:path*',
+    '/((?!api|_next|_vercel|.*\\..*).*)'
+  ]
 };
