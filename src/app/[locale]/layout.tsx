@@ -174,12 +174,12 @@ export default async function LocaleLayout({
         </noscript>
         {/* Google tag (gtag.js) */}
         <Script
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=AW-18012327894"
         />
         <Script
           id="google-analytics"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
