@@ -68,6 +68,23 @@ export default async function LocaleLayout({
             `
           }}
         />
+        {/* Google tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18012327894"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18012327894');
+            `
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-grow">
