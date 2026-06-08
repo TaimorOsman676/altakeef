@@ -77,26 +77,27 @@ export default function StorePage() {
   const getWhatsAppLink = (product: typeof products[0]) => {
     const waPhone = '966552239595';
     const pName = isRTL ? product.nameAr : product.nameEn;
-    const text = isRTL
-      ? `مرحباً أعمال التكييف، أود شراء المنتج التالي:\n- الاسم: ${pName}\n- الموديل: ${product.model}\n- السعر: ${product.price} ريال سعودي\nأرجو التواصل لتأكيد الطلب والتوصيل.`
-      : `Hello Al-Takeef, I would like to buy this product:\n- Name: ${pName}\n- Model: ${product.model}\n- Price: ${product.price} SAR\nPlease contact me to confirm order and installation.`;
+    if (isRTL) {
+      return `https://wa.me/${waPhone}?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D8%A5%D9%84%D8%AA%D9%83%D9%8A%D9%8A%D9%81%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%84%D9%85%D8%B4%D8%B1%D9%85%D8%B9%D9%8A.`;
+    }
+    const text = `Hello Al-Takeef, I would like to get a quote for the AC: ${pName} (Model: ${product.model})`;
     return `https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`;
   };
 
   return (
-    <div className="bg-[#0B1120]" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="bg-brand-dark" dir={isRTL ? 'rtl' : 'ltr'}>
       <PageHeader titleKey="title" subtitleKey="subtitle" namespace="store" />
 
       {/* ========================================== */}
       {/* TRUST / GUARANTEES SECTION                */}
       {/* ========================================== */}
-      <section className="py-10 bg-[#111827] border-b border-white/10">
+      <section className="py-10 bg-brand-dark-blue border-b border-white/10">
         <h2 className="sr-only">{isRTL ? "خدمات وضمانات مؤسسة أعمال التكييف بالرياض والخرج" : "Al-Takeef HVAC services and warranties in Riyadh and Al-Kharj"}</h2>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#0B1120]/40 border border-[#00E5FF]/10">
-              <div className="p-3 bg-[#00E5FF]/10 rounded-xl text-[#00E5FF]">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-brand-dark/40 border border-brand-blue/20">
+              <div className="p-3 bg-brand-blue/10 rounded-xl text-brand-blue">
                 <Truck className="h-6 w-6" />
               </div>
               <div>
@@ -109,8 +110,8 @@ export default function StorePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#0B1120]/40 border border-[#00E5FF]/10">
-              <div className="p-3 bg-[#00E5FF]/10 rounded-xl text-[#00E5FF]">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-brand-dark/40 border border-brand-blue/20">
+              <div className="p-3 bg-brand-blue/10 rounded-xl text-brand-blue">
                 <Wrench className="h-6 w-6" />
               </div>
               <div>
@@ -123,8 +124,8 @@ export default function StorePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#0B1120]/40 border border-[#00E5FF]/10">
-              <div className="p-3 bg-[#00E5FF]/10 rounded-xl text-[#00E5FF]">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-brand-dark/40 border border-brand-blue/20">
+              <div className="p-3 bg-brand-blue/10 rounded-xl text-brand-blue">
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <div>
@@ -137,8 +138,8 @@ export default function StorePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#0B1120]/40 border border-[#00E5FF]/10">
-              <div className="p-3 bg-[#00E5FF]/10 rounded-xl text-[#00E5FF]">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-brand-dark/40 border border-brand-blue/20">
+              <div className="p-3 bg-brand-blue/10 rounded-xl text-brand-blue">
                 <BadgePercent className="h-6 w-6" />
               </div>
               <div>
@@ -162,7 +163,7 @@ export default function StorePage() {
         <h2 className="sr-only">{isRTL ? "مكيفات وأنظمة تكييف متوفرة بالرياض والخرج" : "AC Units and Cooling Systems Available in Riyadh and Al-Kharj"}</h2>
         
         {/* Controls Layout */}
-        <div className="bg-[#111827] rounded-3xl p-6 shadow-sm border border-white/10 mb-10 space-y-6">
+        <div className="bg-brand-dark-blue rounded-3xl p-6 shadow-sm border border-white/10 mb-10 space-y-6">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
             
             {/* Search Input */}
@@ -172,7 +173,7 @@ export default function StorePage() {
                 placeholder={isRTL ? 'ابحث عن مكيف، ماركة، أو موديل...' : 'Search AC, brand, model...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#E0F2FE]/50 text-white pl-10 pr-10 py-3 rounded-2xl border border-white/10 focus:outline-none focus:border-[#00E5FF] focus:bg-white transition-all text-sm"
+                className="w-full bg-brand-dark text-white pl-10 pr-10 py-3 rounded-2xl border border-white/10 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all text-sm"
               />
               <Search className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-[#94A3B8]" />
             </div>
@@ -181,7 +182,7 @@ export default function StorePage() {
             <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-end">
               
               {/* Brand Filter */}
-              <div className="flex items-center gap-1.5 bg-[#E0F2FE]/30 px-3 py-1.5 rounded-xl border border-white/10">
+              <div className="flex items-center gap-1.5 bg-brand-dark/60 px-3 py-1.5 rounded-xl border border-white/10">
                 <span className="text-xs text-[#94A3B8] font-semibold">{isRTL ? 'الماركة:' : 'Brand:'}</span>
                 <select
                   value={selectedBrand}
@@ -189,7 +190,7 @@ export default function StorePage() {
                   className="bg-transparent text-xs font-bold text-white outline-none cursor-pointer"
                 >
                   {brands.map((b) => (
-                    <option key={b} value={b} className="bg-[#111827]">
+                    <option key={b} value={b} className="bg-brand-dark-blue">
                       {b === 'all' ? (isRTL ? 'الكل' : 'All') : b}
                     </option>
                   ))}
@@ -197,16 +198,16 @@ export default function StorePage() {
               </div>
 
               {/* Sort filter */}
-              <div className="flex items-center gap-1.5 bg-[#E0F2FE]/30 px-3 py-1.5 rounded-xl border border-white/10">
+              <div className="flex items-center gap-1.5 bg-brand-dark/60 px-3 py-1.5 rounded-xl border border-white/10">
                 <span className="text-xs text-[#94A3B8] font-semibold">{isRTL ? 'ترتيب حسب:' : 'Sort By:'}</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                   className="bg-transparent text-xs font-bold text-white outline-none cursor-pointer"
                 >
-                  <option value="featured" className="bg-[#111827]">{isRTL ? 'المميز' : 'Featured'}</option>
-                  <option value="price_asc" className="bg-[#111827]">{isRTL ? 'السعر: من الأقل للأعلى' : 'Price: Low to High'}</option>
-                  <option value="price_desc" className="bg-[#111827]">{isRTL ? 'السعر: من الأعلى للأقل' : 'Price: High to Low'}</option>
+                  <option value="featured" className="bg-brand-dark-blue">{isRTL ? 'المميز' : 'Featured'}</option>
+                  <option value="price_asc" className="bg-brand-dark-blue">{isRTL ? 'السعر: من الأقل للأعلى' : 'Price: Low to High'}</option>
+                  <option value="price_desc" className="bg-brand-dark-blue">{isRTL ? 'السعر: من الأعلى للأقل' : 'Price: High to Low'}</option>
                 </select>
               </div>
 
@@ -221,10 +222,10 @@ export default function StorePage() {
                 <button
                   key={cat.key}
                   onClick={() => setSelectedCategory(cat.key)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
                     isActive 
-                      ? 'bg-[#1E293B] text-white shadow-md' 
-                      : 'bg-[#0B1120]/60 text-[#94A3B8] hover:bg-[#0F172A] hover:text-white'
+                      ? 'bg-brand-card text-brand-blue border-brand-blue shadow-md' 
+                      : 'bg-brand-dark/60 text-[#94A3B8] hover:bg-brand-card hover:text-white border-transparent'
                   }`}
                 >
                   {isRTL ? cat.labelAr : cat.labelEn}
@@ -241,7 +242,7 @@ export default function StorePage() {
               const pName = isRTL ? product.nameAr : product.nameEn;
               
               // Determine category color
-              const headerColor = "bg-[#483248]";
+              const headerColor = "bg-brand-dark-blue";
 
               const needsQuote = 
                 product.category === 'concealed' || 
@@ -256,13 +257,13 @@ export default function StorePage() {
               return (
                 <div 
                   key={product.id} 
-                  className="bg-[#0F172A] rounded-[5%_0%_5%_0%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-[380px] overflow-hidden relative"
+                  className="bg-brand-card rounded-[5%_0%_5%_0%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/10 flex flex-col group h-[380px] overflow-hidden relative"
                 >
                   {/* Top Section (70% Height) */}
                   <div className="relative w-full h-[70%] flex flex-col overflow-hidden shrink-0">
                     {/* Colored Header Curve */}
                     <div className={`pt-4 pb-5 px-4 ${headerColor} flex flex-col items-center justify-center text-center relative z-20`}>
-                      <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/80 mb-0.5">
+                      <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-brand-blue/80 mb-0.5">
                         {isRTL ? categories.find(c => c.key === product.category)?.labelAr : categories.find(c => c.key === product.category)?.labelEn}
                       </span>
                       <h3 className="text-xs md:text-sm font-bold text-white line-clamp-1 leading-tight">
@@ -271,7 +272,7 @@ export default function StorePage() {
                     </div>
 
                     {/* Image Section */}
-                    <div className="relative flex-grow w-full bg-[#1E293B]/60 flex items-center justify-center p-4">
+                    <div className="relative flex-grow w-full bg-brand-dark/40 flex items-center justify-center p-4">
                       <Image 
                         src={product.image} 
                         alt={isRTL ? `${pName} بالرياض والخرج - مؤسسة أعمال التكييف` : `${pName} in Riyadh & Al-Kharj - Al-Takeef`}
@@ -283,11 +284,11 @@ export default function StorePage() {
                   </div>
 
                   {/* Details Section (30% Height) */}
-                  <div className="px-4 py-3 flex flex-col flex-grow bg-[#0F172A] justify-center relative z-20">
+                  <div className="px-4 py-3 flex flex-col flex-grow bg-brand-card justify-center relative z-20">
                     
                     {/* Price and Stars */}
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-bold text-[#00E5FF]">
+                      <span className="text-xs font-bold text-brand-blue">
                         {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
                       </span>
                       <div className="flex items-center gap-0.5 text-yellow-400 text-[10px]">
@@ -307,10 +308,10 @@ export default function StorePage() {
                     {/* Bottom Full Width Action Button */}
                     <div className="mt-auto">
                       <a 
-                        href={`https://wa.me/966552239595?text=${encodeURIComponent(isRTL ? `مرحباً، أود الحصول على تسعيرة للمكيف: ${pName}` : `Hello, I would like to get a quote for the AC: ${pName}`)}`}
+                        href={getWhatsAppLink(product)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#F59E0B] text-black py-2 rounded-xl font-black text-[10px] uppercase tracking-wider transition-colors shadow-lg"
+                        className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#FBBF24]/90 text-[#121212] py-2.5 rounded-xl font-black text-xs uppercase tracking-wider transition-colors shadow-lg active:scale-95 duration-150"
                         aria-label={isRTL ? `احصل على تسعيرة لـ ${pName} عبر الواتساب` : `Get quotation for ${pName} via WhatsApp`}
                       >
                         {isRTL ? 'احصل على تسعيرة' : 'Get Quotation'}
@@ -322,7 +323,7 @@ export default function StorePage() {
             })}
           </div>
         ) : (
-          <div className="bg-[#111827] rounded-3xl p-12 text-center border border-white/10 max-w-xl mx-auto">
+          <div className="bg-brand-dark-blue rounded-3xl p-12 text-center border border-white/10 max-w-xl mx-auto">
             <SlidersHorizontal className="h-12 w-12 text-[#94A3B8] mx-auto mb-4" />
             <h3 className="text-lg font-bold text-white mb-2">
               {isRTL ? 'لا توجد منتجات مطابقة' : 'No Products Found'}
@@ -338,7 +339,7 @@ export default function StorePage() {
                 setSelectedCategory('all');
                 setSelectedBrand('all');
               }}
-              className="px-5 py-2.5 rounded-xl bg-[#00E5FF] text-white font-bold text-xs hover:bg-[#2489ba] transition-all cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-brand-blue text-[#121212] font-black text-xs hover:bg-brand-blue/90 transition-all cursor-pointer shadow-lg active:scale-95 duration-150"
             >
               {isRTL ? 'إعادة ضبط التصفية' : 'Reset Filters'}
             </button>

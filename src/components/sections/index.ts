@@ -5,6 +5,7 @@ export { default as WhyChooseUs } from './WhyChooseUs';
 export { default as Testimonials } from './Testimonials';
 export { default as CTABanner } from './CTABanner';
 export { default as FAQAccordion } from './FAQAccordion';
-export { default as BrandsSlider } from './BrandsSlider';
+export { default as BrandsGrid } from './BrandsGrid';
 export { default as BlogGrid } from './BlogGrid';
 export { default as FeaturedProducts } from './FeaturedProducts';
+export { default as TrustStrip } from './TrustStrip';

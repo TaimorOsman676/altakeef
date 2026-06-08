@@ -6,14 +6,15 @@ import {
   Testimonials, 
   CTABanner, 
   FAQAccordion, 
-  BrandsSlider,
-  FeaturedProducts
+  FeaturedProducts,
+  TrustStrip
 } from '@/components/sections';
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <TrustStrip />
       <StatsCounter />
       <ServicesGrid />
       <WhyChooseUs />
@@ -21,7 +22,6 @@ export default function Home() {
       <Testimonials />
       <CTABanner />
       <FAQAccordion />
-      <BrandsSlider />
     </>
   );
 }

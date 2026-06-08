@@ -9,14 +9,14 @@ module.exports = {
     extend: {
       colors: {
         'brand-blue': '#00E5FF',
-        'brand-navy': '#1E293B',
+        'brand-navy': '#1E1E1E',
         'brand-red': '#D42B2B',
         'brand-ice': '#E0F2FE',
         'brand-silver': '#B8C4CE',
-        'brand-dark': '#060F1E',
-        'brand-dark-blue': '#0B1120',
-        'brand-card': '#111827',
-        'brand-card-hover': '#0F172A',
+        'brand-dark': '#121212',
+        'brand-dark-blue': '#181818',
+        'brand-card': '#1E1E1E',
+        'brand-card-hover': '#252525',
       },
       fontFamily: {
         arabic: ['var(--font-ibm-plex-sans-arabic)', 'sans-serif'],

@@ -19,14 +19,13 @@ export default function FeaturedProducts() {
   const getWhatsAppLink = (product: typeof products[0]) => {
     const waPhone = '966552239595';
     const pName = isRTL ? product.nameAr : product.nameEn;
-    const text = isRTL
-      ? `مرحباً أعمال التكييف، أود الاستفسار عن تسعيرة للمشروع التالي:\n- النظام: ${pName}\n- الموديل: ${product.model}\nأرجو التواصل معي.`
-      : `Hello Al-Takeef, I would like to request a quote for:\n- System: ${pName}\n- Model: ${product.model}\nPlease contact me.`;
-    return `https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`;
+    return isRTL
+      ? `https://wa.me/${waPhone}?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D8%A5%D9%84%D8%AA%D9%83%D9%8A%D9%8A%D9%81%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%84%D9%85%D8%B4%D8%B1%D9%85%D8%B9%D9%8A.`
+      : `https://wa.me/${waPhone}?text=${encodeURIComponent(`Hello Al-Takeef, I would like to get an instant quote and free design consultation for:\n- System: ${pName}\n- Model: ${product.model}\nPlease contact me.`)}`;
   };
 
   return (
-    <section className="py-20 bg-[#0B1120] relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+    <section className="py-20 bg-[#121212] relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-[#00E5FF]/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -45,7 +44,7 @@ export default function FeaturedProducts() {
           
           <Link 
             href="/store"
-            className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-[#00E5FF] hover:text-[#0B1120] transition-all"
+            className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-[#00E5FF] hover:text-[#121212] transition-all"
           >
             {isRTL ? 'تصفح المتجر بالكامل' : 'View Full Store'}
             {isRTL ? <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" /> : <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />}
@@ -67,7 +66,7 @@ export default function FeaturedProducts() {
             return (
               <article 
                 key={product.id} 
-                className="bg-[#0F172A] rounded-[5%_0%_5%_0%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-[380px] overflow-hidden relative"
+                className="bg-[#1E1E1E] rounded-[5%_0%_5%_0%] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/5 flex flex-col group h-[380px] overflow-hidden relative"
               >
                 {/* Top Section (70% Height) */}
                 <div className="relative w-full h-[70%] flex flex-col overflow-hidden shrink-0">
@@ -82,7 +81,7 @@ export default function FeaturedProducts() {
                   </div>
 
                   {/* Image Section */}
-                  <div className="relative flex-grow w-full bg-[#1E293B]/60 flex items-center justify-center p-4">
+                  <div className="relative flex-grow w-full bg-[#181818]/60 flex items-center justify-center p-4">
                     <Image 
                       src={product.image} 
                       alt={isRTL ? `${pName} بالرياض والخرج - مؤسسة أعمال التكييف` : `${pName} in Riyadh & Al-Kharj - Al-Takeef`}
@@ -94,7 +93,7 @@ export default function FeaturedProducts() {
                 </div>
 
                 {/* Details Section (30% Height) */}
-                <div className="px-4 py-3 flex flex-col flex-grow bg-[#0F172A] justify-center relative z-20">
+                <div className="px-4 py-3 flex flex-col flex-grow bg-[#1E1E1E] justify-center relative z-20">
                   
                   {/* Price and Stars */}
                   <div className="flex items-center justify-between mb-2">
@@ -121,10 +120,10 @@ export default function FeaturedProducts() {
                       href={getWhatsAppLink(product)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#F59E0B] text-black py-2 rounded-xl font-black text-[10px] uppercase tracking-wider transition-colors shadow-lg"
-                      aria-label={isRTL ? `طلب تسعيرة لـ ${pName} عبر الواتساب` : `Request quote for ${pName} via WhatsApp`}
+                      className="w-full flex items-center justify-center bg-[#FBBF24] hover:bg-[#FBBF24]/90 text-[#121212] py-2 rounded-xl font-black text-[10px] uppercase tracking-wider transition-colors shadow-lg"
+                      aria-label={isRTL ? `اتصل للحصول على تسعير فوري لـ ${pName} عبر الواتساب` : `Call for instant quote for ${pName} via WhatsApp`}
                     >
-                      {isRTL ? 'طلب تسعيرة' : 'Request Quote'}
+                      {isRTL ? 'اتصل للحصول على تسعير فوري' : 'Call for Instant Quote'}
                     </a>
                   </div>
                 </div>

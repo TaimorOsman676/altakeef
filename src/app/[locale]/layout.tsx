@@ -6,6 +6,7 @@ import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import MobileCTAOverlay from '@/components/layout/MobileCTAOverlay';
 import { IBM_Plex_Sans_Arabic, Inter } from 'next/font/google';
 import '../styles.css';
 
@@ -65,7 +66,7 @@ export default async function LocaleLayout({
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -174,12 +175,12 @@ export default async function LocaleLayout({
         </noscript>
         {/* Google tag (gtag.js) */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=AW-18012327894"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -196,6 +197,7 @@ export default async function LocaleLayout({
           </main>
           <Footer />
           <WhatsAppButton />
+          <MobileCTAOverlay />
         </NextIntlClientProvider>
       </body>
     </html>

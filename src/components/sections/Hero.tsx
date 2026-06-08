@@ -3,11 +3,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
-import { Phone, ArrowRight, ShieldCheck, Users, BadgeDollarSign } from 'lucide-react';
-import LeadForm from '@/components/ui/LeadForm';
-import { services } from '@/data/services';
+import { Phone, ShieldCheck, Users, BadgeDollarSign } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
 /*  Animation variants                                                 */
@@ -166,60 +163,79 @@ export default function Hero() {
           <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay pointer-events-none"></div>
 
           {/* Decorative Glowing Elements */}
-          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#00E5FF]/20 blur-[120px] animate-pulse pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#5B6BF9]/10 blur-[120px] animate-pulse pointer-events-none" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00E5FF]/10 rounded-full blur-[120px] pointer-events-none"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         </div>
 
-        {/* 2-Column Content */}
+        {/* Center-aligned typographic content */}
         <motion.div
           className="relative z-10 w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto gap-6 sm:gap-8">
             
-            {/* Left Column: Text & Buttons */}
-            <div className={`flex flex-col gap-5 lg:gap-8 ${isRTL ? 'lg:pl-12' : 'lg:pr-12'} text-center lg:text-start`}>
-              <motion.div variants={slideUp} className="flex flex-col gap-3 lg:gap-4">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
-                  {isRTL ? 'شريكك الموثوق' : 'Your Trusted Partner'} <br className="hidden sm:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00B4D8]">
-                    {isRTL ? 'للتميز في التكييف' : 'for HVAC Excellence'}
-                  </span>
-                </h1>
-                <h2 className="text-lg sm:text-xl font-bold text-white/90">
-                  {isRTL ? 'خبراء التكييف الموثوق بهم' : 'Your Trusted HVAC Experts'}
-                </h2>
-                <p className="text-sm sm:text-base text-[#94A3B8] max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                  {t('subtitle')}
-                </p>
-              </motion.div>
+            <motion.div variants={slideUp} className="flex flex-col gap-4 sm:gap-5">
+              {/* Main H1 Headline */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight drop-shadow-lg">
+                {isRTL 
+                  ? 'شريكك الموثوق في تصميم وتوريد أنظمة التكييف المركزي وHVAC' 
+                  : 'Your Trusted Partner in Design & Supply of Central AC and HVAC Systems'}
+              </h1>
+              
+              {/* H2 Sub-headline */}
+              <p className="text-base sm:text-lg md:text-xl text-[#94A3B8] leading-relaxed max-w-3xl mx-auto">
+                {isRTL 
+                  ? 'نقدم حلولاً متكاملة للمشاريع السكنية والتجارية: تكييف مركزي، دكت سبليت، أنظمة VRF، صيانة وعقود سنوية بأعلى معايير الجودة في الرياض والخرج.'
+                  : 'We provide integrated solutions for residential and commercial projects: Central AC, Concealed Split, VRF systems, maintenance, and annual contracts with the highest quality standards in Riyadh and Al-Kharj.'}
+              </p>
 
-              <motion.div variants={slideUp} className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 lg:gap-4 mt-2 w-full sm:w-auto">
-                <Link
-                  href="/services"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#00E5FF] px-6 py-3.5 sm:px-8 text-sm font-bold text-[#0B1120] transition-all hover:bg-[#2489ba] hover:text-white hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95"
+              {/* Saudi SCE & SBC Trust Badges */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-4 text-xs sm:text-sm md:text-base font-bold text-emerald-400">
+                <span className="flex items-center gap-1.5 bg-emerald-950/40 border border-emerald-500/20 px-3 py-1.5 rounded-lg">
+                  {isRTL ? '✓ جميع مهندسينا معتمدون من الهيئة السعودية للمهندسين' : '✓ All our engineers are certified by Saudi Council of Engineers'}
+                </span>
+                <span className="flex items-center gap-1.5 bg-emerald-950/40 border border-emerald-500/20 px-3 py-1.5 rounded-lg">
+                  {isRTL ? '✓ تنفيذ كامل مطابق لمواصفات كود البناء السعودي (SBC)' : '✓ Full implementation matching the Saudi Building Code (SBC)'}
+                </span>
+              </div>
+            </motion.div>
+
+            {/* CRO High-Intent CTAs */}
+            <motion.div 
+              variants={slideUp} 
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full sm:w-auto"
+            >
+              {/* Primary Call Button (Amber) */}
+              <a
+                href="tel:+966552239595"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#FBBF24] text-[#121212] hover:bg-[#FBBF24]/90 px-8 py-4 text-base font-black transition-all hover:shadow-xl hover:shadow-amber-500/35 hover:-translate-y-0.5 active:scale-95 duration-200"
+              >
+                <Phone className="h-5 w-5 fill-current" />
+                {isRTL ? 'اتصل بمشرف المشاريع الآن' : 'Call Project Supervisor Now'}
+              </a>
+
+              {/* Secondary WhatsApp Button (Glass/Green style) */}
+              <a
+                href={isRTL ? 'https://wa.me/966552239595?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D8%A5%D9%84%D8%AA%D9%83%D9%8A%D9%8A%D9%81%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%84%D9%85%D8%B4%D8%B1%D9%85%D8%B9%D9%8A.' : `https://wa.me/966552239595?text=${encodeURIComponent('Hello, I would like to request a free consultation for my HVAC project.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#25D366] text-white hover:bg-[#25D366]/90 px-8 py-4 text-base font-black transition-all hover:-translate-y-0.5 active:scale-95 duration-200"
+              >
+                {/* WhatsApp SVG Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-5 h-5 shrink-0"
                 >
-                  {isRTL ? 'خدماتنا' : 'OUR SERVICES'}
-                </Link>
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/5 backdrop-blur-sm px-6 py-3.5 sm:px-8 text-sm font-bold text-white transition-all hover:bg-white/10 hover:border-white/40 active:scale-95"
-                >
-                  {isRTL ? 'احصل على عرض سعر مجاني' : 'GET A FREE ESTIMATE'}
-                  <ArrowRight className={`h-4 w-4 ${isRTL ? 'rotate-180' : ''}`} />
-                </Link>
-              </motion.div>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                {isRTL ? 'تواصل واتساب للاستشارة المجانية' : 'WhatsApp Free Consultation'}
+              </a>
+            </motion.div>
 
-
-            </div>
-
-            {/* Right Column: Floating Form */}
-            <div className="w-full">
-              <LeadForm className="lg:ms-auto" />
-            </div>
-            
           </div>
         </motion.div>
       </section>

@@ -5,16 +5,16 @@
 @layer base {
   :root {
     --color-brand-blue: #00E5FF;
-    --color-brand-navy: #0B1120;
+    --color-brand-navy: #1E1E1E;
     --color-brand-red: #D42B2B;
-    --color-brand-ice: #111827;
+    --color-brand-ice: #181818;
     --color-brand-silver: #94A3B8;
   }
 
   body {
-    background-color: #060F1E;
-    color: #F1F5F9;
-    background-image: radial-gradient(circle at 50% -20%, #0F172A 0%, #060F1E 70%);
+    background-color: #121212;
+    color: #F8FAFC;
+    background-image: radial-gradient(circle at 50% -20%, #1A1A1A 0%, #121212 70%);
     background-attachment: fixed;
   }
 }
@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 .grid-cols-2 .bg-\[\#111827\],
 .grid-cols-3 .bg-\[\#111827\],
 .grid-cols-4 .bg-\[\#111827\] {
-  background-color: #111827;
+  background-color: #1E1E1E;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,25 +65,26 @@ h1, h2, h3, h4, h5, h6 {
 .grid-cols-3 .bg-\[\#111827\]:hover,
 .grid-cols-4 .bg-\[\#111827\]:hover {
   transform: translateY(-4px);
-  border-color: rgba(43, 158, 212, 0.4);
-  box-shadow: 0 10px 30px -10px rgba(43, 158, 212, 0.15);
+  background-color: #252525;
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(251, 191, 36, 0.15);
 }
 
 /* Custom Input / Search Select styling */
 input, select, textarea {
-  background-color: #0B1120 !important;
+  background-color: #181818 !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: #FFFFFF !important;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #00E5FF !important;
-  box-shadow: 0 0 0 2px rgba(43, 158, 212, 0.2) !important;
+  border-color: #FBBF24 !important;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2) !important;
 }
 
 /* FAQ/Accordin Overrides */
 .faq-accordion-item, .accordion-header {
-  background-color: #111827 !important;
+  background-color: #1E1E1E !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
 
@@ -113,16 +114,16 @@ input:focus, select:focus, textarea:focus {
 }
 
 ::-webkit-scrollbar-track {
-  background: #060F1E;
+  background: #121212;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0F172A;
+  background: #1E1E1E;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00E5FF;
+  background: #FBBF24;
 }
 
 /* Section specific styling for luxury */
@@ -132,7 +133,7 @@ section {
 
 /* Glassmorphism utility */
 .glassmorphism {
-  background: rgba(13, 30, 54, 0.7) !important;
+  background: rgba(24, 24, 24, 0.7) !important;
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
