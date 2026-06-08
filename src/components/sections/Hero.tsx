@@ -132,7 +132,7 @@ export default function Hero() {
     <>
       <section
         ref={ref}
-        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-28 pb-32 sm:pb-40"
+        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-28 pb-32 sm:pb-40 group"
       >
         {/* Full Screen Background: Video on Desktop, Premium Image on Mobile */}
         <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#0B1120]">
@@ -144,7 +144,7 @@ export default function Hero() {
               playsInline
               aria-hidden="true"
               tabIndex={-1}
-              className="absolute w-full h-full object-cover hidden lg:block"
+              className="absolute w-full h-full object-cover hidden lg:block opacity-40 group-hover:opacity-70 transition-opacity duration-700"
             >
               <source src="/hero-bg.mp4" type="video/mp4" />
             </video>
@@ -154,7 +154,7 @@ export default function Hero() {
               alt="Al-Takeef HVAC systems villa background"
               fill
               priority
-              className="object-cover opacity-60"
+              className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-700"
               sizes="100vw"
             />
           )}
