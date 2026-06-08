@@ -178,7 +178,7 @@ export default function Hero() {
             
             <motion.div variants={slideUp} className="flex flex-col gap-4 sm:gap-5">
               {/* Main H1 Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-normal tracking-tight drop-shadow-lg">
                 {isRTL 
                   ? 'شريكك الموثوق في تصميم وتوريد أنظمة التكييف المركزي وHVAC' 
                   : 'Your Trusted Partner in Design & Supply of Central AC and HVAC Systems'}
