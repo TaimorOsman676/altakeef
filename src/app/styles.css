@@ -3771,6 +3771,10 @@ section {
     height: 10rem;
   }
 
+  .sm\:h-5 {
+    height: 1.25rem;
+  }
+
   .sm\:h-80 {
     height: 20rem;
   }
@@ -3781,6 +3785,10 @@ section {
 
   .sm\:h-\[200px\] {
     height: 200px;
+  }
+
+  .sm\:w-5 {
+    width: 1.25rem;
   }
 
   .sm\:w-\[130px\] {
