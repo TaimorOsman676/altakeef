@@ -142,7 +142,7 @@ export default function Hero() {
             alt="Al-Takeef HVAC systems villa background"
             fill
             priority
-            className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-700"
+            className="object-cover opacity-30 group-hover:opacity-60 transition-opacity duration-700"
             sizes="100vw"
           />
 
@@ -154,13 +154,13 @@ export default function Hero() {
               playsInline
               aria-hidden="true"
               tabIndex={-1}
-              className="absolute w-full h-full object-cover hidden lg:block opacity-40 group-hover:opacity-70 transition-opacity duration-700"
+              className="absolute w-full h-full object-cover hidden lg:block opacity-30 group-hover:opacity-60 transition-opacity duration-700"
             >
               <source src="/hero-bg.mp4" type="video/mp4" />
             </video>
           )}
-          {/* Flat 30% Overlay for Readability and Styling */}
-          <div className="absolute inset-0 bg-[#0B1120]/30"></div>
+          {/* Flat 70% Overlay for Readability and Styling */}
+          <div className="absolute inset-0 bg-[#0B1120]/70"></div>
           <div className="absolute inset-0 bg-[#00E5FF]/5 mix-blend-overlay pointer-events-none"></div>
 
           {/* Decorative Glowing Elements */}
