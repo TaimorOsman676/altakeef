@@ -136,7 +136,17 @@ export default function Hero() {
       >
         {/* Full Screen Background: Video on Desktop, Premium Image on Mobile */}
         <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#0B1120]">
-          {showVideo ? (
+          {/* Background Image: Always rendered as base/fallback layer */}
+          <Image
+            src="/images/hero-fallback.png"
+            alt="Al-Takeef HVAC systems villa background"
+            fill
+            priority
+            className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-700"
+            sizes="100vw"
+          />
+
+          {showVideo && (
             <video
               autoPlay
               loop
@@ -148,15 +158,6 @@ export default function Hero() {
             >
               <source src="/hero-bg.mp4" type="video/mp4" />
             </video>
-          ) : (
-            <Image
-              src="/images/hero-fallback.png"
-              alt="Al-Takeef HVAC systems villa background"
-              fill
-              priority
-              className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-700"
-              sizes="100vw"
-            />
           )}
           {/* Flat 30% Overlay for Readability and Styling */}
           <div className="absolute inset-0 bg-[#0B1120]/30"></div>
