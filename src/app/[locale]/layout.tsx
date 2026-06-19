@@ -176,7 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Google tag (gtag.js) */}
         <Script
           strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18010504865"
+          src="https://www.googletagmanager.com/gtag/js?id=G-KBPQPH631G"
         />
         <Script
           id="google-analytics"
@@ -186,6 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
+              gtag('config', 'G-KBPQPH631G');
               gtag('config', 'AW-18010504865');
               gtag('config', 'AW-18012327894');
             `
