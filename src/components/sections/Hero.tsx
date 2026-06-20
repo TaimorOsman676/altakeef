@@ -40,22 +40,22 @@ function FeatureCards() {
     {
       id: 1,
       icon: Users,
-      title: isRTL ? 'تركيب تكييف احترافي' : 'Expert HVAC Installation',
-      desc: isRTL ? 'تصميم وتركيب دقيق لأنظمة التكييف المركزي، VRF، والمخفي للفيلات والمجمعات.' : 'Precision design and installation of Central AC, VRF, and Concealed systems for villas and complexes.',
+      title: isRTL ? 'تصميم وتركيب التكييف المركزي' : 'Commercial Central AC',
+      desc: isRTL ? 'تصميم وتنفيذ أنظمة التكييف المركزي وVRF للمجمعات والأبراج التجارية والمنشآت الصناعية.' : 'Precision design and installation of Central AC and VRF systems for commercial buildings.',
       image: '/images/projects/real_residential_ac_1779986080889.png',
     },
     {
       id: 2,
       icon: ShieldCheck,
-      title: isRTL ? 'جودة معتمدة ومطابقة لساسو' : 'Certified Quality & SASO Units',
-      desc: isRTL ? 'موزع معتمد لأكبر العلامات التجارية العالمية (توشيبا، ميديا، جري) مع ضمان كامل.' : 'Authorized distributor of top global brands (Toshiba, Midea, Gree) with full factory warranty.',
+      title: isRTL ? 'مقاول معتمد ومطابق للمواصفات SASO' : 'Certified Quality & SASO Units',
+      desc: isRTL ? 'توريد مباشر من أكبر العلامات العالمية بضمان المصنع ومطابقة المواصفات السعودية القياسية.' : 'Authorized supplier of top global brands fully compliant with Saudi SASO engineering standards.',
       image: '/images/projects/real_commercial_ac_1779986043958.png',
     },
     {
       id: 3,
       icon: BadgeDollarSign,
-      title: isRTL ? 'صيانة وعقود سنوية 24/7' : '24/7 HVAC Maintenance & AMC',
-      desc: isRTL ? 'عقود صيانة سنوية موثوقة وخدمات إصلاح طارئة للحفاظ على كفاءة التبريد في الصيف.' : 'Reliable annual maintenance contracts and emergency repair services to keep your cooling running.',
+      title: isRTL ? 'دكت تكييف وشيلر للمشاريع الضخمة' : 'Chillers & Duct Fabrication',
+      desc: isRTL ? 'تفصيل وتمديد مجاري الهواء المجلفنة وتركيب محطات الشيلر للمستشفيات والمراكز التجارية.' : 'High-capacity chiller plant installation and galvanized duct fabrication for large-scale facilities.',
       image: '/images/projects/professional_ac_maintenance_1779926297502.png',
     }
   ];
@@ -181,15 +181,15 @@ export default function Hero() {
               {/* Main H1 Headline */}
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-normal tracking-tight drop-shadow-lg">
                 {isRTL 
-                  ? 'شريكك الموثوق في تصميم وتوريد أنظمة التكييف المركزي وHVAC' 
-                  : 'Your Trusted Partner in Design & Supply of Central AC and HVAC Systems'}
+                  ? 'مقاول تكييف مركزي معتمد للمشاريع التجارية والصناعية بالرياض' 
+                  : 'Certified Commercial HVAC Contractor for Industrial & Project-Scale Installations in Riyadh'}
               </h1>
               
               {/* H2 Sub-headline */}
               <p className="text-base sm:text-lg md:text-xl text-[#94A3B8] leading-relaxed max-w-3xl mx-auto">
                 {isRTL 
-                  ? 'نقدم حلولاً متكاملة للمشاريع السكنية والتجارية: تكييف مركزي، دكت سبليت، أنظمة VRF، صيانة وعقود سنوية بأعلى معايير الجودة في الرياض والخرج.'
-                  : 'We provide integrated solutions for residential and commercial projects: Central AC, Concealed Split, VRF systems, maintenance, and annual contracts with the highest quality standards in Riyadh and Al-Kharj.'}
+                  ? 'نتخصص في توريد وتركيب أنظمة التكييف المركزي وVRF والشيلر للمجمعات التجارية والمستشفيات والأبراج الكبرى. نطاق خدماتنا: المشاريع الكبيرة فقط.'
+                  : 'Specialists in supply and installation of Central AC, VRF, and Chiller systems for commercial complexes, hospitals, and major towers. We serve large-scale projects only.'}
               </p>
 
               {/* Saudi SCE & SBC Trust Badges */}

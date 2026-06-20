@@ -64,7 +64,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
         <meta
-          http-equiv="Content-Security-Policy"
+          httpEquiv="Content-Security-Policy"
           content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://api.web3forms.com https://*.api.sanity.io https://*.apicdn.sanity.io; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com https://cdn.salla.sa https://cdn.files.salla.network https://cdn.sanity.io; style-src 'self' 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self' https://www.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
         />
         {/* Google Tag Manager */}
@@ -141,6 +141,92 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }}
           />
         )}
+        {/* Enterprise Multi-Entity JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "HVACBusiness",
+                  "@id": "https://www.altakeefsa.com/ar/#corporate-identity",
+                  "name": "أعمال التكييف للتوريد والتركيب",
+                  "alternateName": "Aamal Al-Takeef Commercial HVAC Contracting",
+                  "url": "https://www.altakeefsa.com/ar",
+                  "logo": "https://www.altakeefsa.com/images/company_logo.png",
+                  "image": "https://www.altakeefsa.com/images/hero-fallback.png",
+                  "telephone": "+966552239595",
+                  "priceRange": "$$$",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "حي البركة",
+                    "addressLocality": "الخرج",
+                    "addressRegion": "منطقة الرياض",
+                    "postalCode": "16245",
+                    "addressCountry": "SA"
+                  },
+                  "geo": [
+                    { "@type": "GeoCoordinates", "name": "Al-Kharj Head Office", "latitude": 24.1500, "longitude": 47.3000 },
+                    { "@type": "GeoCoordinates", "name": "Riyadh Branch", "latitude": 24.7136, "longitude": 46.6753 }
+                  ],
+                  "areaServed": [
+                    { "@type": "AdministrativeArea", "name": "الرياض" },
+                    { "@type": "AdministrativeArea", "name": "جدة" },
+                    { "@type": "AdministrativeArea", "name": "الدمام" },
+                    { "@type": "AdministrativeArea", "name": "الخرج" }
+                  ],
+                  "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Saturday"],
+                    "opens": "08:00",
+                    "closes": "18:00"
+                  },
+                  "sameAs": [
+                    "https://www.altakeefsa.com"
+                  ]
+                },
+                {
+                  "@type": "Service",
+                  "@id": "https://www.altakeefsa.com/ar/#central-ac-service",
+                  "serviceType": "HVAC Supply and Installation",
+                  "provider": { "@id": "https://www.altakeefsa.com/ar/#corporate-identity" },
+                  "areaServed": { "@type": "AdministrativeArea", "name": "منطقة الرياض" },
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "خدمات التكييف المركزي للمشاريع",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "توريد وتركيب التكييف المركزي للمباني",
+                          "description": "تصميم هندسي متكامل، حساب الأحمال الحرارية وتوريد أنظمة تكييف المنشآت الضخمة والمجمعات والأبراج التجارية."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "تنفيذ أنظمة VRF للمشاريع التجارية",
+                          "description": "تصميم وتركيب أنظمة التدفق المتغير عالية الكفاءة للمراكز التجارية والمستشفيات والأبراج."
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "تفصيل وتمديد دكت التكييف (Duct Fabrication)",
+                          "description": "تصنيع وتركيب مجاري الهواء المجلفنة بأعلى معايير العزل الحراري والصوتي للمشاريع الإنشائية."
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            })
+          }}
+        />
         <Script
           id="suppress-hydration-errors"
           strategy="beforeInteractive"

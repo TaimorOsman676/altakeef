@@ -1,11 +1,21 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Button } from '@/components/ui';
 import { motion } from 'framer-motion';
 
 export default function CTABanner() {
   const t = useTranslations('cta');
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
+  const title = isRTL 
+    ? 'أعمال التكييف للمشاريع الهندسية الكبرى — اطلب كوتيشن'
+    : 'Commercial HVAC Engineering Contracts — Request a Quotation';
+
+  const subtitle = isRTL
+    ? 'نتخصص في توريد وتركيب أنظمة التكييف للمشاريع التجارية والصناعية فقط. لا نقدم خدمات الصيانة أو التنظيف المنزلي.'
+    : 'We specialize exclusively in supply and installation of HVAC systems for commercial and industrial projects. We do not offer residential repair or maintenance services.';
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-[#0F172A] to-[#1E3A8A] border-y border-white/5 relative overflow-hidden">
@@ -23,10 +33,10 @@ export default function CTABanner() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            {t('title')}
+            {title}
           </h2>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            {t('subtitle')}
+            {subtitle}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

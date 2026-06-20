@@ -11,182 +11,182 @@ export const siteUrl = 'https://www.altakeefsa.com';
 export const seoData: Record<string, { ar: SEOData; en: SEOData }> = {
   home: {
     ar: {
-      title: "مؤسسة أعمال التكييف | تكييف مركزي بالرياض والخرج",
-      description: "شركة تكييف مركزي بالرياض والخرج. توريد وتركيب وصيانة أنظمة التكييف المركزي، VRF، والمخفي بأعلى كفاءة وأفضل سعر.",
-      keywords: ["شركة تكييف مركزي بالرياض", "تركيب تكييف VRF الخرج", "أفضل شركة تكييف في الرياض", "مقاول تكييف الخرج", "صيانة تكييف مركزي", "توريد وتركيب تكييف"]
+      title: "أعمال التكييف | مقاول تكييف مركزي وأنظمة HVAC بالرياض",
+      description: "مؤسسة أعمال التكييف مقاول معتمد لتوريد وتركيب أنظمة التكييف المركزي، VRF، الشيلر، وتفصيل الدكت للمشاريع التجارية والصناعية والمجمعات بالرياض والخرج.",
+      keywords: ["مقاول تكييف مركزي الرياض", "توريد وتركيب تكييف VRF", "شركة تكييف تجاري الرياض", "تمديد دكت التكييف المركزي", "مشاريع تكييف صناعي السعودية", "أنظمة HVAC للمباني"]
     },
     en: {
-      title: "Al-Takeef HVAC | Central AC Riyadh & Al-Kharj",
-      description: "Leading HVAC contractor in Riyadh and Al-Kharj. Professional installation & maintenance of central AC, VRF, and concealed duct split systems.",
-      keywords: ["Central AC Riyadh", "VRF installation Al-Kharj", "HVAC contractor Riyadh", "AC maintenance Al-Kharj", "AC installation"]
+      title: "Al-Takeef HVAC | Commercial Central AC Contractor Riyadh",
+      description: "Al-Takeef Contracting is a certified HVAC contractor specializing in supply, design, and installation of Central AC, VRF, Chiller, and Duct fabrication for commercial and industrial projects in Riyadh & Al-Kharj.",
+      keywords: ["Commercial HVAC Riyadh", "VRF installation Saudi Arabia", "Central AC contractor Riyadh", "Industrial Chiller installation", "AC duct fabrication", "HVAC engineering contracts"]
     }
   },
   about: {
     ar: {
-      title: "من نحن | مؤسسة أعمال التكييف بالرياض",
-      description: "تعرف على مؤسسة أعمال التكييف بالرياض والخرج. خبرة ممتدة في تصميم وتوريد وتركيب وصيانة أنظمة التكييف المركزي والتجاري والسكني.",
-      keywords: ["من نحن أعمال التكييف", "شركة تكييف الرياض", "مقاول تكييف الخرج", "خبرة التكييف"]
+      title: "من نحن | مؤسسة أعمال التكييف للمشاريع",
+      description: "تعرف على أعمال التكييف، الشريك الهندسي المعتمد لتصميم وتوريد وتركيب أنظمة HVAC والتهوية الميكانيكية للمشاريع الإنشائية والمجمعات في المملكة.",
+      keywords: ["من نحن أعمال التكييف", "شركة تكييف تجاري الرياض", "مقاول HVAC معتمد", "تاريخ مؤسسة أعمال التكييف"]
     },
     en: {
-      title: "About Us | Al-Takeef HVAC Riyadh",
-      description: "Learn more about Al-Takeef Contracting in Riyadh and Al-Kharj. Decades of experience in design, supply, and maintenance of HVAC systems.",
-      keywords: ["About Al-Takeef", "HVAC contractor Riyadh", "AC installation company", "our story"]
+      title: "About Us | Al-Takeef Commercial HVAC Partner",
+      description: "Learn more about Al-Takeef HVAC, the certified engineering partner for design, supply, and installation of large-scale HVAC and ventilation systems in Saudi Arabia.",
+      keywords: ["About Al-Takeef HVAC", "Riyadh HVAC contractor", "mechanical engineering partner", "corporate cooling solutions"]
     }
   },
   contact: {
     ar: {
-      title: "اتصل بنا | رقم شركة تكييف بالرياض والخرج",
-      description: "تواصل مع مؤسسة أعمال التكييف بالرياض والخرج. اتصل بنا على الرقم 0552239595 لطلب استشارة أو عرض سعر مجاني لجميع مشاريع التكييف.",
-      keywords: ["اتصل بنا أعمال التكييف", "رقم شركة تكييف بالرياض", "رقم مقاول تكييف الخرج", "تواصل معنا"]
+      title: "اتصل بنا | قسم مشاريع التكييف المركزي بالرياض",
+      description: "تواصل مع قسم تقدير المشاريع والمناقصات بمؤسسة أعمال التكييف بالرياض والخرج. اتصل بنا على الرقم 0552239595 لتقديم المخططات وطلب الكوتيشن للمشاريع التجارية.",
+      keywords: ["تواصل مع أعمال التكييف", "رقم شركة تكييف مركزي الرياض", "مبيعات التكييف المركزي", "تقديم مخططات تكييف"]
     },
     en: {
-      title: "Contact Us | HVAC Company Phone Riyadh & Al-Kharj",
-      description: "Get in touch with Al-Takeef Contracting in Riyadh and Al-Kharj. Call +966552239595 for a free expert consultation and quotation.",
-      keywords: ["Contact Al-Takeef", "Riyadh AC company number", "HVAC services phone", "free quote"]
+      title: "Contact Us | Commercial HVAC Estimating Riyadh",
+      description: "Get in touch with Al-Takeef project estimation team. Call +966552239595 to submit engineering drawings and request quotations for commercial and industrial HVAC installations.",
+      keywords: ["Contact HVAC estimator", "Riyadh AC project number", "HVAC quotation Riyadh", "submit AC drawings"]
     }
   },
   projects: {
     ar: {
-      title: "مشاريعنا | أعمال التكييف المركزي والتجاري",
-      description: "تصفح سابقة أعمال ومشاريع مؤسسة أعمال التكييف بالرياض والخرج. مشاريع تكييف مركزي، VRF، وشيلر للفلل والمجمعات والمصانع.",
-      keywords: ["مشاريع التكييف الرياض", "سابقة أعمال التكييف", "تركيب تكييف فلل", "تكييف مشاريع تجارية"]
+      title: "مشاريعنا | سابقة تنفيذ أعمال تكييف المجمعات والأبراج",
+      description: "تصفح سابقة تنفيذ مشاريع مؤسسة أعمال التكييف بالرياض والخرج. مشاريع تكييف مركزي، VRF، ومحطات شيلر للمباني التجارية والمستشفيات والمصانع.",
+      keywords: ["مشاريع التكييف المركزي", "سابقة أعمال HVAC", "مشاريع تكييف تجاري", "تكييف أبراج ومستشفيات"]
     },
     en: {
-      title: "Our Projects | Central & Commercial HVAC Works",
-      description: "Browse past projects by Al-Takeef Contracting in Riyadh & Al-Kharj. Successful central AC, VRF, and chiller installations for villas & malls.",
-      keywords: ["HVAC projects Riyadh", "our portfolio", "AC installation gallery", "commercial references"]
+      title: "Our Projects | Commercial & Industrial HVAC Portfolio",
+      description: "Browse the HVAC projects successfully delivered by Al-Takeef. Featuring central AC, VRF systems, and chiller plants for commercial complexes, malls, and factories.",
+      keywords: ["HVAC projects Riyadh", "commercial cooling references", "chiller installation portfolio", "VRF projects Saudi Arabia"]
     }
   },
   blog: {
     ar: {
-      title: "المدونة | نصائح صيانة مكيفات الرياض",
-      description: "مدونة أعمال التكييف. مقالات ونصائح هامة حول صيانة مكيفات سبليت بالرياض، تنظيف الدكت، توفير طاقة المكيف، وتقنيات VRF.",
-      keywords: ["مدونة التكييف", "نصائح صيانة المكيفات", "توفير كهرباء المكيف", "أعطال التكييف بالرياض"]
+      title: "المدونة الهندسية | معايير أنظمة التكييف التجاري",
+      description: "المدونة الهندسية لمؤسسة أعمال التكييف. مقالات متخصصة في حساب الأحمال الحرارية، تصميم الدكت، مقارنة أنظمة VRF والشيلر للمهندسين والمطورين.",
+      keywords: ["مدونة التكييف الهندسي", "تصميم مجاري الهواء", "مقارنة VRF والشيلر", "حساب الأحمال الحرارية للمشاريع"]
     },
     en: {
-      title: "HVAC Blog | AC Maintenance Tips Riyadh",
-      description: "Al-Takeef HVAC Blog. Expert articles and advice on AC repair in Riyadh, energy-saving settings, VRF tech, and duct cleaning.",
-      keywords: ["AC blog Saudi", "AC repair tips Riyadh", "save electricity AC", "home cooling advice"]
+      title: "Engineering Blog | Commercial HVAC Standards",
+      description: "Al-Takeef HVAC Engineering Blog. Professional articles on heat load calculations, duct design, VRF vs Chiller comparisons, and Saudi building code compliance.",
+      keywords: ["HVAC engineering blog", "Riyadh duct design standards", "VRF vs chiller HVAC", "cooling load calculations"]
     }
   },
   vrf: {
     ar: {
-      title: "تركيب تكييف VRF الخرج والرياض | أعمال التكييف",
-      description: "تركيب تكييف VRF الخرج والرياض بأحدث التقنيات وكفاءة طاقة عالية. حلول تكييف ذكية للمشاريع السكنية والتجارية.",
-      keywords: ["تركيب تكييف VRF الخرج", "تكييف VRF الرياض", "نظام VRF السعودية", "مقاول تكييف مركزي"]
+      title: "تركيب تكييف VRF بالرياض والخرج | أنظمة التدفق المتغير VRV",
+      description: "تصميم وتوريد وتركيب أنظمة التكييف المتغير VRF / VRV عالية الكفاءة للمجمعات التجارية والأبراج الإدارية بالرياض والخرج بتنفيذ هندسي متكامل.",
+      keywords: ["تركيب تكييف VRF الرياض", "تكييف VRV الخرج", "أنظمة تدفق التكييف المتغير", "مقاول تكييف VRF معتمد"]
     },
     en: {
-      title: "VRF AC Installation Riyadh & Al-Kharj | Al-Takeef",
-      description: "Professional VRF installation in Riyadh & Al-Kharj. High energy efficiency, zoning control, and maintenance for commercial & residential buildings.",
-      keywords: ["VRF installation Riyadh", "VRF installation Al-Kharj", "VRF system Saudi", "commercial HVAC"]
+      title: "VRF/VRV AC Installation Riyadh & Al-Kharj | Al-Takeef",
+      description: "Engineering-grade VRF/VRV system design and installation in Riyadh & Al-Kharj. High-efficiency zoning systems for commercial offices and towers.",
+      keywords: ["VRF installation Riyadh", "VRF system Al-Kharj", "commercial VRV installation", "multi-split VRF contracting"]
     }
   },
   central: {
     ar: {
-      title: "شركة تكييف مركزي بالرياض والخرج | أعمال التكييف",
-      description: "شركة تكييف مركزي بالرياض والخرج متخصصة في تصميم وتوريد وتركيب وصيانة مكيفات الدكت والمركزي للمشاريع السكنية والتجارية.",
-      keywords: ["شركة تكييف مركزي بالرياض", "تكييف مركزي الخرج", "تركيب مكيف مركزي", "صيانة تكييف مركزي"]
+      title: "مقاول تكييف مركزي بالرياض والخرج | تصميم وتوريد دكت",
+      description: "شركة تكييف مركزي بالرياض والخرج متخصصة في تصميم الأحمال وتوريد وتركيب دكت التكييف المركزي للمنشآت والمشاريع التجارية والصناعية.",
+      keywords: ["شركة تكييف مركزي بالرياض", "تكييف مركزي الخرج", "تركيب دكت تكييف مركزي", "مقاول HVAC تجاري"]
     },
     en: {
-      title: "Central AC Riyadh & Al-Kharj | Al-Takeef HVAC",
-      description: "Top central AC contractor in Riyadh and Al-Kharj. Design, supply, installation, and maintenance of central cooling systems.",
-      keywords: ["Central AC Riyadh", "Central AC Al-Kharj", "Central AC installation", "Central AC contractor"]
+      title: "Central AC Contractor Riyadh & Al-Kharj | Al-Takeef",
+      description: "Leading central AC contractor in Riyadh and Al-Kharj. Specialized in heat load calculation, supply, and installation of commercial packaged and ducted systems.",
+      keywords: ["Central AC Riyadh", "Central AC Al-Kharj", "commercial AC ductwork", "HVAC contractor Saudi"]
     }
   },
   'concealed-duct': {
     ar: {
-      title: "تكييف مخفي دكت سبليت بالرياض | أعمال التكييف",
-      description: "تركيب تكييف مخفي دكت سبليت بالرياض والخرج بتصميم أنيق وموفر للمساحة. حلول تكييف مثالية للفلل والمكاتب.",
-      keywords: ["تكييف مخفي دكت سبليت", "مكيفات مخفي الرياض", "تركيب تكييف دكت", "تكييف مخفي الخرج"]
+      title: "تكييف مخفي كونسيلد بالرياض والخرج | تصميم الدكت",
+      description: "توريد وتركيب أنظمة التكييف المخفي الكونسيلد للمكاتب والمباني الإدارية بالرياض والخرج. تصميم مجاري الهواء وعزلها بمقاييس هندسية عالية.",
+      keywords: ["تكييف مخفي كونسيلد الرياض", "مكيفات مخفي دكت", "تركيب تكييف دكت سبليت", "تصميم مجاري الهواء"]
     },
     en: {
       title: "Concealed Duct Split AC Riyadh & Al-Kharj | Al-Takeef",
-      description: "Sleek and efficient concealed duct split AC systems in Riyadh & Al-Kharj. Design and installation for villas and offices.",
-      keywords: ["Concealed duct split AC", "Concealed AC Riyadh", "Duct split installation Al-Kharj", "Hidden ceiling AC"]
+      description: "Sleek and highly efficient concealed duct split AC systems in Riyadh & Al-Kharj. Professional engineering and installation for commercial office spaces.",
+      keywords: ["Concealed duct split AC", "Concealed AC Riyadh", "Duct split installation Al-Kharj", "commercial hidden AC"]
     }
   },
   chiller: {
     ar: {
-      title: "تركيب تكييف شيلر الرياض والخرج | أنظمة تشيلر",
-      description: "أنظمة التبريد الشيلر ومبردات المياه للمشاريع الضخمة بالرياض والخرج. توريد وصيانة شيلرات معتمدة للمصانع والمستشفيات.",
-      keywords: ["تكييف شيلر الرياض", "نظام تشيلر الخرج", "تركيب شيلر", "صيانة شيلرات"]
+      title: "تركيب تكييف شيلر بالرياض والخرج | محطات مبردات مياه",
+      description: "توريد وتركيب وصيانة أنظمة التبريد بالشيلر ومبردات المياه للمشاريع الصناعية الكبرى والمستشفيات والمصانع بالرياض والخرج. تنفيذ هندسي معتمد.",
+      keywords: ["تكييف شيلر الرياض", "محطة تشيلر الخرج", "تركيب مبردات مياه صناعية", "صيانة شيلرات مصانع"]
     },
     en: {
-      title: "Chiller AC Riyadh & Al-Kharj | Al-Takeef HVAC",
-      description: "Heavy-duty chiller AC systems and cooling towers in Riyadh & Al-Kharj. Professional installation and maintenance for large commercial sites.",
-      keywords: ["Chiller AC Riyadh", "Chiller Al-Kharj", "Central cooling system", "Chiller maintenance"]
+      title: "Chiller AC Riyadh & Al-Kharj | Industrial Cooling Plants",
+      description: "Heavy-duty chiller AC systems and cooling towers in Riyadh & Al-Kharj. Professional engineering installation for factories, hospitals, and large complexes.",
+      keywords: ["Chiller AC Riyadh", "Chiller plant Al-Kharj", "industrial water chiller installation", "cooling tower installation"]
     }
   },
   crac: {
     ar: {
-      title: "وحدات CRAC تبريد مراكز البيانات بالرياض والخرج",
-      description: "توريد وتركيب وحدات تبريد مراكز البيانات CRAC بالرياض والخرج. تحكم دقيق في الحرارة والرطوبة لضمان سلامة الخوادم.",
-      keywords: ["وحدات تبريد مراكز البيانات", "تبريد CRAC الرياض", "تبريد دقيق الخرج", "CRAC installation"]
+      title: "تبريد مراكز البيانات CRAC بالرياض والخرج | تكييف دقيق",
+      description: "توريد وتركيب وحدات التكييف الدقيق وتبريد مراكز البيانات وغرف السيرفرات CRAC بالرياض والخرج لضمان التحكم الدقيق بالحرارة والرطوبة.",
+      keywords: ["تبريد مراكز البيانات", "تبريد CRAC الرياض", "تكييف غرف السيرفرات الخرج", "Precision cooling Saudi"]
     },
     en: {
-      title: "CRAC Units & Data Center Cooling | Al-Takeef",
-      description: "Precision cooling and CRAC unit installation in Riyadh and Al-Kharj. Ensure server stability with advanced temperature control.",
-      keywords: ["CRAC units Riyadh", "Data center cooling Al-Kharj", "Precision cooling Saudi", "CRAC maintenance"]
+      title: "CRAC Units & Data Center Precision Cooling | Al-Takeef",
+      description: "Precision cooling and CRAC unit installation in Riyadh and Al-Kharj. Secure server room stability with professional temperature and humidity controls.",
+      keywords: ["CRAC units Riyadh", "Data center cooling Al-Kharj", "Precision cooling Saudi", "server room AC installation"]
     }
   },
   'split-wall': {
     ar: {
-      title: "تركيب مكيف سبليت بالرياض والخرج | أعمال التكييف",
-      description: "أفضل أسعار وتركيب مكيفات سبليت جدارية بالرياض والخرج. توريد من ماركات رائدة (جري، توشيبا، بيسك) وضمان طويل الأمد.",
-      keywords: ["تركيب مكيف سبليت بالرياض", "مكيفات سبليت الخرج", "أفضل مكيف سبليت", "شراء مكيف سبليت"]
+      title: "توريد مكيفات سبليت جدارية للمشاريع بالرياض والخرج",
+      description: "توريد وتركيب مكيفات سبليت جدارية بكميات للمشاريع الإنشائية والإسكان والجهات الحكومية بالرياض والخرج من الماركات الرائدة.",
+      keywords: ["تركيب مكيف سبليت بالرياض", "مكيفات سبليت مشاريع الخرج", "توريد مكيفات سبليت بالجملة", "مشاريع تكييف سبليت"]
     },
     en: {
-      title: "Split AC Installation Riyadh & Al-Kharj | Al-Takeef",
-      description: "Top-brand wall split AC installation in Riyadh & Al-Kharj. Affordable pricing and expert fitting for home & office.",
-      keywords: ["Split AC Riyadh", "Split AC installation Al-Kharj", "Wall split AC Saudi", "Buy split AC"]
+      title: "Bulk Split AC Supply & Installation Riyadh | Al-Takeef",
+      description: "Bulk supply and installation of wall-mounted split AC units for construction projects, labor camps, and government developments in Riyadh & Al-Kharj.",
+      keywords: ["Split AC Riyadh", "Split AC installation Al-Kharj", "bulk split AC supply", "project split AC contracting"]
     }
   },
   cassette: {
     ar: {
-      title: "مكيف كاسيت سقفي بالرياض والخرج | أعمال التكييف",
-      description: "تركيب مكيف كاسيت سقفي بالرياض والخرج. توزيع مثالي للهواء 360 درجة، حل مثالي للمحلات التجارية والمكاتب المفتوحة.",
-      keywords: ["مكيف كاسيت سقفي بالرياض", "تركيب كاسيت الخرج", "مكيف كاسيت تجاري", "صيانة مكيف كاسيت"]
+      title: "مكيف كاسيت سقفي للمعارض والمكاتب بالرياض والخرج",
+      description: "توريد وتركيب مكيفات كاسيت سقفية للمعارض والمحلات التجارية والمكاتب المفتوحة بالرياض والخرج. توزيع هواء دائري وتثبيت احترافي.",
+      keywords: ["مكيف كاسيت سقفي بالرياض", "تركيب كاسيت الخرج", "مكيف كاسيت تجاري", "تكييف معارض ومكاتب"]
     },
     en: {
       title: "Cassette Ceiling AC Riyadh & Al-Kharj | Al-Takeef",
-      description: "Cassette AC installation & maintenance in Riyadh and Al-Kharj. Sleek design, 360-degree air flow, and professional setup.",
-      keywords: ["Cassette AC Riyadh", "Cassette installation Al-Kharj", "Ceiling cassette Saudi", "Cassette AC maintenance"]
+      description: "Ceiling cassette AC installation for showrooms, open-plan offices, and commercial spaces in Riyadh and Al-Kharj. Complete 360 air distribution.",
+      keywords: ["Cassette AC Riyadh", "Cassette installation Al-Kharj", "Ceiling cassette Saudi", "commercial cassette AC"]
     }
   },
   maintenance: {
     ar: {
-      title: "صيانة مكيفات بالرياض والخرج | عقود سنوية",
-      description: "خدمات صيانة مكيفات فورية وعقود صيانة سنوية بالرياض والخرج. فريق فني متخصص لتصليح التكييف المركزي والسبليت 24/7.",
-      keywords: ["صيانة مكيفات بالرياض", "صيانة مكيفات الخرج", "عقود صيانة تكييف سنوية", "تصليح مكيفات"]
+      title: "عقود صيانة تكييف سنوية للمنشآت والمجمعات بالرياض",
+      description: "عقود صيانة وتشغيل تكييف مركزي وتشيلر سنوية معتمدة للمصانع والجهات التجارية بالرياض والخرج. استجابة سريعة وفرق طوارئ متكاملة.",
+      keywords: ["عقود صيانة تكييف سنوية", "صيانة تكييف مركزي الرياض", "صيانة تشيلرات الخرج", "صيانة HVAC للشركات"]
     },
     en: {
-      title: "AC Maintenance Riyadh & Al-Kharj | Annual Contracts",
-      description: "Expert AC repair and annual maintenance contracts in Riyadh and Al-Kharj. Preventative servicing for central, VRF, and split systems.",
-      keywords: ["AC maintenance Riyadh", "AC repair Al-Kharj", "Annual HVAC contracts", "AC service Saudi"]
+      title: "Commercial AC Maintenance & AMC Riyadh | Al-Takeef",
+      description: "Annual Maintenance Contracts (AMC) and operation services for central AC, VRF, and chiller systems in commercial complexes and factories across Riyadh.",
+      keywords: ["AC maintenance Riyadh", "commercial HVAC AMC", "chiller maintenance contracts", "industrial AC service"]
     }
   },
   ventilation: {
     ar: {
-      title: "تركيب أنظمة تهوية بالرياض والخرج | أعمال التكييف",
-      description: "تصميم وتركيب أنظمة التهوية بالرياض والخرج للمطابخ ومواقف السيارات والمستودعات. سحب الروائح وتجديد الهواء بكفاءة.",
-      keywords: ["أنظمة تهوية بالرياض", "تركيب تهوية الخرج", "مروحة شفط تجارية", "تهوية المستودعات"]
+      title: "أنظمة تهوية ميكانيكية ومخارج الدخان بالرياض والخرج",
+      description: "تصميم وتنفيذ أنظمة التهوية الميكانيكية، تهوية المستودعات، سحب الدخان، ومراوح الشفط التجارية للمطابخ ومواقف السيارات بالرياض والخرج.",
+      keywords: ["أنظمة تهوية ميكانيكية", "تهوية مستودعات بالرياض", "سحب دخان مواقف السيارات", "مراوح شفط تجارية"]
     },
     en: {
-      title: "Ventilation Systems Riyadh & Al-Kharj | Al-Takeef",
-      description: "Commercial ventilation systems in Riyadh & Al-Kharj. Custom design and installation for kitchens, warehouses, and parking areas.",
-      keywords: ["Ventilation systems Riyadh", "Exhaust fans Al-Kharj", "Commercial ventilation Saudi", "Air duct ventilation"]
+      title: "Mechanical Ventilation & Smoke Control Riyadh | Al-Takeef",
+      description: "Custom design and installation of mechanical ventilation, warehouse ventilation, smoke exhaust systems, and commercial kitchen hoods in Riyadh & Al-Kharj.",
+      keywords: ["Mechanical ventilation Riyadh", "warehouse ventilation Al-Kharj", "smoke control systems", "kitchen hood exhaust"]
     }
   },
   store: {
     ar: {
-      title: "متجر مكيفات بالرياض والخرج | أسعار مكيفات",
-      description: "شراء مكيفات بأسعار مخفضة بالرياض والخرج. تكييف سبليت، مركزي، ودكت من أفضل العلامات التجارية مع التوصيل والتركيب.",
-      keywords: ["متجر مكيفات بالرياض", "أسعار مكيفات الخرج", "شراء مكيف سبليت", "عروض مكيفات الرياض"]
+      title: "توريد أجهزة تكييف ومعدات HVAC للمشاريع بالرياض",
+      description: "متجر وقسم مبيعات التكييف المركزي ومعدات HVAC للمقاولين والمطورين بالرياض والخرج. توريد مباشر من المصنع لأكبر العلامات التجارية.",
+      keywords: ["توريد أجهزة تكييف الرياض", "أسعار مكيفات مشاريع الخرج", "مبيعات معدات HVAC", "موزع مكيفات معتمد"]
     },
     en: {
-      title: "AC Store Riyadh & Al-Kharj | Best AC Prices",
-      description: "Shop top-brand air conditioners in Riyadh & Al-Kharj. Great rates on split, central, and concealed AC units with delivery and setup.",
-      keywords: ["AC store Riyadh", "AC prices Al-Kharj", "Buy split AC Saudi", "AC deals Riyadh"]
+      title: "HVAC Equipment & AC Unit Supply Riyadh | Al-Takeef",
+      description: "B2B sales and supply of central AC units, VRF systems, and HVAC equipment for contractors and developers in Riyadh & Al-Kharj.",
+      keywords: ["HVAC equipment supply Riyadh", "commercial AC unit prices", "bulk AC sales Saudi", "approved HVAC supplier"]
     }
   }
 };

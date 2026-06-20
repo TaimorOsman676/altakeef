@@ -167,8 +167,8 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
                 </h2>
                 <p className="leading-relaxed mb-6">
                   {isRTL 
-                    ? `نحن نقدم في مؤسسة أعمال التكييف حلولاً متكاملة وخبرة رائدة في ${name} لتلبية احتياجات عملائنا السكنيين والتجاريين في الرياض والخرج. يتم تنفيذ أعمالنا بواسطة مهندسين وفنيين مهرة مدربين على أعلى مستوى لضمان الجودة، السلامة، الكفاءة، ورضا العملاء التام.`
-                    : `At Al-Takeef, we provide fully integrated solutions and leading expertise in ${name} to meet the needs of our residential and commercial clients in Riyadh and Al-Kharj. All projects are implemented by highly skilled engineers and technicians trained to guarantee quality, safety, efficiency, and complete client satisfaction.`}
+                    ? `نحن نقدم في مؤسسة أعمال التكييف حلولاً متكاملة وخبرة رائدة في ${name} لتلبية احتياجات المشاريع التجارية والصناعية الكبرى بالرياض والخرج. يتم تنفيذ أعمالنا بواسطة مهندسين وفنيين مهرة مدربين على أعلى مستوى لضمان الجودة، السلامة، الكفاءة، ورضا العملاء التام.`
+                    : `At Al-Takeef, we provide fully integrated solutions and leading expertise in ${name} to meet the needs of large-scale commercial and industrial projects in Riyadh and Al-Kharj. All projects are implemented by highly skilled engineers and technicians trained to guarantee quality, safety, efficiency, and complete client satisfaction.`}
                 </p>
               </div>
             </div>
@@ -193,6 +193,27 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* ========================================== */}
+            {/* COMPLIANCE & SCOPE DECLARATION              */}
+            {/* ========================================== */}
+            <div className="bg-[#1e293b]/40 border border-[#00E5FF]/20 rounded-3xl p-6 md:p-8 shadow-sm">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center">
+                  <ShieldCheck className="h-6 w-6 text-[#00E5FF]" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-white mb-2">
+                    {isRTL ? 'نطاق خدماتنا — مشاريع التوريد والتركيب الكبيرة فقط' : 'Our Service Scope — Large-Scale Supply & Installation Projects Only'}
+                  </h2>
+                  <p className="text-[#94A3B8] leading-relaxed text-sm md:text-base">
+                    {isRTL 
+                      ? 'مؤسسة أعمال التكييف متخصصة بنسبة 100% في التوريد المباشر والتركيب الاحترافي لمشاريع التكييف الكبرى تحت إشراف مهندسي الميكانيك. نخدم المجمعات التجارية، الأبراج، المستشفيات، والمنشآت الصناعية. نحن لا نقدم خدمات الصيانة الخفيفة، تنظيف المكيفات، شحن الفريون، أو إصلاح الوحدات المنزلية الصغيرة.'
+                      : 'Al-Takeef Contracting specializes 100% in direct supply and professional installation for large-scale HVAC projects under mechanical engineering supervision. We serve commercial complexes, towers, hospitals, and industrial facilities. We do NOT offer light maintenance, AC cleaning, refrigerant charging, or small residential unit repair.'}
+                  </p>
+                </div>
               </div>
             </div>
 

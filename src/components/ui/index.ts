@@ -38,3 +38,4 @@ export type { SpinnerProps } from './Spinner';
 
 export { default as PortableTextRenderer } from './PortableTextRenderer';
 
+export { OptimizedImageContainer } from './OptimizedImageContainer';
