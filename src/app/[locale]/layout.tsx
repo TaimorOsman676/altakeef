@@ -57,7 +57,6 @@ export default async function LocaleLayout({
   const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
   
-  // The homepage matches "", "/", "/ar", "/en", "/ar/", "/en/"
   const isHomepage = !pathname || pathname === '/' || pathname === '/ar' || pathname === '/en' || pathname === '/ar/' || pathname === '/en/';
 
   return (
