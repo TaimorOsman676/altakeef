@@ -275,6 +275,7 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
                 
                 <a 
                   href="tel:+966552239595"
+                  onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_three) { (window as any).gtag_report_conversion_three('tel:+966552239595'); } }}
                   className="flex items-center justify-center gap-2 w-full py-3.5 px-5 rounded-2xl bg-white/10 hover:bg-white/15 active:scale-95 border border-white/20 font-bold transition-all duration-300 text-sm md:text-base text-white"
                 >
                   <Phone className="h-4 w-4" />

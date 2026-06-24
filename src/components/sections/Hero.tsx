@@ -211,6 +211,7 @@ export default function Hero() {
               {/* Primary Call Button (Amber) */}
               <a
                 href="tel:+966552239595"
+                onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); } }}
                 className="w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#FBBF24] text-[#121212] hover:bg-[#FBBF24]/90 px-6 py-2.5 text-sm sm:text-base font-black transition-all hover:shadow-xl hover:shadow-amber-500/35 hover:-translate-y-0.5 active:scale-95 duration-200"
               >
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 fill-current shrink-0" />

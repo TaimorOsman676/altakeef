@@ -288,6 +288,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               gtag('config', 'G-KBPQPH631G');
               gtag('config', 'AW-18010504865');
               gtag('config', 'AW-18012327894');
+
+              // Click to call (2) - Conversion Function
+              window.gtag_report_conversion_two = function(url) {
+                var callback = function () {
+                  if (typeof(url) != 'undefined') {
+                    window.location = url;
+                  }
+                };
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-18012327894/2Gt0CMr_tcEcENaf-YxD',
+                    'value': 1.0,
+                    'currency': 'SAR',
+                    'event_callback': callback
+                });
+                return false;
+              };
+
+              // Click to call (3) - Conversion Function
+              window.gtag_report_conversion_three = function(url) {
+                var callback = function () {
+                  if (typeof(url) != 'undefined') {
+                    window.location = url;
+                  }
+                };
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-18012327894/lB4GCPGNuMEcENaf-YxD',
+                    'value': 1.0,
+                    'currency': 'SAR',
+                    'event_callback': callback
+                });
+                return false;
+              };
             `
           }}
         />

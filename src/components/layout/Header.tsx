@@ -115,7 +115,12 @@ export default function Header() {
               <Mail className="h-3.5 w-3.5" />
               <span>info@altakeefsa.com</span>
             </a>
-            <a href="tel:+966552239595" className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors" aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}>
+            <a 
+              href="tel:+966552239595" 
+              onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); } }}
+              className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors" 
+              aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}
+            >
               <Phone className="h-3.5 w-3.5" />
               <span dir="ltr">0552239595</span>
             </a>
@@ -236,6 +241,7 @@ export default function Header() {
             <div className="w-px h-6 bg-white/10 mx-1 hidden 2xl:block"></div> {/* Separator */}
             <a
               href="tel:+966552239595"
+              onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); } }}
               className="hidden xl:inline-flex items-center gap-1.5 xl:gap-2 rounded-xl bg-[#00E5FF] px-2 xl:px-4 2xl:px-5 py-1.5 xl:py-2 2xl:py-2.5 text-[11px] xl:text-[13px] 2xl:text-sm font-bold text-white transition-all duration-300 hover:bg-[#2489ba] hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95"
               aria-label={isRTL ? "اتصل بمؤسسة أعمال التكييف" : "Call Al-Takeef"}
             >
@@ -385,6 +391,7 @@ export default function Header() {
                 <div className="mt-8 flex flex-col gap-3">
                   <a
                     href="tel:+966552239595"
+                    onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); } }}
                     className="flex items-center justify-center gap-2 rounded-xl bg-[#00E5FF] px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:bg-[#2489ba] active:scale-95"
                     aria-label={isRTL ? "اتصل بمؤسسة أعمال التكييف" : "Call Al-Takeef"}
                   >
@@ -402,7 +409,12 @@ export default function Header() {
 
                 {/* Mobile utility info */}
                 <div className="mt-8 space-y-3 border-t border-white/10 pt-6 text-sm text-[#94A3B8]">
-                  <a href="tel:+966552239595" className="flex items-center gap-2" aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}>
+                  <a 
+                    href="tel:+966552239595" 
+                    onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); } }}
+                    className="flex items-center gap-2" 
+                    aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}
+                  >
                     <Phone className="h-4 w-4" />
                     <span dir="ltr">0552239595</span>
                   </a>
