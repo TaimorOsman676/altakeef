@@ -119,8 +119,8 @@ export default function Header() {
             <a 
               href="tel:+966552239595" 
               onClick={() => {
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ 'event': 'phone_call_click_success' });
+                (window as any).dataLayer = (window as any).dataLayer || [];
+                (window as any).dataLayer.push({ 'event': 'phone_call_click_success' });
                 if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); }
               }}
               className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors" 
@@ -247,8 +247,8 @@ export default function Header() {
             <a
               href="tel:+966552239595"
               onClick={() => {
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ 'event': 'phone_call_click_success' });
+                (window as any).dataLayer = (window as any).dataLayer || [];
+                (window as any).dataLayer.push({ 'event': 'phone_call_click_success' });
                 if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); }
               }}
               className="hidden xl:inline-flex items-center gap-1.5 xl:gap-2 rounded-xl bg-[#00E5FF] px-2 xl:px-4 2xl:px-5 py-1.5 xl:py-2 2xl:py-2.5 text-[11px] xl:text-[13px] 2xl:text-sm font-bold text-white transition-all duration-300 hover:bg-[#2489ba] hover:shadow-lg hover:shadow-[#00E5FF]/25 active:scale-95"
@@ -401,8 +401,8 @@ export default function Header() {
                   <a
                     href="tel:+966552239595"
                     onClick={() => {
-                      window.dataLayer = window.dataLayer || [];
-                      window.dataLayer.push({ 'event': 'phone_call_click_success' });
+                      (window as any).dataLayer = (window as any).dataLayer || [];
+                      (window as any).dataLayer.push({ 'event': 'phone_call_click_success' });
                       if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); }
                     }}
                     className="flex items-center justify-center gap-2 rounded-xl bg-[#00E5FF] px-6 py-3.5 text-base font-bold text-white transition-all duration-300 hover:bg-[#2489ba] active:scale-95"
@@ -425,8 +425,8 @@ export default function Header() {
                   <a 
                     href="tel:+966552239595" 
                     onClick={() => {
-                      window.dataLayer = window.dataLayer || [];
-                      window.dataLayer.push({ 'event': 'phone_call_click_success' });
+                      (window as any).dataLayer = (window as any).dataLayer || [];
+                      (window as any).dataLayer.push({ 'event': 'phone_call_click_success' });
                       if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); }
                     }}
                     className="flex items-center gap-2" 

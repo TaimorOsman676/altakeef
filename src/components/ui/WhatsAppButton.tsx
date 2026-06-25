@@ -38,8 +38,8 @@ export default function WhatsAppButton() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ 'event': 'whatsapp_click_success' });
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({ 'event': 'whatsapp_click_success' });
         }}
         className="relative group"
         aria-label={t('ariaLabel')}
