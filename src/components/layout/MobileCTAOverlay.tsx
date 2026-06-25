@@ -18,7 +18,11 @@ export default function MobileCTAOverlay() {
         {/* Phone Button */}
         <a
           href="tel:+966552239595"
-          onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_three) { (window as any).gtag_report_conversion_three('tel:+966552239595'); } }}
+          onClick={() => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ 'event': 'phone_call_click_success' });
+            if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_three) { (window as any).gtag_report_conversion_three('tel:+966552239595'); }
+          }}
           className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#FBBF24] active:bg-[#FBBF24]/90 text-[#121212] font-black text-sm transition-all shadow-lg active:scale-95 duration-150"
         >
           <Phone className="w-4 h-4 fill-current shrink-0" />
@@ -30,6 +34,10 @@ export default function MobileCTAOverlay() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ 'event': 'whatsapp_click_success' });
+          }}
           className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] active:bg-[#25D366]/90 text-white font-black text-sm transition-all shadow-lg active:scale-95 duration-150"
         >
           <svg

@@ -211,7 +211,11 @@ export default function Hero() {
               {/* Primary Call Button (Amber) */}
               <a
                 href="tel:+966552239595"
-                onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); } }}
+                onClick={() => {
+                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({ 'event': 'phone_call_click_success' });
+                  if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_two) { (window as any).gtag_report_conversion_two('tel:+966552239595'); }
+                }}
                 className="w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#FBBF24] text-[#121212] hover:bg-[#FBBF24]/90 px-6 py-2.5 text-sm sm:text-base font-black transition-all hover:shadow-xl hover:shadow-amber-500/35 hover:-translate-y-0.5 active:scale-95 duration-200"
               >
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 fill-current shrink-0" />
@@ -223,6 +227,10 @@ export default function Hero() {
                 href={isRTL ? 'https://wa.me/966552239595?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A7%D9%84%D8%AA%D9%83%D9%8A%D9%8A%D9%81%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AA%D9%88%D8%B1%D9%8A%D8%AF%20%D9%88%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%20%D8%A3%D9%86%D8%B8%D9%85%D8%A9%20%D8%A7%D9%84%D8%AA%D9%83%D9%8A%D9%8A%D9%81.' : `https://wa.me/966552239595?text=${encodeURIComponent('Hello, I would like to request a free consultation for my HVAC project.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  window.dataLayer = window.dataLayer || [];
+                  window.dataLayer.push({ 'event': 'whatsapp_click_success' });
+                }}
                 className="w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] text-white hover:bg-[#25D366]/90 px-6 py-2.5 text-sm sm:text-base font-black transition-all hover:-translate-y-0.5 active:scale-95 duration-200"
               >
                 {/* WhatsApp SVG Icon */}

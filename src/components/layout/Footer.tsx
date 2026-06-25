@@ -176,7 +176,11 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+966552239595"
-                  onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_three) { (window as any).gtag_report_conversion_three('tel:+966552239595'); } }}
+                  onClick={() => {
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({ 'event': 'phone_call_click_success' });
+                    if (typeof window !== 'undefined' && (window as any).gtag_report_conversion_three) { (window as any).gtag_report_conversion_three('tel:+966552239595'); }
+                  }}
                   className="flex items-center gap-3 text-sm text-white/70 transition-colors hover:text-[#00E5FF]"
                   aria-label={isRTL ? "اتصل بنا على الرقم 966552239595+" : "Call us at +966552239595"}
                 >

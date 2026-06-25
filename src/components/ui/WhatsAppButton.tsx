@@ -37,6 +37,10 @@ export default function WhatsAppButton() {
         rel="noopener noreferrer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={() => {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'event': 'whatsapp_click_success' });
+        }}
         className="relative group"
         aria-label={t('ariaLabel')}
       >
